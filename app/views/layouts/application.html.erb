@@ -73,29 +73,7 @@
 				<p>Copyright &copy; TH Köln</p>
 			</div>
 		</footer>
-		<script type="text/javascript">
-
-
-
-
-$("a.page-scroll").click(function() {
-
-
-	var $anchor = $(this);
-	var pathname = window.location.pathname;
-
-	if (pathname == "/"){
-		$('html, body').stop().animate({
-			scrollTop: $($anchor.attr('href')).offset().top
-		}, 1500, 'easeInOutExpo');
-		event.preventDefault();
-
-	} else {
-		window.location.replace( "/" + $anchor.attr('href'));
-	}
-});
-		</script>
-
+		
 		<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
 
 	</body>
