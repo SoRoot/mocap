@@ -2,14 +2,18 @@ class User
 	include Mongoid::Document
 	include ActiveModel::Validations	
 	include ActiveModel::SecurePassword
-	#validates_uniqueness_of :username, message: 'user already exists', allow_nil: false, allow_blank: false	
-	#validates_length_of :password, minimum: 6, too_short: 'please enter at least 6 characters'
 
-	validates :username, presence: true
-	validates :password_digest, presence: true
-	#validates :username,
-		#:uniquness => {:message => "user already exists"}
-		
+	validates :username,
+		presence: true,
+		uniqueness: true,
+		length: { minimum: 3, maximum: 50 }
+	
+	validates :password_digest,
+		presence: true,
+		uniqueness: true,
+		length: { minimum: 6, maximum: 255 },
+		format: { with: /\A\w+\d\Z/ },
+		confirmation: true
 
 	field :username, type: String
 	field :password_digest, type: String

@@ -8,17 +8,27 @@
 
 					<%= render 'shared/error_messages' %>
 
-					<%= debug(@user.errors.keys) if Rails.env.development?  %>
-					<%= debug(@user.errors.keys == [:username]) if Rails.env.development?  %>
-					<% if @user.errors.keys == :username%>
+
+					<% if @user.errors.include?(:username) %>
 						<div><%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox textbox-wrong' %></div>
 					<% else %>
 						<div><%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' %></div>
 					<% end %>
 
 
-					<div><%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' %></div>
-					<div><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", class: 'mocap-textbox' %></div>
+					<% if @user.errors.include?(:password_digest) %>
+						<div><%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox textbox-wrong' %></div>
+					<% else %>
+						<div><%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' %></div>
+					<% end %>
+
+					<% if @user.errors.include?(:password) %>
+						<div><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", class: 'mocap-textbox textbox-wrong' %></div>
+					<% else %>
+						<div><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", class: 'mocap-textbox' %></div>
+					<% end %>
+
+					
 					<div><%= f.submit "Create an account", class: "btn-default btn mocap-textbox mocap-textbox-hov" %></div>
 
 				<% end %>
