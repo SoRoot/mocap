@@ -1,38 +1,39 @@
+
 <!-- Search Section -->
-<section id="searchbar" class="container content-section text-center">
-	<div class="">
-		<div class="col-md-12 search-section" id="search-section">
+<section id="searchbar" class="container content-section">
+	<div class="container">
+		<div class="search-section text-center" id="search-section">
 			<form class="form-inline" action="/TODO" method="GET">
 				<div class="form-group">
-					<select class="from-control placeholder">
+					<select class="from-control mocap-textbox mocap-textbox-hov">
 								<option value="" disabled selected>Choose Actor</option>
 								<option>option 1</option>
 								<option>option 2</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<select class="from-control placeholder">
+					<select class="from-control mocap-textbox mocap-textbox-hov">
 								<option value="" disabled selected>Choose Gender</option>
 								<option>option 1</option>
 								<option>option 2</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<select class="from-control placeholder">
+					<select class="from-control mocap-textbox mocap-textbox-hov">
 								<option value="" disabled selected>Choose Role</option>
 								<option>option 1</option>
 								<option>option 2</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<select class="from-control placeholder">
+					<select class="from-control mocap-textbox mocap-textbox-hov">
 								<option value="" disabled selected>Choose Mood</option>
 								<option>option 1</option>
 								<option>option 2</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<input type="text" class="placeholder" placeholder="Search for snippets" />
+					<input type="text" class="mocap-textbox mocap-textbox-hov" placeholder="Search for snippets" />
 				</div>
 				<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 			</form>
@@ -43,16 +44,29 @@
 	<div class="container-fluid">
 		<!-- Page Header -->
 		<div class="row">
-			<div class="col-md-12">
+			<div class="container">
 				<h1>most popular </h1>
 				<hr>
 			</div>
 		</div>
 		<!-- /.row -->
 
-		<div class="row content-box">
-			<div class="col-md-8 gif-container">
-				<div class="col-md-4 gif-box">
+		<div class="row content-box container">
+			<div class="gif-container">
+				<div class="col-sm-3 gif-box">
+					<img class="gif" src="/TODO" alt="#">
+					<div class="gif-content">
+						<a href="#"><h3>Motion</h3></a>
+						<p>Attributes</p>
+						xxx
+						<div>
+							<button class="btn btn-default btn-sm">BVH</button>
+							<button class="btn btn-default btn-sm">C3D</button>
+							<button class="btn btn-default btn-sm">FBX</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -65,7 +79,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -78,7 +92,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -91,7 +105,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -104,7 +118,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -117,7 +131,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -130,7 +144,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -143,7 +157,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -156,7 +170,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box">
+				<div class="col-sm-3 gif-box gif">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -169,7 +183,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box gif">
+				<div class="col-sm-3 gif-box gif">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -182,20 +196,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 gif-box gif">
-					<img class="img-responsive gif" src="/TODO" alt="#">
-					<div class="gif-content">
-						<a href="#"><h3>Motion</h3></a>
-						<p>Attributes</p>
-						xxx
-						<div>
-							<button class="btn btn-default btn-sm">BVH</button>
-							<button class="btn btn-default btn-sm">C3D</button>
-							<button class="btn btn-default btn-sm">FBX</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 gif-box gif">
+				<div class="col-sm-3 gif-box gif">
 					<img class="img-responsive gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
@@ -238,17 +239,23 @@
 				</div>
 				<!-- /.row -->
 			</div>
-			<div class="col-md-4 player-box">
+			<div class="col-sm-6" id="unity_player">
 				<div class="player-display">
 					<canvas class="emscripten player-display" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 				</div>
 				<div class="player-content">
-					<img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" />
+					<div class="fullscreen">
+						<%= image_tag "fullscreen.png", :onclick => "SetFullscreen(1)" %>
+					</div>
 					<div class="logo">
-						<p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p></div>
-					<h3>Motion</h3>
-					<p>Attributes</p>
-					xxx
+						<%= image_tag "unity_logo.png" %>
+						<p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
+					</div>
+					<div class="content-section">
+						<h3>Motion</h3>
+						<p>Attributes</p>
+						xxx
+					</div>
 				</div>
 			</div>
 		</div>
