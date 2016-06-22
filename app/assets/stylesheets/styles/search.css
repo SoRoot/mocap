@@ -31,7 +31,7 @@ p{
 /*--------------------------------------------------------------------------------------*/
 
 /*.placeholder{*/
-	/*color: $primary;*/
+	/*color: $color05;*/
 	/*background-color: transparent;*/
 	/*-webkit-transition: all .3s ease-in-out;*/
     /*-moz-transition: all .3s ease-in-out;*/
@@ -39,32 +39,32 @@ p{
 	/*outline: none;*/
 	/*width: 150px;*/
 	/*height: auto;*/
-	/*border: 1px solid $primary;*/
+	/*border: 1px solid $color05;*/
 	/*padding: 10px;*/
 /*}*/
 /*.placeholder:hover{*/
-	/*border: 1px solid $primary;*/
+	/*border: 1px solid $color05;*/
     /*outline: 0;*/
     /*color: #171719;*/
-    /*background-color: $primary;*/
+    /*background-color: $color05;*/
 /*}*/
 /*.placeholder:focus{*/
-	/*border: 1px solid $primary;*/
+	/*border: 1px solid $color05;*/
     /*outline: 0;*/
-    /*color: $primary;*/
+    /*color: $color05;*/
     /*background-color: transparent;*/
 /*}*/
 .dropdown{
 	border:none;
 }
 select option:first-child{
-	color: $primary;
+	color: $color05;
 	border: none;
 	background-color: transparent;
 	display: none;
 }
 select option{
-	color: $primary;
+	color: $color05;
 }
 
 .row{

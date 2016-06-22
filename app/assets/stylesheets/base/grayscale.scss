@@ -3,7 +3,7 @@ body {
 	height: 100%;
 	font-family: "Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
 	color: white;
-	background-color: $backcolor;
+	background-color: $color02;
 }
 
 html {
@@ -37,7 +37,7 @@ p {
 }
 
 a {
-	color: $primary;
+	color: $color01;
 	-webkit-transition: all .2s ease-in-out;
 	-moz-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
@@ -45,7 +45,7 @@ a {
 	&:hover,
 	&:focus {
 		text-decoration: none;
-		color: darken($primary, 20%);
+		color: darken($color01, 20%);
 	}
 }
 
@@ -58,7 +58,7 @@ a {
 	border-bottom: 1px solid rgba(white, 0.3);
 	text-transform: uppercase;
 	font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
-	background-color: $backcolornav;
+	background-color: transparent;
 
 	.navbar-toggle {
 		padding: 4px 6px;
@@ -98,16 +98,16 @@ a {
 
 				&:focus,
 				&:active {
-					outline: none;
-					background-color: transparent;
+					outline: 10px;
+					background-color: $color01;
 				}
 			}
 
 			&.active {
-				outline: none;
+				outline: $color01;
 
 				a {
-					background-color: rgba(white, 0.3);
+					background-color: $color01;
 
 					&:hover {
 						color: white;
@@ -121,14 +121,14 @@ a {
 		padding: 20px 0;
 		border-bottom: none;
 		letter-spacing: 1px;
-		background: $navcolor;
+		background: transparent;
 		-webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
 		-moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
 		transition: background .5s ease-in-out,padding .5s ease-in-out;
 
 		&.top-nav-collapse {
 			padding: 0;
-			background: $navcolor;
+			background: $color02;
 			border-bottom: 1px solid rgba(white, 0.3);
 		}
 	}
@@ -140,7 +140,7 @@ a {
 	height: auto;
 	padding: 100px 0;
 	text-align: center;
-	color: $colorintro;
+	color: $color02;
 	background: url($background-url) no-repeat bottom center scroll;
 	background-color: black;
 	-webkit-background-size: cover;
@@ -182,10 +182,10 @@ a {
 	height: 70px;
 	margin-top: 15px;
 	padding: 7px 16px;
-	border: 2px solid $colorbutton;
+	border: 2px solid $color00;
 	border-radius: 100% !important;
 	font-size: 40px;
-	color: $colorbutton;
+	color: $color00;
 	background: transparent;
 	-webkit-transition: background .3s ease-in-out;
 	-moz-transition: background .3s ease-in-out;
@@ -301,16 +301,16 @@ a {
 }
 
 .btn-default {
-	border: 1px solid $primary;
-	color: $primary;
+	border: 1px solid $color01;
+	color: $color01;
 	background-color: transparent;
 
 	&:hover,
 	&:focus {
-		border: 1px solid $primary;
+		border: 1px solid $color01;
 		outline: none;
 		color: black;
-		background-color: $primary;
+		background-color: $color01;
 	}
 }
 
