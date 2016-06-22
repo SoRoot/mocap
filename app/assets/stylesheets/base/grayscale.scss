@@ -58,7 +58,7 @@ a {
 	border-bottom: 1px solid rgba(white, 0.3);
 	text-transform: uppercase;
 	font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
-	background-color: black;
+	background-color: $backcolornav;
 
 	.navbar-toggle {
 		padding: 4px 6px;
@@ -121,14 +121,14 @@ a {
 		padding: 20px 0;
 		border-bottom: none;
 		letter-spacing: 1px;
-		background: $backcolornav;
+		background: $navcolor;
 		-webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
 		-moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
 		transition: background .5s ease-in-out,padding .5s ease-in-out;
 
 		&.top-nav-collapse {
 			padding: 0;
-			background: $backcolornav;
+			background: $navcolor;
 			border-bottom: 1px solid rgba(white, 0.3);
 		}
 	}
