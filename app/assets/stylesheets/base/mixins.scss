@@ -39,7 +39,7 @@
 }
 
 .textbox-wrong:after {
-	color: $primary;
+	color: $color01;
 	background-color: transparent;
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
@@ -47,6 +47,6 @@
 	outline: none;
 	width: 150px;
 	height: auto;
-	border: 1px solid $primary;
+	border: 1px solid $color01;
 	padding: 10px;
 }
