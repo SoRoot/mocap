@@ -9,6 +9,5 @@ class Motion
   field :param, :type => Array
   field :downloaded
   field :start
-  field :end, type: Integer
- 
+  field :end
 end
