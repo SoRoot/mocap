@@ -10,8 +10,6 @@
 		<%= csrf_meta_tags %>
 
 
-		<script type="text/javascript"></script>
-
 		<!-- Custom Fonts -->
 		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	</head>
@@ -35,20 +33,26 @@
 				<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 					<ul class="nav navbar-nav">
 						<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+						<li class="hidden"> 
+							<a href="#page-top"></a>
+                        </li>
 						<li>
 							<a class="page-scroll" href="#page-top">home</a>
 						</li>
 						<li>
 							<a class="page-scroll" href="#about">about</a>
 						</li>
-						<li>
+						<li> 
 							<a class="page-scroll" href="#contact">contact</a>
 						</li>
-						<li>
-							<a href="/searchDB">search db</a>
+						<li class="hidden"> 
+							<a href="#page-bottom"></a>
+                        </li>
+						<li  id="nav-searchpage">
+							<a  href="/searchDB">search db</a>
 						</li>
-						<li>
-							<a href="/login">login</a>
+						<li id="nav-login">
+							<a  href="/login">login</a>
 						</li>
 					</ul>
 				</div>

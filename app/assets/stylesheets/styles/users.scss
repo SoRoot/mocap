@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //#session_username, #session_password, .btn-submit, #user_username, #user_password, #user_password_confirmation {
-//background-color: $backcolor;
+//background-color: $color02;
 //}
 
 /*padding for login and signup*/
@@ -24,26 +24,26 @@
 
 .error-field {
 	width: 400px;
-	background-color: $errors2;
-	border-color: $errors1;
-	color: $errors1;
+	background-color: $color07;
+	border-color: $color06;
+	color: $color06;
 	text-align: left;
 	margin: auto;
 	margin-bottom: 20px;
 }
 
 input::-webkit-input-placeholder {
-color: $secondary !important;
+color: $color02 !important;
 }
  
 input:-moz-placeholder { /* Firefox 18- */
-color: $secondary !important;  
+color: $color02 !important;  
 }
  
 input::-moz-placeholder {  /* Firefox 19+ */
-color: $secondary !important;  
+color: $color02 !important;  
 }
  
 input:-ms-input-placeholder {  
-color: $secondary !important;  
+color: $color02 !important;  
 }

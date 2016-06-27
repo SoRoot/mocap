@@ -1,7 +1,7 @@
 //  Mixins
 
 .mocap-textbox {
-	color: $primary;
+	color: $color01;
 	background-color: transparent;
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
@@ -9,27 +9,33 @@
 	outline: none;
 	width: 150px;
 	height: auto;
-	border: 1px solid $primary;
+	border: 1px solid $color01;
 	padding: 10px;
+	border-radius: 0px;
 }
 
 .mocap-textbox-hov:hover {
-	border: 1px solid $primary;
+	border: 1px solid $color01;
 	outline: 0;
-	color: $primary;
-	background-color: $primary;
+	color: $color01;
+	background-color: $color01;
 }
 
 .mocap-textbox:focus {
-	border: 1px solid $primary;
+	border: 1px solid $color01;
 	outline: 0;
-	color: $primary;
+	color: $color01;
 	background-color: transparent;
 }
 
 .textbox-wrong {
-	border: 1px solid $errors1;
-	background-color: $errors2;
+	border: 1px solid $color06;
+	background-color: $color07;
+}
+
+.mocap-navbar-hov:hover {
+	color: transparent;
+	background-color: $color01;
 }
 
 .textbox-wrong:after {
