@@ -2,6 +2,8 @@ class StartupController < ApplicationController
   def index
   end
 
-  def search
+  def searchDB
+  	@actor = Actor.all
+  	@motions = Motion.all
   end
 end
