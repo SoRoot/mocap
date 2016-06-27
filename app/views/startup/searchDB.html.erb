@@ -13,27 +13,34 @@ document.getElementById("nav-searchpage").className += "active";
 			<form class="form-inline" action="/TODO" method="GET">
 				<div class="form-group">
 					<select class="from-control mocap-textbox mocap-textbox-hov">
-						<option value="" disabled selected>Choose Actor</option>
+						<option value="" disabled selected>Actor</option>
 						<% @actors.each do |actor| %>
 							<option><%= actor.name %></option>
  						<% end %>
 					</select>
-					<select class="from-control mocap-textbox mocap-textbox-hov">
-						<option value="" disabled selected>Choose Gender</option>
+					<select class="from-control mocap-textbox">
+						<option value="" disabled selected>Gender</option>
 						<option>female</option>
 						<option>male</option>
 					</select>
-					<select class="from-control mocap-textbox mocap-textbox-hov">
-						<option value="" disabled selected>Choose Role</option>
-						<option>option 1</option>
-						<option>option 2</option>
+					<select class="from-control mocap-textbox">
+						<option value="" disabled selected>Role</option>
+						<% @roles.each do |r| %>
+							<option><%= r %></option>
+ 						<% end %>
 					</select>
-					<select class="from-control mocap-textbox mocap-textbox-hov">
-						<option value="" disabled selected>Choose Mood</option>
-						<option>option 1</option>
-						<option>option 2</option>
+					<select class="from-control mocap-textbox">
+						<option value="" disabled selected>Mood</option>
+						<% @moods.each do |m| %>
+							<option><%= m %></option>
+ 						<% end %>
 					</select>
-					<input type="text" class="mocap-textbox mocap-textbox-hov" placeholder="Search for snippets" />
+					<select class="from-control mocap-textbox">
+						<option value="" disabled selected>Desctiption</option>
+						<% @params.each do |p| %>
+							<option><%= p %></option>
+ 						<% end %>
+					</select>
 				</div>
 				<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 			</form>

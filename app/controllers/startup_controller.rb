@@ -3,7 +3,10 @@ class StartupController < ApplicationController
   end
 
   def searchDB
-  	@actor = Actor.all
+  	@roles = Motion.distinct(:role)
+  	@moods =  Motion.distinct(:mood)
+  	@params =  Motion.distinct(:param)
+  	@actors = Actor.all
   	@motions = Motion.all
   end
 end
