@@ -20,6 +20,8 @@
 
 .signupcont {
 	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 100px;
 }
 
 .error-field {
@@ -33,17 +35,17 @@
 }
 
 input::-webkit-input-placeholder {
-color: $color02 !important;
+color: $color03 !important;
 }
  
 input:-moz-placeholder { /* Firefox 18- */
-color: $color02 !important;  
+color: $color03 !important;  
 }
  
 input::-moz-placeholder {  /* Firefox 19+ */
-color: $color02 !important;  
+color: $color03 !important;  
 }
  
 input:-ms-input-placeholder {  
-color: $color02 !important;  
+color: $color03 !important;  
 }

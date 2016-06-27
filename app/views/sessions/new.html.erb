@@ -3,13 +3,32 @@
 	<div class="container content-section">
 		<div class="form">
 
-			<h1>Log in</h1>
+			<div class="signupcont">
 
-			<%= form_for(:session, url: login_path) do |f| %>
-				<%= f.text_field :username, :placeholder => "Username" %>
-				<%= f.password_field :password, :placeholder => "Password" %>
-				<%= f.submit "Log in", class: "btn-submit" %>
-			<% end %>
+				<h2>Log in</h2>
+
+
+				<%= form_for(:session, url: login_path) do |f| %>
+
+					<% flash.each do |message_type, message| %>
+						<div class="mocap-textbox error-field">
+							<%= message %>
+						</div>
+					<% end %>
+
+					<div>
+						<%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' + (flash[:danger] ? ' textbox-wrong' : '') %>
+					</div>
+					<div>
+						<%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' + (flash[:danger] ? ' textbox-wrong' : '') %>
+					</div>
+
+					<div>
+						<%= f.submit "Log in", class: "btn-default btn mocap-textbox mocap-textbox-hov" %>
+					</div>
+
+				<% end %>
+			</div>
 
 		</div>
 	</div>
@@ -19,7 +38,7 @@
 
 <script type="text/javascript">
 $(function() {
-    $('#nav-login').addClass('active');
+	$('#nav-login').addClass('active');
 });
 
 </script>
