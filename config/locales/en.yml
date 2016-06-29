@@ -20,12 +20,4 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  mongoid:
-    attributes:
-      user:
-        username: 'Username'
-        password_digest: 'Password'
-        password: 'Confirm password'
-  #errors:
-    #messages:
-      #blank: ""
+  hello: "Hello world"

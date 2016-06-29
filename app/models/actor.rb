@@ -1,13 +1,5 @@
 class Actor
   include Mongoid::Document
-  include ActiveModel::Validations
-
-  validates :name, presence: true
-  validates :weight, presence: true
-  validates :gender, presence: true
-  validates :body_height, presence: true
-
-
   field :name, type: String
   field :weight, type: Float
   field :gender, type: Integer

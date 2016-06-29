@@ -1,26 +1,5 @@
-<div class="actor" >
-	<div class="container content-section">
-		<div class="form">
+<h1>New Actor</h1>
 
-			<div class="signupcont">
+<%= render 'form' %>
 
-				<h2>register a new actor</h2>
-
-				<%= render 'form' %>
-
-			</div>
-
-
-		</div>
-	</div>
-</div>
-
-<!-- Script to activiate navigation -->
-
-<script type="text/javascript">
-$(function() {
-	$('#nav-login').addClass('active');
-});
-
-</script>
-
+<%= link_to 'Back', actors_path %>

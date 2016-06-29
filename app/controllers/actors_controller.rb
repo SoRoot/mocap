@@ -1,6 +1,5 @@
 class ActorsController < ApplicationController
-	include SessionsHelper
-	before_action :require_user
+	before_action :require_user, only: [:index, :show]
 	before_action :set_actor, only: [:show, :edit, :update, :destroy]
 
 	# GET /actors
@@ -28,10 +27,14 @@ class ActorsController < ApplicationController
 	def create
 		@actor = Actor.new(actor_params)
 
-		if @actor.save
-			redirect_to '/'
-		else
-			render '/actors/new'
+		respond_to do |format|
+			if @actor.save
+				format.html { redirect_to @actor, notice: 'Actor was successfully created.' }
+				format.json { render :show, status: :created, location: @actor }
+			else
+				format.html { render :new }
+				format.json { render json: @actor.errors, status: :unprocessable_entity }
+			end
 		end
 	end
 

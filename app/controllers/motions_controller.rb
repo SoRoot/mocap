@@ -1,6 +1,4 @@
 class MotionsController < ApplicationController
-	include SessionsHelper
-	before_action :require_user
 	before_action :set_motion, only: [:show, :edit, :update, :destroy]
 
 	# GET /motions
