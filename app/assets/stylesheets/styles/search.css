@@ -61,6 +61,7 @@ select option{
 	border: none;
 	background-color: #fcfcfc;
 	display:flex;
+	flex-direction: column;
 	justify-content:flex-start;
 	flex-direction: row;
 	flex-wrap:wrap;
@@ -98,7 +99,7 @@ select option{
 	display: flex;
 	justify-content: center;
 	background-color: black;
-	width: auto;
+	width: 100%;
 	height: 500px;
 }
 .player-content{
