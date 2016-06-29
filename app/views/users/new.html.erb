@@ -8,7 +8,7 @@
 
 				<%= form_for(@user) do |f| %>
 
-					<%= render 'shared/error_messages' %>
+					<%= render 'shared/user_error_messages' %>
 
 					<div>
 						<%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
@@ -31,3 +31,13 @@
 		</div>
 	</div>
 </div>
+
+<!-- Script to activiate navigation -->
+
+<script type="text/javascript">
+$(function() {
+	$('#nav-login').addClass('active');
+});
+
+</script>
+

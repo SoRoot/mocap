@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-	before_action :require_user, only: [:index, :show]
+	include SessionsHelper
+	before_action :require_user
 
 	def new
 		@user = User.new
