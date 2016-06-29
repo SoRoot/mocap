@@ -1,81 +1,86 @@
 <%= form_for(@actor) do |f| %>
-  <% if @actor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
 
-      <ul>
-      <% @actor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<%= render 'shared/actor_error_messages' %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :weight %><br>
-    <%= f.text_field :weight %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :body_height %><br>
-    <%= f.text_field :body_height %>
-  </div>
-  <div class="field">
-    <%= f.label :shoulder_width %><br>
-    <%= f.text_field :shoulder_width %>
-  </div>
-  <div class="field">
-    <%= f.label :shoulder_height %><br>
-    <%= f.text_field :shoulder_height %>
-  </div>
-  <div class="field">
-    <%= f.label :inner_leg_length %><br>
-    <%= f.text_field :inner_leg_length %>
-  </div>
-  <div class="field">
-    <%= f.label :tibia_length %><br>
-    <%= f.text_field :tibia_length %>
-  </div>
-  <div class="field">
-    <%= f.label :body_depth %><br>
-    <%= f.text_field :body_depth %>
-  </div>
-  <div class="field">
-    <%= f.label :hip_width %><br>
-    <%= f.text_field :hip_width %>
-  </div>
-  <div class="field">
-    <%= f.label :seat_height %><br>
-    <%= f.text_field :seat_height %>
-  </div>
-  <div class="field">
-    <%= f.label :shoulder_elbow_length %><br>
-    <%= f.text_field :shoulder_elbow_length %>
-  </div>
-  <div class="field">
-    <%= f.label :elbow_wrist_length %><br>
-    <%= f.text_field :elbow_wrist_length %>
-  </div>
-  <div class="field">
-    <%= f.label :chest_girth %><br>
-    <%= f.text_field :chest_girth %>
-  </div>
-  <div class="field">
-    <%= f.label :waist_girth %><br>
-    <%= f.text_field :waist_girth %>
-  </div>
-  <div class="field">
-    <%= f.label :thigh_girth %><br>
-    <%= f.text_field :thigh_girth %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+	<div class="row">
+		<div class="col-md-6">
+
+			<div>
+				<%= f.text_field :name, :placeholder => "Actor name", class: 'mocap-textbox' + (@actor.errors.include?(:name) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :body_height, :placeholder => "Body height [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:body_height) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :shoulder_height, :placeholder => "Shoulder height [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:shoulder_height) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :tibia_length, :placeholder => "Tibia length [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:tibia_length) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :hip_width, :placeholder => "Hip width [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:hip_width) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :shoulder_elbow_length, :placeholder => "Shoulder elbow length [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:shoulder_elbow_length) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :chest_girth, :placeholder => "Chest girth [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:chest_girth) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :thigh_girth, :placeholder => "Thigh girth [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:thigh_girth) ? ' textbox-wrong' : '') %>
+			</div>
+
+		</div>
+
+
+		<div class="col-md-6">
+
+			<div>
+				<%= f.text_field :weight, :placeholder => "Weight [kg]", class: 'mocap-textbox' + (@actor.errors.include?(:weight) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<%#<div>%>
+				<%#<%= f.collection_select :gender, Gender.order(:name),:id,:name, include_blank: true %>%>
+				<%#</div>%>
+
+			<div>
+				<%= f.text_field :shoulder_width, :placeholder => "Shoulder width [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:shoulder_width) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :inner_leg_length, :placeholder => "Inner leg length [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:inner_leg_length) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :body_depth, :placeholder => "Body depth [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:body_depth) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :seat_height, :placeholder => "Seat height [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:seat_height) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :elbow_wrist_length, :placeholder => "Elbow wrist length [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:elbow_wrist_length) ? ' textbox-wrong' : '') %>
+			</div>
+
+			<div>
+				<%= f.text_field :waist_girth, :placeholder => "Waist girth [cm]", class: 'mocap-textbox' + (@actor.errors.include?(:waist_girth) ? ' textbox-wrong' : '') %>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div><%= f.submit "create an actor", class: "btn-default btn mocap-textbox mocap-textbox-hov" %></div>
+
 <% end %>
+
