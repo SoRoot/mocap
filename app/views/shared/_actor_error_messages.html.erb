@@ -1,0 +1,10 @@
+<% if @actor.errors.any? %>
+	<div class="mocap-textbox error-field">
+		The form contains <%= pluralize(@actor.errors.count, "error") %>
+		<ul>
+			<% @actor.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

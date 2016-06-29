@@ -2,37 +2,42 @@
 	<div class="container content-section">
 		<div class="form">
 
-			<h2>Sign up</h2>
 			<div class="signupcont">
+
+				<h2>sign up</h2>
+
 				<%= form_for(@user) do |f| %>
 
-					<%= render 'shared/error_messages' %>
+					<%= render 'shared/user_error_messages' %>
 
+					<div>
+						<%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
+					</div>
 
-					<% if @user.errors.include?(:username) %>
-						<div><%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox textbox-wrong' %></div>
-					<% else %>
-						<div><%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' %></div>
-					<% end %>
+					<div>
+						<%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
+					</div>
 
+					<div>
+						<%= f.password_field :password_confirmation, :placeholder => "Confirm password", class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
+					</div>
 
-					<% if @user.errors.include?(:password_digest) %>
-						<div><%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox textbox-wrong' %></div>
-					<% else %>
-						<div><%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' %></div>
-					<% end %>
-
-					<% if @user.errors.include?(:password) %>
-						<div><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", class: 'mocap-textbox textbox-wrong' %></div>
-					<% else %>
-						<div><%= f.password_field :password_confirmation, :placeholder => "Confirm Password", class: 'mocap-textbox' %></div>
-					<% end %>
-
-					
 					<div><%= f.submit "Create an account", class: "btn-default btn mocap-textbox mocap-textbox-hov" %></div>
 
 				<% end %>
 			</div>
+
+
 		</div>
 	</div>
 </div>
+
+<!-- Script to activiate navigation -->
+
+<script type="text/javascript">
+$(function() {
+	$('#nav-login').addClass('active');
+});
+
+</script>
+
