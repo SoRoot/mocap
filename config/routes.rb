@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 	post 'login' => 'sessions#create'
 	delete 'logout' => 'sessions#destroy'
 	post'/search', to: 'startup#search'
+	get 'motions' => 'motions#new'
+	get 'actors' => 'actors#new'
 
 
 	resources :users

@@ -2,16 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//#session_username, #session_password, .btn-submit, #user_username, #user_password, #user_password_confirmation {
-//background-color: $color02;
-//}
-
-/*padding for login and signup*/
-/*.signup, .login {
-	padding-top: 100px;
-	padding-bottom: 100px;
-}*/
-
 .mocap-textbox {
 	margin: 10px;
 	width: 300px;
@@ -20,6 +10,10 @@
 
 .signupcont {
 	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 100px;
+	padding-left: 200px;
+	padding-right: 200px;
 }
 
 .error-field {
@@ -33,17 +27,17 @@
 }
 
 input::-webkit-input-placeholder {
-color: $color02 !important;
+color: $color01 !important;
 }
  
 input:-moz-placeholder { /* Firefox 18- */
-color: $color02 !important;  
+color: $color01 !important;  
 }
  
 input::-moz-placeholder {  /* Firefox 19+ */
-color: $color02 !important;  
+color: $color01 !important;  
 }
  
 input:-ms-input-placeholder {  
-color: $color02 !important;  
+color: $color01 !important;  
 }
