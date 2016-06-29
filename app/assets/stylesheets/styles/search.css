@@ -13,47 +13,12 @@
   padding:8px; 
   color:#ccc;
 }
-h3{
-	margin: 0; 
-}
-p{
-	margin: 0;
-}
 .search-section{
 	display: flex;
 	flex-direction: row;
 	justify-content:space-around; 
 	flex-wrap:wrap;
 }
-/*--------------------------------------------------------------------------------------*/
-/*schau mal in die mixins.scss, da hab ich die Klassen reinkopiert und umbenannt,*/
-/*da placeholder nen bisschen irreführend war und ich auf die auch zugreifen muss.*/
-/*--------------------------------------------------------------------------------------*/
-
-/*.placeholder{*/
-	/*color: $color05;*/
-	/*background-color: transparent;*/
-	/*-webkit-transition: all .3s ease-in-out;*/
-    /*-moz-transition: all .3s ease-in-out;*/
-    /*transition: all .3s ease-in-out;*/
-	/*outline: none;*/
-	/*width: 150px;*/
-	/*height: auto;*/
-	/*border: 1px solid $color05;*/
-	/*padding: 10px;*/
-/*}*/
-/*.placeholder:hover{*/
-	/*border: 1px solid $color05;*/
-    /*outline: 0;*/
-    /*color: #171719;*/
-    /*background-color: $color05;*/
-/*}*/
-/*.placeholder:focus{*/
-	/*border: 1px solid $color05;*/
-    /*outline: 0;*/
-    /*color: $color05;*/
-    /*background-color: transparent;*/
-/*}*/
 .dropdown{
 	border:none;
 }
@@ -79,8 +44,7 @@ select option{
 	flex-wrap: wrap;
 	margin-right: 0;
 	justify-content:center;
-	margin-left: 2%;
-	width: auto;
+	width: 100%;
 	height: auto;
 }
 .gif-container{
@@ -88,7 +52,7 @@ select option{
 	flex-wrap:wrap;
 	justify-content:center; 
 	clear: left;
-	width: 800px;
+	width: 100%;
 	height: auto;
 	border: solid none;
 	float: left;
@@ -128,13 +92,13 @@ select option{
 	height: 210px;
 }
 .player-box{
-	padding: 0;
-	margin: 2%;
+	margin-top: 2%;
 }
 .player-display{
 	display: flex;
-	justify-content: flex-end;
-	width: 480px;
+	justify-content: center;
+	background-color: black;
+	width: auto;
 	height: 500px;
 }
 .player-content{
@@ -145,6 +109,10 @@ select option{
 	color: #171719;
 	flex-wrap:wrap;
 	padding: 2%;
+}
+.player-text{
+	text-align: center;
+	width: 50%;
 }
 
 /****************************************
@@ -169,7 +137,7 @@ div.fullscreen{
 div.logo { 
 	width: 204px; 
 	height: 38px; 
-	float: left;  
+	float: right;  
 	position: relative; 
 	z-index: 10; 
 }

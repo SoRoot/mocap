@@ -7,40 +7,55 @@ document.getElementById("nav-searchpage").className += "active";
 
 <!-- Search Section -->
 </script>
-<section id="searchbar" class="container content-section">
+<section id="searchbar" class="content-section">
 	<div class="container">
 		<div class="search-section text-center" id="search-section">
-			<form class="form-inline" action="/TODO" method="GET">
+			<form class="form-inline" action="/searchDB#show" method="GET">
 				<div class="form-group">
-					<select class="from-control mocap-textbox mocap-textbox-hov">
-						<option value="" disabled selected>Actor</option>
-						<% @actors.each do |actor| %>
-							<option><%= actor.name %></option>
- 						<% end %>
-					</select>
-					<select class="from-control mocap-textbox">
-						<option value="" disabled selected>Gender</option>
-						<option>female</option>
-						<option>male</option>
-					</select>
-					<select class="from-control mocap-textbox">
-						<option value="" disabled selected>Role</option>
-						<% @roles.each do |r| %>
-							<option><%= r %></option>
- 						<% end %>
-					</select>
-					<select class="from-control mocap-textbox">
-						<option value="" disabled selected>Mood</option>
-						<% @moods.each do |m| %>
-							<option><%= m %></option>
- 						<% end %>
-					</select>
-					<select class="from-control mocap-textbox">
-						<option value="" disabled selected>Desctiption</option>
-						<% @params.each do |p| %>
-							<option><%= p %></option>
- 						<% end %>
-					</select>
+					<input class="from-control mocap-textbox" list="actors" type="text" id="actor">
+						<datalist id="actors">
+							<select class="form-control mocap-textbox">				
+								<option value="" disabled selected>Choose Actor</option>
+									<% @actors.each do |actor| %>
+										<option><%= actor.name %></option>
+			 						<% end %>
+							</select>
+						</datalist>
+					<input class="from-control mocap-textbox" list="genders" type="text" id="gender">
+						<datalist id="genders">
+							<select class="from-control mocap-textbox">
+								<option value="" disabled selected>Gender</option>
+								<option>female</option>
+								<option>male</option>
+							</select>
+						</datalist>
+					<input class="from-control mocap-textbox" list="roles" type="text" id="role">
+						<datalist id="roles">
+							<select class="from-control mocap-textbox">
+								<option value="" disabled selected>Role</option>
+								<% @roles.each do |r| %>
+									<option><%= r %></option>
+		 						<% end %>
+							</select>
+						</datalist>
+					<input class="from-control mocap-textbox" list="moods" type="text" id="mood">
+						<datalist id="moods">
+							<select class="from-control mocap-textbox">
+								<option value="" disabled selected>Mood</option>
+								<% @moods.each do |m| %>
+									<option><%= m %></option>
+		 						<% end %>
+							</select>
+						</datalist>
+					<input class="from-control mocap-textbox" list="params" type="text" id="param">
+						<datalist id="params">
+							<select class="from-control mocap-textbox">
+								<option value="" disabled selected>Desctiption</option>
+								<% @params.each do |p| %>
+									<option><%= p %></option>
+		 						<% end %>
+							</select>
+						</datalist>
 				</div>
 				<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 			</form>
@@ -56,15 +71,15 @@ document.getElementById("nav-searchpage").className += "active";
 			</div>
 		</div>
 		<!-- /.row -->
-		<div class="row content-box container">
-			<div class="gif-container">
+		<div class="content-box">
+			<div class="col-sm-7 gif-container">
 				<% 12.times do  %>
 				<div class="col-sm-3 gif-box">
 					<img class="gif" src="/TODO" alt="#">
 					<div class="gif-content">
 						<a href="#"><h3>Motion</h3></a>
 						<p>Attributes</p>
-												leider nein, leider gar nicht.
+							leider nein, leider gar nicht.
 						<div>
 							<button class="btn btn-default btn-sm">BVH</button>
 							<button class="btn btn-default btn-sm">C3D</button>
@@ -93,7 +108,7 @@ document.getElementById("nav-searchpage").className += "active";
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6" id="unity_player">
+			<div class="col-sm-5 player-box" id="unity_player">
 				<div class="player-display">
 					<canvas class="emscripten player-display" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 				</div>
@@ -105,14 +120,14 @@ document.getElementById("nav-searchpage").className += "active";
 						<%= image_tag "unity_logo.png" %>
 						<p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
 					</div>
-					<div >
+					<div class="player-text" >
 						<h3>Motion</h3>
 						<p>Attributes</p>
-xxx
-					</div>
+							xxx
+					</div>					
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
 <hr>
+</section>
