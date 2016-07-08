@@ -29,7 +29,7 @@ $(document).ready(function() {
     TOTAL_MEMORY: 268435456,
     errorhandler: null,     // arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
     compatibilitycheck: null,
-    dataUrl: asset_path("Development/Desktop.data"),
-    codeUrl: asset_path("Development/Desktop.js"),
-    memUrl: asset_path("Development/Desktop.mem"),
+    dataUrl: "/assets/Release/IA_Project.data",
+    codeUrl: "/assets/Release/IA_Project.js",
+    memUrl: "/assets/Release/IA_Project.mem",
   };
