@@ -53,7 +53,8 @@ group :development do
 	gem 'spring'
 
 	gem 'bootstrap-sass'
-
+	# Custom drop-down menus
+	gem 'select2-rails'
 	gem 'font-awesome-sass'
 	gem 'jquery-easing-rails'
 end
