@@ -1,27 +1,27 @@
 class Actor
   include Mongoid::Document
-  include ActiveModel::Validations
+  include ActiveModel::Model
 
   validates :name, presence: true
   validates :weight, presence: true
   validates :gender, presence: true
   validates :body_height, presence: true
 
-
-  field :name, type: String
-  field :weight, type: Float
-  field :gender, type: Integer
-  field :body_height, type: Float
-  field :shoulder_width, type: Float
-  field :shoulder_height, type: Float
-  field :inner_leg_length, type: Float
-  field :tibia_length, type: Float
-  field :body_depth, type: Float
-  field :hip_width, type: Float
-  field :seat_height, type: Float
-  field :shoulder_elbow_length, type: Float
-  field :elbow_wrist_length, type: Float
-  field :chest_girth, type: Float
-  field :waist_girth, type: Float
-  field :thigh_girth, type: Float
+  field :name
+  field :weight
+  field :gender
+  field :body_height
+  field :shoulder_width
+  field :shoulder_height
+  field :inner_leg_length
+  field :tibia_length
+  field :body_depth
+  field :hip_width
+  field :seat_height
+  field :shoulder_elbow_length
+  field :elbow_wrist_length
+  field :chest_girth
+  field :waist_girth
+  field :thigh_girth
+  
 end
