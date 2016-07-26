@@ -23,11 +23,12 @@ $(function() {
 });
 
 $(document).ready(function() {
-  $(".js-example-basic-single").select2();
+	$(".js-example-placeholder-single").select2({
+		placeholder: "Select a gender",
+		allowClear: true,
+		minimumResultsForSearch: -1
+	});
 });
 
-$('.js-example-basic-single').select2({
-    minimumResultsForSearch: -1
-});
 </script>
 
