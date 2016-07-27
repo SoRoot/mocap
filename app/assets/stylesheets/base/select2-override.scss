@@ -26,6 +26,10 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 	color: $color01;
 }
 
+.select2-container--default .select2-results__option {
+	padding: 10px;
+}
+
 .select2-container .select2-choice {
 	border: 1px solid $color01;
 	height: 36px;

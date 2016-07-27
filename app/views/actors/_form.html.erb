@@ -39,7 +39,7 @@
 
 
 				<div>
-					<%= f.collection_select :name, Actor.all.uniq{ |x| x.gender }, :_id, :gender, { :prompt => false}, class: 'js-example-placeholder-single' %>
+					<%= f.collection_select :name, Actor.all.uniq{ |x| x.gender }, :_id, :gender, { :include_blank => true}, class: 'js-example-placeholder-single' %>
 				</div>
 
 

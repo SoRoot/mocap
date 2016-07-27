@@ -3,6 +3,13 @@ class ActorsController < ApplicationController
 	before_action :require_user
 	before_action :set_actor, only: [:show, :edit, :update, :destroy]
 
+
+	actor = Actor.all
+	gender = actor.each do |y|
+		y.gender.gsub!(/\A[f]\z/, 'female')
+		y.gender.gsub!(/\A[m]\z/, 'male')
+	end
+	
 	# GET /actors
 	# GET /actors.json
 	def index
