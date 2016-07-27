@@ -47,15 +47,7 @@
 	transition: all .3s ease-in-out;
 	outline: none;
 	width: 150px;
-	height: auto;
+	height: 42px;
 	border: 1px solid $color01;
 	padding: 10px;
-}
-
-/*target Internet Explorer 9 and Internet Explorer 10:*/
-@media screen and (min-width: 0\0) {
-	select {
-		background: none;
-		padding: 5px;
-	}
 }
