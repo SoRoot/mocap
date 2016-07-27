@@ -2,18 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.mocap-textbox {
-	margin: 10px;
-	width: 300px;
-
-}
-
 .signupcont {
 	text-align: center;
 	margin-top: 50px;
 	margin-bottom: 100px;
-	padding-left: 200px;
-	padding-right: 200px;
+	padding-left: 10%;
+	padding-right: 10%; 
 }
 
 .error-field {
@@ -24,6 +18,15 @@
 	text-align: left;
 	margin: auto;
 	margin-bottom: 20px;
+}
+
+.backend-row {
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.backend-field {
+	padding-bottom: 20px;
 }
 
 input::-webkit-input-placeholder {

@@ -8,8 +8,8 @@ class User
 	validates :username, length: { minimum: 3, maximum: 50 }, if: 'username.present?'
 
 	validates :password_digest, presence: true 
-	validates :password_digest, format:{ with: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}/,
-				    message: "must have at least 6 characters, one uppercase, one lowercase and one digit number" },
+	validates :password_digest, format:{ with: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}/ ,
+				    message: "must have at least 6 characters, one uppercase, one lowercase and one digit number"},
 			            if: 'password_digest.present?'
 	validates :password_digest, confirmation: true
 

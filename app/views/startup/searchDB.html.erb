@@ -1,6 +1,19 @@
 <!-- Search Section -->
 
 <section id="searchbar" class="content-section">
+
+<!-- Script to activiate navigation -->
+
+<script type="text/javascript">
+$(document).ready ( function(){
+document.getElementById("nav-searchpage").className += "active";
+});
+
+
+<!-- Search Section -->
+</script>
+
+<section id="searchbar" class="content-section">
 	<div class="container">
 		<div class="search-section text-center" id="search-section">
 			<form class="form-inline" action="/searchDB#show" method="GET">
@@ -60,6 +73,7 @@
 		<div class="row">
 			<div class="container">
 				<h1>most popular </h1>
+				<hr>
 			</div>
 		</div>
 		<!-- /.row -->
@@ -101,27 +115,26 @@
 				</div>
 			</div>
 			<div class="col-sm-5 player-box" id="unity_player">
-				<div class="player-display">
-					<canvas class="emscripten player-display" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-				</div>
-				<div class="player-content">
-					<div class="fullscreen">
-						<%= image_tag "fullscreen.png", :onclick => "SetFullscreen(1)" %>
-					</div>
-					<div class="logo">
-						<%= image_tag "unity_logo.png" %>
-						<p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
-					</div>
+				<p><span>Unity WebGL Player | </span>IA Test</p>
+				<div class="template-wrap player-display">
+		              <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="480"></canvas>
+            	</div>
+            	<div class="player-content">
+            	<div class="logo">
+              		<%= image_tag "unity_logo.png" %>
+              	</div>
+              	<div class="fullscreen"><%= image_tag "fullscreen.png", :onclick => "SetFullscreen(1)" %></div>
+              	<p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
+
 					<div class="player-text" >
 						<h3>Motion</h3>
 						<p>Attributes</p>
 							xxx
 					</div>					
 				</div>
-			</div>
+			</div>					
 		</div>
 	</div>
-<hr>
 </section>
 
 
