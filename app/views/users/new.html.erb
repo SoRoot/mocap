@@ -13,15 +13,15 @@
 					<%= debug(@user.errors) if Rails.env.development? %>
 
 					<div>
-						<%= f.text_field :username, :placeholder => "Username", id: '1', class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong textbox-wrong-vis' : '') %>
+						<%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong textbox-wrong-vis' : '') %>
 					</div>
 
 					<div>
-						<%= f.password_field :password, :placeholder => "Password", id: '2', class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
+						<%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
 					</div>
 
 					<div>
-						<%= f.password_field :password_confirmation, :placeholder => "Confirm password", id: '3', class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
+						<%= f.password_field :password_confirmation, :placeholder => "Confirm password", class: 'mocap-textbox' + (@user.errors.include?(:username) ? ' textbox-wrong' : '') %>
 					</div>
 
 					<div><%= f.submit "Create an account", class: "btn-default btn mocap-textbox mocap-textbox-hov" %></div>
@@ -40,13 +40,7 @@
 $(function() {
 	$('#nav-login').addClass('active');
 	
-	$('#1').one('click', function() {
-		$(this).toggleClass('mocap-textbox-click');
-	});
-	$('#2').one('click', function() {
-		$(this).toggleClass('mocap-textbox-click');
-	});
-	$('#3').one('click', function() {
+	$('.mocap-textbox').one('focus', function() {
 		$(this).toggleClass('mocap-textbox-click');
 	});
 });
