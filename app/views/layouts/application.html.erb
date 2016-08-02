@@ -34,49 +34,33 @@
 					<ul class="nav navbar-nav">
 						<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 
+						<li class="<%= 'active' if params[:action] == 'searchDB' %>"> <a href="/searchDB">searchDB</a> </li>
+
 						<% if logged_in? %>
 
-							<li  id="nav-searchpage">
-								
-								<a  href="/searchDB">search db</a>
-							</li>
-							<li>
-								<a href="/motions">motions</a>
-							</li>
-							<li>
-								<a href="/actors">actors</a>
-							</li>
-							<li>
-								<a href="/signup">sign up</a>
-							</li>
+							
+							<li class="<%= 'active' if params[:controller] == 'motions' %>"> <a href="/motions">motions</a> </li>
+							<li class="<%= 'active' if params[:controller] == 'actors' %>"> <a href="/actors">Actors</a> </li>
+							<li class="<%= 'active' if params[:controller] == 'users' %>"> <a href="/signup">signup</a> </li>
+
+
 							<li>
 								<%= link_to "log out", logout_path, method: "delete" %>
 							</li>
 
 						<% else %>
 
-							<li class="hidden">
-								<a href="#page-top"></a>
-							</li>
-							<li>
-								<a class="page-scroll" href="#page-top">home</a>
-							</li>
+							
 							<li>
 								<a class="page-scroll" href="#about">about</a>
 							</li>
 							<li>
 								<a class="page-scroll" href="#contact">contact</a>
 							</li>
-							<li class="hidden">
-								<a href="#page-bottom"></a>
-							</li>
+							
 
-							<li  id="nav-searchpage">
-								<a  href="/searchDB">search db</a>
-							</li>
-							<li id="nav-login">
-								<a  href="/login">log in</a>
-							</li>
+						<li class="<%= 'active' if (params[:controller] == 'sessions'and params[:action] == 'new') %>"> <a href="/login">login</a> </li>
+
 						<% end %>
 					</ul>
 				</div>
@@ -96,6 +80,5 @@
 		</footer>
 
 		<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
-
 	</body>
 </html>
