@@ -39,7 +39,7 @@
 
 
 				<div>
-					<%= f.collection_select :name, Actor.all.uniq{ |x| x.gender }, :_id, :gender, { :include_blank => true}, class: 'js-example-placeholder-single' %>
+					<%= f.select(:gender, [ "female", "male" ], { :include_blank => true}, class: 'js-example-placeholder-single' + (@actor.errors.include?(:gender) ? ' dropdown-wrong' : '') ) %>
 				</div>
 
 
@@ -65,7 +65,7 @@
 
 	</div>
 
-	<div><%= f.submit "create an actor", class: "btn-default btn mocap-textbox mocap-textbox-hov" %></div>
+	<div><%= f.submit "create an actor", class: "btn-default btn mocap-textbox mocap-textbox-hov", id: "mocap-btn" %></div>
 
 
 <% end %>

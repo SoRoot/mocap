@@ -1,31 +1,59 @@
 <div class="actor" >
-	<div class="container content-section">
-		<div class="form">
+		<div class="container content-section">
+				<div class="form">
 
-			<div class="signupcont">
+						<div class="signupcont">
 
-				<h2>register a new actor</h2>
+								<h2>register a new actor</h2>
 
-				<%= render 'form' %>
+								<%= render 'form' %>
 
-			</div>
+						</div>
 
 
+				</div>
 		</div>
-	</div>
 </div>
 
 <!-- Script to activiate navigation -->
 
 <script type="text/javascript">
 $(function() {
-	$('#nav-login').addClass('active');
+		$('#nav-login').addClass('active');
 
-	$(".js-example-placeholder-single").select2( {
-		allowClear: true,
-		placeholder: "Select gender",
-		minimumResultsForSearch: -1
-	});
+		$(".js-example-placeholder-single").select2( {
+				allowClear: true,
+				placeholder: "Select gender",
+				minimumResultsForSearch: -1
+		});
+
+		if ($("select").hasClass("dropdown-wrong") ) {
+				$(".select2-container--default .select2-selection--single").css( {
+						"background": "#350e04",
+						"border-color": "#c90c11"
+				});
+				$(".select2-container--default .select2-selection--single").hover(
+								function(e) {
+										$(this).css( "background", "#c90c11" )
+								},
+								function(e) {
+										$(this).css( "background", "#350e04" )
+								}
+								);
+
+		}
+
+		$(".select2-container--default .select2-selection--single").one('focus', function(e) {
+				$(this).css( {
+						"background": "#333333",
+						"border-color": "#42DCA3"
+				}	)
+				<%#$(this).toggleClass('select2-container--default select2-selection--single');%>
+		});
+
+		$('.mocap-textbox').one('focus', function() {
+				$(this).toggleClass('mocap-textbox-click');
+		});
 });
 
 </script>

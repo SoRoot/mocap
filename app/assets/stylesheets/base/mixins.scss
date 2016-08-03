@@ -30,6 +30,10 @@
 	background-color: transparent;
 }
 
+#mocap-btn:focus {
+	box-shadow: none;
+}
+
 .mocap-textbox-click {
 	border: 1px solid $color01 !important;
 	background-color: transparent !important;

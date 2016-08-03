@@ -1,8 +1,8 @@
 <% if @user.errors.any? %>
 	<div class="mocap-textbox error-field">
-		The form contains <%= pluralize(@user.errors.count, "error") %>
+		The form contains <%= pluralize(@user.errors.full_messages.uniq.count, "error") %>
 		<ul>
-			<% @user.errors.full_messages.each do |msg| %>
+			<% @user.errors.full_messages.uniq.each do |msg| %>
 				<li><%= msg %></li>
 			<% end %>
 		</ul>
