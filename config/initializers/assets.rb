@@ -5,6 +5,7 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( page-scroll-annimation.js )
 Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( motionView.js )
 Rails.application.config.assets.precompile += %w( activeNav.js )
 
 # Add additional assets to the asset load path

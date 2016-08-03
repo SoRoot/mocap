@@ -100,29 +100,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-5 player-box" id="unity_player">
-				<p><span>Unity WebGL Player | </span>IA Test</p>
-				<div class="template-wrap player-display">
-		              <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="480"></canvas>
-            	</div>
-            	<div class="player-content">
-            	<div class="logo">
-              		<%= image_tag "unity_logo.png" %>
-              	</div>
-              	<div class="fullscreen"><%= image_tag "fullscreen.png", :onclick => "SetFullscreen(1)" %></div>
-              	<p class="footer">&laquo; created with <a href="http://unity3d.com/" title="Go to unity3d.com">Unity</a> &raquo;</p>
-
-					<div class="player-text" >
-						<h3>Motion</h3>
-						<p>Attributes</p>
-							xxx
-					</div>					
-				</div>
+			<div class="col-sm-5 player-box" id="player">
 			</div>					
 		</div>
 	</div>
 </section>
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
-
-
+	<%= javascript_include_tag 'motionView', 'data-turbolinks-track' => true %>
