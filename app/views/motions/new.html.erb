@@ -1,25 +1,30 @@
 <div class="actor" >
-	<div class="container content-section">
-		<div class="form">
+				<div class="container content-section">
+								<div class="form">
 
-			<div class="signupcont">
+												<div class="signupcont">
 
-				<h2>register a new motion</h2>
+																<h2>register a new motion</h2>
 
-				<%= render 'form' %>
+																<%= render 'form' %>
 
-			</div>
+												</div>
 
 
-		</div>
-	</div>
+								</div>
+				</div>
 </div>
 
 <!-- Script to activiate navigation -->
 
 <script type="text/javascript">
 $(function() {
-	$('#nav-login').addClass('active');
+				$('#nav-login').addClass('active');
+
+				$(".js-example-placeholder-single").select2( {
+								allowClear: true,
+								placeholder: "Select actor"
+				});
 });
 
 </script>

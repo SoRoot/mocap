@@ -2,6 +2,7 @@ class ActorsController < ApplicationController
 	include SessionsHelper
 	before_action :require_user
 	before_action :set_actor, only: [:show, :edit, :update, :destroy]
+	before_action :set_default
 
 	# GET /actors
 	# GET /actors.json
@@ -69,4 +70,22 @@ class ActorsController < ApplicationController
 	def actor_params
 		params.require(:actor).permit(:name, :weight, :gender, :body_height, :shoulder_width, :shoulder_height, :inner_leg_length, :tibia_length, :body_depth, :hip_width, :seat_height, :shoulder_elbow_length, :elbow_wrist_length, :chest_girth, :waist_girth, :thigh_girth)
 	end
+
+
+	def set_default
+		[:shoulder_width,
+			:shoulder_height,
+			:inner_leg_length,
+			:tibia_length,
+			:body_depth,
+			:hip_width,
+			:seat_height,
+			:shoulder_elbow_length,
+			:elbow_wrist_length,
+			:chest_girth,
+			:waist_girth,
+		:thigh_girth].each { |x| x = 0 if x.blank? }
+	end
+
+
 end

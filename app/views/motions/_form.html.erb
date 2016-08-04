@@ -8,7 +8,12 @@
 		<div class="col-md-6">
 
 			<div>
+
 				<%= f.text_field :role, :placeholder => "Role", class: 'mocap-textbox' + (@motion.errors.include?(:role) ? ' textbox-wrong' : '') %>
+			</div>
+			<div>
+							
+					<%= f.collection_select :actor, Actor.all.uniq{ |x| x.name }, :_id, :name, { :include_blank => true}, class: 'js-example-placeholder-single' %>
 			</div>
 
 		</div>
