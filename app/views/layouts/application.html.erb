@@ -1,84 +1,93 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
+<head>
 
-		<title>mocap</title>
+	<title>mocap</title>
 
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= stylesheet_link_tag     'application', media: 'all' , 'data-tourbolinks-track' => true %>
-		<%= csrf_meta_tags %>
-
-
-		<!-- Custom Fonts -->
-		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-	</head>
-
-	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag     'application', media: 'all' , 'data-tourbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 
 
-		<!-- Navigation -->
-		<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-						<i class="fa fa-bars"></i>
-					</button>
-					<a class="navbar-brand page-scroll" href="#page-top">
-						<i class="fa fa-play-circle"></i>  <span class="light">Mocap</span> database
-					</a>
-				</div>
+	<!-- Custom Fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+</head>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-					<ul class="nav navbar-nav">
-						<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-
-						<li class="<%= 'active' if params[:action] == 'searchDB' %>"> <a href="/searchDB">searchDB</a> </li>
-
-						<% if logged_in? %>
-
-							
-							<li class="<%= 'active' if params[:controller] == 'motions' %>"> <a href="/motions">motions</a> </li>
-							<li class="<%= 'active' if params[:controller] == 'actors' %>"> <a href="/actors">Actors</a> </li>
-							<li class="<%= 'active' if params[:controller] == 'users' %>"> <a href="/signup">signup</a> </li>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 
-							<li>
-								<%= link_to "log out", logout_path, method: "delete" %>
-							</li>
-
-						<% else %>
-
-							
-							<li>
-								<a class="page-scroll" href="#about">about</a>
-							</li>
-							<li>
-								<a class="page-scroll" href="#contact">contact</a>
-							</li>
-							
-
-						<li class="<%= 'active' if (params[:controller] == 'sessions'and params[:action] == 'new') %>"> <a href="/login">login</a> </li>
-
-						<% end %>
-					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
+	<!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand page-scroll" href="#page-top">
+					<i class="fa fa-play-circle"></i>  <span class="light">Mocap</span> database
+				</a>
 			</div>
-			<!-- /.container -->
-		</nav>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+
+					<li class="<%= 'active' if params[:action] == 'searchDB' %>"> <a href="/searchDB">searchDB</a> </li>
+
+					<% if logged_in? %>
 
 
-		<%= yield %>
+					<li class="<%= 'active' if params[:controller] == 'motions' %>"> <a href="/motions">motions</a> </li>
+					<li class="<%= 'active' if params[:controller] == 'actors' %>"> <a href="/actors">Actors</a> </li>
+					<li class="<%= 'active' if params[:controller] == 'users' %>"> <a href="/signup">signup</a> </li>
 
-		<!-- Footer -->
-		<footer>
-			<div class="container text-center">
-				<p>Copyright &copy; TH Köln</p>
+
+					<li>
+						<%= link_to "log out", logout_path, method: "delete" %>
+					</li>
+
+					<% else %>
+
+
+					<li>
+						<a class="page-scroll" href="#about">about</a>
+					</li>
+					<li>
+						<a class="page-scroll" href="#contact">contact</a>
+					</li>
+
+
+					<li class="<%= 'active' if (params[:controller] == 'sessions'and params[:action] == 'new') %>"> <a href="/login">login</a> </li>
+
+					<% end %>
+				</ul>
 			</div>
-		</footer>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
 
-		<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
-	</body>
+
+	<%= yield %>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container text-center">
+			<p>Copyright &copy; TH Köln</p>
+		</div>
+	</footer>
+
+	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		if (<%=logged_in?%>) {
+			$("body").toggleClass("mocap-backend");
+			}
+		});
+	</script>
+	
+</body>
 </html>
