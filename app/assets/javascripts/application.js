@@ -20,3 +20,5 @@
 //= require jquery.easing
 //= require grayscale
 //= require select2
+//= require three
+//= require motionView

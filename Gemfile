@@ -6,6 +6,8 @@ gem 'bson'
 
 gem 'tzinfo-data'
 
+gem 'threejs-rails', git: 'git://github.com/marvindanig/threejs-rails.git'
+
 # Data migrations for Mongoid
 gem 'mongoid_rails_migrations'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

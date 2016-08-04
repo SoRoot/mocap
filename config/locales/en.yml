@@ -23,9 +23,13 @@ en:
   mongoid:
     attributes:
       user:
-        username: 'Username'
-        password_digest: 'Password'
-        password: 'Confirm password'
+        #blank: 'You forgot to give you a username'
+        #username: 'Username'
+        #password: 'Password'
+        #password_confirmation: 'Hallo'
+        #password_digest: 'Password'
+        #password: 'Password confirmation'
   #errors:
     #messages:
       #blank: ""
+
