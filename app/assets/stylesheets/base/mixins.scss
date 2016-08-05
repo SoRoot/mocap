@@ -1,9 +1,9 @@
 //  Mixins
 
-.mocap-backend {
-	color: white;
-	background-color: $color02;
-}
+//.mocap-backend {
+	//color: white;
+	//background-color: $color02;
+//}
 
 .mocap-textbox {
 	color: $color03;
@@ -17,6 +17,8 @@
 	height: auto;
 	border: 1px solid $color01;
 	padding: 10px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
 	border-radius: 0px;
 }
 
@@ -29,6 +31,8 @@
 
 .mocap-textbox:focus {
 	border: 1px solid $color01;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 	outline: 0;
 	color: $color03;
@@ -36,6 +40,8 @@
 }
 
 #mocap-btn:focus {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
 	box-shadow: none;
 }
 
