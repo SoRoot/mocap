@@ -1,43 +1,43 @@
 
 <div class="login">
-	<div class="container content-section">
-		<div class="form">
+		<div class="container content-section">
+				<div class="form">
 
-			<div class="signupcont">
+						<div class="signupcont">
 
-				<h2>log in</h2>
+								<h2>log in</h2>
 
-				<%= form_for(:session, url: login_path) do |f| %>
+								<%= form_for(:session, url: login_path) do |f| %>
 
-					<% flash.each do |message_type, message| %>
-						<div class="mocap-textbox error-field">
-							<%= message %>
+										<% flash.each do |message_type, message| %>
+												<div class="mocap-textbox error-field">
+														<%= message %>
+												</div>
+										<% end %>
+
+										<div>
+												<%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' + (flash[:danger] ? ' textbox-wrong' : '') %>
+										</div>
+										<div>
+												<%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' + (flash[:danger] ? ' textbox-wrong' : '') %>
+										</div>
+
+										<div>
+												<%= f.submit "Log in", class: "btn-default btn mocap-textbox mocap-textbox-hov", id: "mocap-btn" %>
+										</div>
+
+								<% end %>
 						</div>
-					<% end %>
 
-					<div>
-						<%= f.text_field :username, :placeholder => "Username", class: 'mocap-textbox' + (flash[:danger] ? ' textbox-wrong' : '') %>
-					</div>
-					<div>
-						<%= f.password_field :password, :placeholder => "Password", class: 'mocap-textbox' + (flash[:danger] ? ' textbox-wrong' : '') %>
-					</div>
-
-					<div>
-						<%= f.submit "Log in", class: "btn-default btn mocap-textbox mocap-textbox-hov" %>
-					</div>
-
-				<% end %>
-			</div>
-
+				</div>
 		</div>
-	</div>
 </div>
 
 <!-- Script to activiate navigation -->
 
 <script type="text/javascript">
 $(function() {
-	$('#nav-login').addClass('active');
+		$('#nav-login').addClass('active');
 });
 
 </script>

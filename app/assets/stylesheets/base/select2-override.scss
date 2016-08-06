@@ -17,9 +17,8 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
-	background: $color01;
+	background: rgba($color01, 0.8);
 	color: $color02;
-	opacity: 0.8;
 }
 
 .select2-container--default .select2-results {
@@ -45,6 +44,8 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 
 .select2-container *:focus {
 	outline: 0px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 }
 
@@ -60,6 +61,8 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 .select2-dropdown {
 	border: 1px solid $color01;
 	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 	margin: -10px;
 }
@@ -105,7 +108,7 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 
 .select2-search input {
 	height: 30px !important;
-	border: 2px solid #dce4ec;
+	border: 2px solid $color01;
 }
 
 .select2-container-active .select2-choice,
@@ -169,6 +172,17 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 	background-image: none;
 }
 
+input {
+	background: $color02;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+	border-color: $color01;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
 /*New Changes*/
 .select2-container--default .select2-selection--single {
 	background: $color02;
@@ -196,7 +210,6 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 .select2-container--default .select2-selection--single:hover .select2-selection__rendered {
 	color: $color02;
 }
-
 
 .select2-container .select2-selection--single {
 	height: 42px;

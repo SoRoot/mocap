@@ -1,71 +1,76 @@
 <%= form_for(@actor) do |f| %>
 
-	<%= render 'shared/actor_error_messages' %>
+		<%= render 'shared/actor_error_messages' %>
 
-	<div class="backend-field">
+		<div class="backend-field">
 
 
-		<div class="row backend-row">
-			<div class="col-md-6">
-				<%= f.text_field :name, :placeholder => "Actor name", class: 'mocap-textbox' + (@actor.errors.include?(:name) ? ' textbox-wrong' : '') %>
-			</div>
+				<div class="row backend-row">
+
+
+						<div class="col-md-6">
+
+								<p class="signup-man">Name, body height, gender and weight are mandatory</p>
+
+								<%= f.text_field :name, :placeholder => "Actor name", class: 'mocap-textbox' + (@actor.errors.include?(:name) ? ' textbox-wrong' : '') %>
+						</div>
+				</div>
+
+
+				<div class="row backend-row">
+						<div class="col-md-6">
+
+
+								<% field_list = [
+										{ field: :body_height, placeholder:  "Body height [cm]"},
+										{ field: :weight, placeholder: "Weight [kg]"},
+										{ field: :shoulder_height, placeholder:  "Shoulder height [cm]"},
+										{ field: :tibia_length, placeholder:  "Tibia length [cm]"},
+										{ field: :hip_width, placeholder:  "Hip width [cm]"},
+										{ field: :shoulder_elbow_length, placeholder:  "Shoulder elbow length [cm]"},
+										{ field: :chest_girth, placeholder:  "Chest girth [cm]"}]
+								%>
+
+						<% field_list.each do |e| %>
+								<div>
+										<%= f.text_field e[:field], :placeholder => e[:placeholder], class: 'mocap-textbox' + (@actor.errors.include?(e[:field]) ? ' textbox-wrong' : '') %>
+								</div>
+						<% end %>
+
+						</div>
+
+
+						<div class="col-md-6">
+
+
+								<div>
+										<%= f.select(:gender, [ "female", "male" ], { :include_blank => true}, class: 'js-example-placeholder-single' + (@actor.errors.include?(:gender) ? ' dropdown-wrong' : '') ) %>
+								</div>
+
+
+								<% field_list = [
+										{ field: :shoulder_width, placeholder: "Shoulder width [cm]"},
+										{ field: :inner_leg_length, placeholder: "Inner leg length [cm]"},
+										{ field: :body_depth, placeholder: "Body depth [cm]"},
+										{ field: :seat_height, placeholder: "Seat height [cm]"},
+										{ field: :elbow_wrist_length, placeholder: "Elbow wrist length [cm]"},
+										{ field: :waist_girth, placeholder: "Waist girth [cm]"}]
+								%>
+
+						<% field_list.each do |e| %>
+								<div>
+										<%= f.text_field e[:field], :placeholder => e[:placeholder], class: 'mocap-textbox' + (@actor.errors.include?(e[:field]) ? ' textbox-wrong' : '') %>
+								</div>
+						<% end %>
+
+						</div>
+
+				</div>
+
+
 		</div>
 
-
-		<div class="row backend-row">
-			<div class="col-md-6">
-
-
-				<% field_list = [
-					{ field: :body_height, placeholder:  "Body height [cm]"},
-					{ field: :weight, placeholder: "Weight [kg]"},
-					{ field: :shoulder_height, placeholder:  "Shoulder height [cm]"},
-					{ field: :tibia_length, placeholder:  "Tibia length [cm]"},
-					{ field: :hip_width, placeholder:  "Hip width [cm]"},
-					{ field: :shoulder_elbow_length, placeholder:  "Shoulder elbow length [cm]"},
-					{ field: :chest_girth, placeholder:  "Chest girth [cm]"}]
-				%>
-
-			<% field_list.each do |e| %>
-				<div>
-					<%= f.text_field e[:field], :placeholder => e[:placeholder], class: 'mocap-textbox' + (@actor.errors.include?(e[:field]) ? ' textbox-wrong' : '') %>
-				</div>
-			<% end %>
-
-			</div>
-
-
-			<div class="col-md-6">
-
-
-				<div>
-					<%= f.collection_select :name, Actor.all.uniq{ |x| x.gender }, :_id, :gender, { :include_blank => true}, class: 'js-example-placeholder-single' %>
-				</div>
-
-
-				<% field_list = [
-					{ field: :shoulder_width, placeholder: "Shoulder width [cm]"},
-					{ field: :inner_leg_length, placeholder: "Inner leg length [cm]"},
-					{ field: :body_depth, placeholder: "Body depth [cm]"},
-					{ field: :seat_height, placeholder: "Seat height [cm]"},
-					{ field: :elbow_wrist_length, placeholder: "Elbow wrist length [cm]"},
-					{ field: :waist_girth, placeholder: "Waist girth [cm]"}]
-				%>
-
-			<% field_list.each do |e| %>
-				<div>
-					<%= f.text_field e[:field], :placeholder => e[:placeholder], class: 'mocap-textbox' + (@actor.errors.include?(e[:field]) ? ' textbox-wrong' : '') %>
-				</div>
-			<% end %>
-
-			</div>
-
-		</div>
-
-
-	</div>
-
-	<div><%= f.submit "create an actor", class: "btn-default btn mocap-textbox mocap-textbox-hov" %></div>
+		<div><%= f.submit "create an actor", class: "btn-default btn mocap-textbox mocap-textbox-hov", id: "mocap-btn" %></div>
 
 
 <% end %>
