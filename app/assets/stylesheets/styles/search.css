@@ -35,19 +35,18 @@ select option{
 .row{
 	padding-bottom: 10px;
 }
-.container-fluid{
-	margin-top: 50px;
-}
+
 .content-box{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	margin-right: 0;
 	justify-content:center;
 	width: 100%;
 	height: auto;
 }
-.gif-container{
+.motions-container{
+	margin: 0px;
+	padding:0px;
 	display: flex;
 	flex-wrap:wrap;
 	justify-content:center; 
@@ -57,7 +56,7 @@ select option{
 	border: solid none;
 	float: left;
 }
-.gif-box{
+.motion-box{
 	border: none;
 	background-color: #fcfcfc;
 	display:flex;
@@ -72,7 +71,7 @@ select option{
     height: 210px;
     box-sizing: border-box;
 }
-.gif-content{
+.motion-content{
 	overflow: hidden;
 	position: absolute;
 	text-align: center;
@@ -85,21 +84,26 @@ select option{
 	left: 0;
 	opacity: 0;
 }
-.gif-box:hover .gif-content{
+.motion-box:hover .motion-content{
 	opacity:0.9;
 }
-.gif{
+.motion{
 	width: 160px;
 	height: 210px;
 }
+
+.view-container{
+	margin: 0;
+	padding: 0;
+}
 .player-box{
-	margin-top: 2%;
+	margin: 0;
+	padding: 0;
 }
 .player-display{
 	display: flex;
 	justify-content: center;
-	width: 100%;
-	height: 500px;
+	width: 100;
 }
 .player-content{
 	justify-content: flex-start;
@@ -108,11 +112,15 @@ select option{
 	background-color: #fcfcfc;
 	color: #171719;
 	flex-wrap:wrap;
-	padding: 2%;
 }
 .player-text{
 	text-align: center;
 	width: 50%;
+}
+
+.motion-description{
+	background: #000;
+	height: 10px;
 }
 
 /****************************************

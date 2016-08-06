@@ -1,7 +1,10 @@
 
+	var box = document.getElementById('mot');
+	var contentHeight = box.clientWidth;
+
 	// set the scene size
-	var WIDTH = 400,
-	    HEIGHT = 300;
+	var WIDTH = contentHeight,
+	    HEIGHT = contentHeight;
 
 	// set some camera attributes
 	var VIEW_ANGLE = 45,
@@ -65,3 +68,12 @@
 
 	// draw!
 	renderer.render(scene, camera);
+
+
+// functions
+	function newColor(){
+		sphereMaterial = new THREE.MeshLambertMaterial(
+			{
+			    color: 0x00CC00
+			});
+	}

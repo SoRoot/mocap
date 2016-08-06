@@ -16,45 +16,38 @@
 		<h3><small> found motions: xxx</small></h3>
 	
 	</div>
-	<div class="container-fluid">
-		<!-- Page Header -->
-		<div class="row">
-			<div class="container">
-				<h1>most popular </h1>
-				<hr>
-			</div>
-		</div>
-		<!-- /.row -->
-		<div class="content-box">
-			<div class="col-sm-7 gif-container">
-
+	<div class="col-sm-12 content-box">
+		<div class="col-sm-7 motions-container">
 			<% if @found.blank? %>
 				<h4>There are no motions found fitting your search.</h4>
 			<% end %>
 
-				<!-- content search result -->
-				<%  @found.each do |f|  %>
-					<div class="col-sm-3 gif-box">
-						<img class="gif" src="/TODO" alt="#">
-						<div class="gif-content">
-							<a href="#"><h3><%= f.role %></h3></a>
-							<p><%= f.mood %></p>
-							<%= f.actor %>
-							<div>
-								<button class="btn btn-default btn-sm">BVH</button>
-								<button class="btn btn-default btn-sm">C3D</button>
-								<button class="btn btn-default btn-sm">FBX</button>
-							</div>
+			<!-- content search result -->
+			<%  @found.each do |f|  %>
+				<div class="col-sm-3 motion-box" >
+					<img class="motion" src="/TODO" alt="#">
+					<div class="motion-content">
+						<a href="#"><h3><%= f.role %></h3></a>
+						<p><%= f.mood %></p>
+						<%= f.actor %>
+						<div>
+							<button class="btn btn-default btn-sm">BVH</button>
+							<button class="btn btn-default btn-sm">C3D</button>
+							<button class="btn btn-default btn-sm">FBX</button>
 						</div>
 					</div>
-				<% end %>
-				
-				
-			</div>
-
-			<div class="col-sm-5 player-box" id="player">
-			</div>					
+				</div>
+			<% end %>
 		</div>
+		<div class="col-sm-5 view-container">
+			<div class="player-box" id="player">
+			</div>
+			<div class="motion-description" id="mot">
+				<script type="text/javascript">
+					document.write(HEIGHT);
+				</script>
+			</div>
+		</div>					
 	</div>
 </section>
 
