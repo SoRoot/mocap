@@ -8,5 +8,9 @@ class StartupController < ApplicationController
   	@params =  Motion.distinct(:param)
   	@actors = Actor.all
   	@motions = Motion.all
+
+
+ 	@found = Motion.search(params[:search_actor], params[:search_gender], params[:search_role], params[:search_mood])
+  	
   end
 end
