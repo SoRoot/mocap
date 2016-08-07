@@ -41,15 +41,13 @@
 		</div>
 		<div class="col-sm-5 view-container">
 			<div class="player-box" id="player">
+			
 			</div>
-			<div class="motion-description" id="mot">
-				<script type="text/javascript">
-					document.write(HEIGHT);
-				</script>
+			<div class="motion-description">
 			</div>
 		</div>					
 	</div>
 </section>
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'motionView', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>

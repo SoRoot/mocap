@@ -1,0 +1,93 @@
+// set size to the size of the containing box
+var box = document.getElementById('player');
+var boxSize = box.clientWidth;
+var a = 2;
+// set some camera attributes
+var VIEW_ANGLE = 45,
+    ASPECT = 1,
+    NEAR = 0.1,
+    FAR = 10000;
+
+var camera, scene, renderer;
+
+var $player
+
+var character
+
+
+
+init();
+animate();
+
+function init() {
+	renderer = new THREE.WebGLRenderer();
+	camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
+	                                ASPECT,
+	                                NEAR,
+	                                FAR  );
+	camera.position.z = 300;
+	scene = new THREE.Scene();
+
+
+	// get the DOM element to attach to
+	// - assume we've got jQuery to hand
+	$player = $('#player');
+	// attach the render-supplied DOM element
+	$player.append(renderer.domElement);
+
+	// create the character
+	initChar();
+	
+	// create a point light
+	var pointLight = new THREE.PointLight( 0xFFFFFF );
+
+	// set its position
+	pointLight.position.x = 10;
+	pointLight.position.y = 50;
+	pointLight.position.z = 130;
+
+
+	scene.add(character);
+	scene.add(camera);
+	scene.add(pointLight);
+
+	// draw!
+	renderer.setSize(boxSize, boxSize);
+	renderer.render(scene, camera);
+}
+
+function initChar(){
+	var image_path = '<%= asset_path 'bild.png' %>';
+	var texture = THREE.ImageUtils.loadTexture( image_path, {}, function(){ 
+    }, 
+    function(){ 
+        alert('error') 
+    });
+
+	var characterMaterial = new THREE.MeshBasicMaterial(
+	{
+		map: texture
+	});
+	var radius = 50, segments = 20, rings = 20;
+	character = new THREE.Mesh(
+	   new THREE.SphereGeometry(radius, segments, rings),
+	   characterMaterial);
+}
+
+function animate(){
+	requestAnimationFrame( animate );
+
+	render();
+}
+
+function render(){
+	if(character.position.x > (boxSize/4)){
+		a = a*(-1);
+	}
+	if(character.position.x < -(boxSize/4)){
+		a = a*(-1);
+	}
+	character.position.x = character.position.x + a;
+
+	renderer.render( scene, camera );
+}
