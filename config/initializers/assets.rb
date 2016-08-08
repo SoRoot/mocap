@@ -8,14 +8,12 @@ Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( motionView.js.erb )
 Rails.application.config.assets.precompile += %w( activeNav.js )
 
-Rails.application.config.assets.precompile += %w( BlendCharacter.js )
-Rails.application.config.assets.precompile += %w( BlendCharacterGui.js )
-Rails.application.config.assets.precompile += %w( dat.gui.min.js )
-Rails.application.config.assets.precompile += %w( Detector.js )
-Rails.application.config.assets.precompile += %w( OrbitControls.js )
-Rails.application.config.assets.precompile += %w( stats.min.js )
-
-
+#Rails.application.config.assets.precompile += %w( BlendCharacter.js )
+#Rails.application.config.assets.precompile += %w( BlendCharacterGui.js )
+#Rails.application.config.assets.precompile += %w( dat.gui.min.js )
+#Rails.application.config.assets.precompile += %w( Detector.js )
+#Rails.application.config.assets.precompile += %w( OrbitControls.js )
+#Rails.application.config.assets.precompile += %w( stats.min.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

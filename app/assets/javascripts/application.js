@@ -22,9 +22,3 @@
 //= require select2
 //= require three
 //= require motionView.js
-//= require BlendCharacter
-//= require BlendCharacterGui
-//= require dat.gui.min
-//= require Detector
-//= require OrbitControls
-//= require stats.min
