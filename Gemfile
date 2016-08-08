@@ -38,6 +38,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate_mongoid'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
