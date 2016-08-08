@@ -29,7 +29,6 @@ class Motion
     unless search_mood.blank?
       found = found.where(:mood => search_role)
     end
-
     return found
   end
 

@@ -23,7 +23,7 @@
 			<% end %>
 
 			<!-- content search result -->
-			<%  @found.each do |f|  %>
+			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
 					<img class="motion" src="/TODO" alt="#">
 					<div class="motion-content">
@@ -38,6 +38,7 @@
 					</div>
 				</div>
 			<% end %>
+			<%= will_paginate @found %>
 		</div>
 		<div class="col-sm-5 view-container">
 			<div class="player-box" id="player">
