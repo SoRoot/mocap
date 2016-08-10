@@ -8,6 +8,7 @@
 				    <%= text_field_tag :search_gender, params[:search_gender], placeholder: 'gender', class: 'mocap-textbox' %>
 				   	<%= text_field_tag :search_role, params[:search_role], placeholder: 'role', class: 'mocap-textbox' %>
 				   	<%= text_field_tag :search_mood, params[:search_mood], placeholder: 'mood', class: 'mocap-textbox' %>
+				   	<%= text_field_tag :search_description, params[:search_description], placeholder: 'description', class: 'mocap-textbox' %>
 			    	<%= submit_tag "Search", :name => nil %>
 				</p>
 			<% end %>
@@ -25,15 +26,20 @@
 			<!-- content search result -->
 			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
-					<div class="motion-content">
-						<a href="#"><h3><%= f.role %></h3></a>
-						<p><%= f.mood %></p>
-						<%= f.actor %>
+					<div class="motion-content" id="preview">
 						<div>
-							<button class="btn btn-default btn-sm">BVH</button>
-							<button class="btn btn-default btn-sm">C3D</button>
-							<button class="btn btn-default btn-sm">FBX</button>
+							<button onclick="showMotion('<%= f.role %>',
+														'<%= f.mood %>',
+														'<%= f.param %>'
+
+							)" class="btn btn-default btn-sm">show Motion</button>
 						</div>
+						<h4>role: <%= f.role %></h4>
+						<p>mood: <%= f.mood %><br/>
+						description:
+						<% f.param.each do |a| %>
+							<%= a %>
+						<% end %></p>
 					</div>
 				</div>
 			<% end %>
@@ -42,7 +48,7 @@
 		<div class="col-sm-5 view-container">
 			<div class="player-box" id="player">
 			</div>
-			<div class="motion-description">
+			<div class="motion-description" id="details">
 			</div>
 		</div>					
 	</div>

@@ -124,3 +124,36 @@ function render(){
 function zoom(){
 	camera.position.z = camera.position.z - 10;
 }
+
+
+function showMotion(role, mood, param){
+  var fieldNameElement = document.getElementById("details");
+	fieldNameElement.innerHTML =
+		'<h2>' + 'Motion: '
+		+ '</h2>'
+		+ '<p>'
+		+ 'role: ' + role + '<br/>'
+		+ 'mood: ' +  mood + '<br/>'
+		+ 'description: ' + param + '<br/>'
+		+ '</p>'
+		+ '<h2>' + 'Actor: '
+		+ '</h2>'
+		+ '<p>'
+		+ 'name: ' +   + '<br/>'
+		+ 'weight: ' +   + '<br/>'
+		+ 'gender: ' +   + '<br/>'
+		+ 'body height: ' +   + '<br/>'
+		+ 'shoulder width: ' +   + '<br/>'
+		+ 'shoulder height: ' +   + '<br/>'
+		+ 'inner leg length: ' +   + '<br/>'
+		+ 'tibia length: ' +   + '<br/>'
+		+ 'body depth: ' +   + '<br/>'
+		+ 'hip width: ' +   + '<br/>'
+		+ 'seat height: ' +   + '<br/>'
+		+ 'shoulder elbow length: ' +   + '<br/>'
+		+ 'elbow wrist length: ' +   + '<br/>'
+		+ 'chest grith: ' +   + '<br/>'
+		+ 'waist grith: ' +   + '<br/>'
+		+ 'thigh grith: ' +   + '<br/>'
+		+ '</p>'		
+}
