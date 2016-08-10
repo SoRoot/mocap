@@ -21,4 +21,6 @@
 //= require grayscale
 //= require select2
 //= require three
+//= require three.min
 //= require motionView.js
+//= require BVHLoader.js

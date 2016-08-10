@@ -25,7 +25,6 @@
 			<!-- content search result -->
 			<%  @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
-					<img class="motion" src="/TODO" alt="#">
 					<div class="motion-content">
 						<a href="#"><h3><%= f.role %></h3></a>
 						<p><%= f.mood %></p>
@@ -49,5 +48,8 @@
 </section>
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>
 
+	<%= javascript_include_tag 'three', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'three.min', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'BVHLoader.js', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>

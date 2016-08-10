@@ -1,6 +1,8 @@
 // set size to the size of the containing box
 var box = document.getElementById('player');
-var boxSize = box.clientWidth;
+if(box){
+	var boxSize = box.clientWidth;
+}
 
 var a = 0.05;
 // set some camera attributes
@@ -36,6 +38,7 @@ function init() {
 
 	// create the character
 	initChar();
+	//loadBVH();
 	// create a point light
 	
     addLight();
@@ -79,18 +82,32 @@ function initChar(){
 	    map: texture
     });
 
-
     var loader = new THREE.JSONLoader();
-    loader.load('<%= asset_path 'standard-male-figure2.json' %>', modelLoadedCallback);
-
-}
-
-function modelLoadedCallback(geometry) {
-
-        char = new THREE.Mesh( geometry, materialChar );
+    loader.load('<%= asset_path 'standard-male-figure2.json' %>', function(geometry){
+    	char = new THREE.Mesh( geometry, materialChar );
 
         scene.add(char);
+    });
+}
 
+function loadBVH () {
+	var loader = new THREE.BVHLoader();
+	loader.load('<%= asset_path 'forehand.bvh' %>', function( result ) {
+
+		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+		skeletonHelper.skeleton = result.skeleton;
+
+		var boneContainer = new THREE.Group();
+		boneContainer.add( result.skeleton.bones[ 0 ] );
+
+		scene.add( skeletonHelper );
+		scene.add( boneContainer );
+
+
+		mixer = new THREE.AnimationMixer( skeletonHelper );
+		mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+
+	});
 }
 
 function animate(){
@@ -99,7 +116,7 @@ function animate(){
 }
 
 function render(){
-    char.rotation.y += 0.05;
+    //char.rotation.y += 0.05;
 
 	renderer.render( scene, camera );
 }
