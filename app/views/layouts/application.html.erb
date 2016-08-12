@@ -14,7 +14,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body class="<%= controller_name %> <%= action_name %>" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 
 	<!-- Navigation -->
@@ -81,13 +81,5 @@
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
 
-	<script type="text/javascript">
-	$(document).ready(function() {
-		if (<%=logged_in?%>) {
-			$("body").toggleClass("mocap-backend");
-			}
-		});
-	</script>
-	
 </body>
 </html>
