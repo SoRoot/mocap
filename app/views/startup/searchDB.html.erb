@@ -2,8 +2,11 @@
 <section id="searchbar" class="content-section">
 	<div class="container">
 		<div class="search-section text-center" id="search-section">		
-			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %> 
-			    <p>
+			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
+				<div>
+					<%= select_tag "actor", options_from_collection_for_select(Actor.all, :_id, :name), include_blank: true, class: 'js-example-placeholder-single' %>
+				</div>
+				<p>
 			    	<%= text_field_tag :search_actor, params[:search_actor], placeholder: 'actor', class: 'mocap-textbox' %>
 				    <%= text_field_tag :search_gender, params[:search_gender], placeholder: 'gender', class: 'mocap-textbox' %>
 				   	<%= text_field_tag :search_role, params[:search_role], placeholder: 'role', class: 'mocap-textbox' %>
