@@ -8,6 +8,7 @@
 				    <%= text_field_tag :search_gender, params[:search_gender], placeholder: 'gender', class: 'mocap-textbox' %>
 				   	<%= text_field_tag :search_role, params[:search_role], placeholder: 'role', class: 'mocap-textbox' %>
 				   	<%= text_field_tag :search_mood, params[:search_mood], placeholder: 'mood', class: 'mocap-textbox' %>
+				   	<%= text_field_tag :search_description, params[:search_description], placeholder: 'description', class: 'mocap-textbox' %>
 			    	<%= submit_tag "Search", :name => nil %>
 				</p>
 			<% end %>
@@ -25,15 +26,38 @@
 			<!-- content search result -->
 			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
-					<img class="motion" src="/TODO" alt="#">
-					<div class="motion-content">
-						<a href="#"><h3><%= f.role %></h3></a>
-						<p><%= f.mood %></p>
-						<%= f.actor %>
+					<div class="motion-content" id="preview">						
+						<div class="motion-font">role: <%= f.role %><br/>
+						mood: <%= f.mood %><br/>
+						description:
+						<% f.param.each do |a| %>
+							<%= a %>
+						<% end %></div>
+
+						<%
+						   a = @actors.where(:name => f.actor).first
+						 %>
 						<div>
-							<button class="btn btn-default btn-sm">BVH</button>
-							<button class="btn btn-default btn-sm">C3D</button>
-							<button class="btn btn-default btn-sm">FBX</button>
+							<button onclick="showMotion('<%= f.role %>',
+														'<%= f.mood %>',
+														'<%= f.param %>',
+														'<%= a.name %>',
+														'<%= a.weight %>',
+														'<%= a.gender %>',
+														'<%= a.body_height %>',
+														'<%= a.shoulder_width %>',
+														'<%= a.shoulder_height %>',
+														'<%= a.inner_leg_length %>',
+														'<%= a.tibia_length %>',
+														'<%= a.body_depth %>',
+														'<%= a.hip_width %>',
+														'<%= a.seat_height %>',
+														'<%= a.shoulder_elbow_length %>',
+														'<%= a.elbow_wrist_length %>',
+														'<%= a.chest_girth %>',
+														'<%= a.waist_girth %>',
+														'<%= a.thigh_girth %>'
+							)" class="btn btn-default btn-sm">show Motion</button>
 						</div>
 					</div>
 				</div>
@@ -42,13 +66,16 @@
 		</div>
 		<div class="col-sm-5 view-container">
 			<div class="player-box" id="player">
-			
 			</div>
-			<div class="motion-description">
+			<div class="motion-description" id="details">			
 			</div>
 		</div>					
 	</div>
 </section>
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
+
+	<%= javascript_include_tag 'three', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'three.min', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'BVHLoader.js', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>

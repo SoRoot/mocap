@@ -20,3 +20,4 @@
 //= require Detector
 //= require OrbitControls
 //= require stats.min
+//= require BVHLoader.js

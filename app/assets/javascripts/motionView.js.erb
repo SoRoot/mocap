@@ -1,7 +1,10 @@
 // set size to the size of the containing box
 var box = document.getElementById('player');
-var boxSize = box.clientWidth;
-var a = 2;
+if(box){
+	var boxSize = box.clientWidth;
+}
+
+var a = 0.05;
 // set some camera attributes
 var VIEW_ANGLE = 45,
     ASPECT = 1,
@@ -10,9 +13,9 @@ var VIEW_ANGLE = 45,
 
 var camera, scene, renderer;
 
-var $player
+var $player;
 
-var character
+var char, materialChar ;
 
 
 
@@ -21,11 +24,9 @@ animate();
 
 function init() {
 	renderer = new THREE.WebGLRenderer();
-	camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
-	                                ASPECT,
-	                                NEAR,
-	                                FAR  );
-	camera.position.z = 300;
+	camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 10000 );
+	camera.position.y = 10;
+	camera.position.z = 20;
 	scene = new THREE.Scene();
 
 
@@ -37,57 +38,124 @@ function init() {
 
 	// create the character
 	initChar();
-	
+	//loadBVH();
 	// create a point light
-	var pointLight = new THREE.PointLight( 0xFFFFFF );
-
-	// set its position
-	pointLight.position.x = 10;
-	pointLight.position.y = 50;
-	pointLight.position.z = 130;
+	
+    addLight();
+	
 
 
-	scene.add(character);
 	scene.add(camera);
-	scene.add(pointLight);
 
 	// draw!
 	renderer.setSize(boxSize, boxSize);
 	renderer.render(scene, camera);
+	renderer.shadowMap.enabled = true;
+
+	document.getElementById("player").addEventListener("click", zoom);
+}
+
+function addLight(){
+	var dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(100, 100, 50);
+    scene.add(dirLight);
+
+    var ambLight = new THREE.AmbientLight(0x404040);
+	scene.add(ambLight);
+
+	var bluePoint = new THREE.PointLight(0x0033ff, 3, 150);
+	bluePoint.position.set( 70, 5, 70 );
+	scene.add(bluePoint);
+	scene.add(new THREE.PointLightHelper(bluePoint, 3));
+	  
+	var greenPoint = new THREE.PointLight(0x33ff00, 1, 150);
+	greenPoint.position.set( -70, 5, 70 );
+	scene.add(greenPoint);
+	scene.add(new THREE.PointLightHelper(greenPoint, 3));
 }
 
 function initChar(){
-	var image_path = '<%= asset_path 'bild.png' %>';
-	var texture = THREE.ImageUtils.loadTexture( image_path, {}, function(){ 
-    }, 
-    function(){ 
-        alert('error') 
+	var textureLoader = new THREE.TextureLoader();
+	var texture = textureLoader.load('<%= asset_path 'grey.jpg' %>');
+
+	materialChar = new THREE.MeshBasicMaterial({
+	    map: texture
     });
 
-	var characterMaterial = new THREE.MeshBasicMaterial(
-	{
-		map: texture
+    var loader = new THREE.JSONLoader();
+    loader.load('<%= asset_path 'standard-male-figure2.json' %>', function(geometry){
+    	char = new THREE.Mesh( geometry, materialChar );
+
+        scene.add(char);
+    });
+}
+
+function loadBVH () {
+	var loader = new THREE.BVHLoader();
+	loader.load('<%= asset_path 'forehand.bvh' %>', function( result ) {
+
+		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+		skeletonHelper.skeleton = result.skeleton;
+
+		var boneContainer = new THREE.Group();
+		boneContainer.add( result.skeleton.bones[ 0 ] );
+
+		scene.add( skeletonHelper );
+		scene.add( boneContainer );
+
+
+		mixer = new THREE.AnimationMixer( skeletonHelper );
+		mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+
 	});
-	var radius = 50, segments = 20, rings = 20;
-	character = new THREE.Mesh(
-	   new THREE.SphereGeometry(radius, segments, rings),
-	   characterMaterial);
 }
 
 function animate(){
 	requestAnimationFrame( animate );
-
 	render();
 }
 
 function render(){
-	if(character.position.x > (boxSize/4)){
-		a = a*(-1);
-	}
-	if(character.position.x < -(boxSize/4)){
-		a = a*(-1);
-	}
-	character.position.x = character.position.x + a;
+    //char.rotation.y += 0.05;
 
 	renderer.render( scene, camera );
+}
+
+function zoom(){
+	camera.position.z = camera.position.z - 10;
+}
+
+
+function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
+	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
+	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth){
+  var fieldNameElement = document.getElementById("details");
+	fieldNameElement.innerHTML =
+		'<h4 class="motion-font">' + 'Motion: '
+		+ '</h4>'
+		+ '<div class="motion-font">'
+		+ 'Role: ' + role + '<br/>'
+		+ 'Mood: ' +  mood + '<br/>'
+		+ 'Description: ' + param + '<br/>'
+		+ '</div>'
+		+ '<h4 class="motion-font">' + 'Actor: '
+		+ '</h4>'
+		+ '<div class="motion-font">'
+		+ 'name: ' +  name + '<br/>'
+		+ 'weight: ' +  weight + '<br/>'
+		+ 'gender: ' +  gender + '<br/>'
+		+ 'body height: ' +  body_height + '<br/>'
+		+ 'shoulder width: ' +  shoulder_width + '<br/>'
+		+ 'shoulder height: ' +  shoulder_height + '<br/>'
+		+ 'inner leg length: ' +  inner_leg_length + '<br/>'
+		+ 'tibia length: ' + tibia_length  + '<br/>'
+		+ 'body depth: ' + body_depth  + '<br/>'
+		+ 'hip width: ' +  hip_width + '<br/>'
+		+ 'seat height: ' + seat_height  + '<br/>'
+		+ 'shoulder elbow length: ' +  shoulder_elbow_length + '<br/>'
+		+ 'elbow wrist length: ' +  elbow_wrist_length + '<br/>'
+		+ 'chest girth: ' +  chest_girth + '<br/>'
+		+ 'waist girth: ' +  waist_girth + '<br/>'
+		+ 'thigh girth: ' + thigh_girth  + '<br/>'
+		+ '</div>'		
 }
