@@ -7,6 +7,7 @@
 //= require grayscale
 //= require select2
 //= require three
+//= require three.min
 //= require init
 //= require navActive
 //= require textboxAfter 
@@ -14,10 +15,4 @@
 //= require selectWrong
 //= require input
 //= require motionView.js
-//= require BlendCharacter
-//= require BlendCharacterGui
-//= require dat.gui.min
-//= require Detector
-//= require OrbitControls
-//= require stats.min
 //= require BVHLoader.js
