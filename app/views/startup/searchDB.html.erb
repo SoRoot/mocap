@@ -26,20 +26,39 @@
 			<!-- content search result -->
 			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
-					<div class="motion-content" id="preview">
-						<div>
-							<button onclick="showMotion('<%= f.role %>',
-														'<%= f.mood %>',
-														'<%= f.param %>'
-
-							)" class="btn btn-default btn-sm">show Motion</button>
-						</div>
-						<h4>role: <%= f.role %></h4>
-						<p>mood: <%= f.mood %><br/>
+					<div class="motion-content" id="preview">						
+						<div class="motion-font">role: <%= f.role %><br/>
+						mood: <%= f.mood %><br/>
 						description:
 						<% f.param.each do |a| %>
 							<%= a %>
-						<% end %></p>
+						<% end %></div>
+
+						<%
+						   a = @actors.where(:name => f.actor).first
+						 %>
+						<div>
+							<button onclick="showMotion('<%= f.role %>',
+														'<%= f.mood %>',
+														'<%= f.param %>',
+														'<%= a.name %>',
+														'<%= a.weight %>',
+														'<%= a.gender %>',
+														'<%= a.body_height %>',
+														'<%= a.shoulder_width %>',
+														'<%= a.shoulder_height %>',
+														'<%= a.inner_leg_length %>',
+														'<%= a.tibia_length %>',
+														'<%= a.body_depth %>',
+														'<%= a.hip_width %>',
+														'<%= a.seat_height %>',
+														'<%= a.shoulder_elbow_length %>',
+														'<%= a.elbow_wrist_length %>',
+														'<%= a.chest_girth %>',
+														'<%= a.waist_girth %>',
+														'<%= a.thigh_girth %>'
+							)" class="btn btn-default btn-sm">show Motion</button>
+						</div>
 					</div>
 				</div>
 			<% end %>
@@ -48,7 +67,7 @@
 		<div class="col-sm-5 view-container">
 			<div class="player-box" id="player">
 			</div>
-			<div class="motion-description" id="details">
+			<div class="motion-description" id="details">			
 			</div>
 		</div>					
 	</div>
