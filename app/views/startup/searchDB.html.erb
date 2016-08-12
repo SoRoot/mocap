@@ -4,7 +4,7 @@
 		<div class="search-section text-center" id="search-section">		
 			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
 				<div>
-					<%= select_tag "actor", options_from_collection_for_select(Actor.all, :_id, :name), include_blank: true, class: 'js-example-placeholder-single' %>
+					<%= select_tag "actor", options_from_collection_for_select(Actor.all, :_id, :name), include_blank: true, class: 'js-example-placeholder-single actor' %>
 				</div>
 				<p>
 			    	<%= text_field_tag :search_actor, params[:search_actor], placeholder: 'actor', class: 'mocap-textbox' %>
