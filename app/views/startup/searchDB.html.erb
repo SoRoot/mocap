@@ -6,6 +6,9 @@
 				<div>
 					<%= select_tag "actor", options_from_collection_for_select(Actor.all, :_id, :name), include_blank: true, class: 'js-example-placeholder-single actor' %>
 				</div>
+				<div>
+					<%= select_tag "gender", options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :_id, :gender), include_blank: true, class: 'js-example-placeholder-single gender' %>
+				</div>
 				<p>
 			    	<%= text_field_tag :search_actor, params[:search_actor], placeholder: 'actor', class: 'mocap-textbox' %>
 				    <%= text_field_tag :search_gender, params[:search_gender], placeholder: 'gender', class: 'mocap-textbox' %>
