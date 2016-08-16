@@ -1,15 +1,20 @@
 $(document).on 'page:change', =>
-			return if $('.actors').length > 0
-				$(".js-example-placeholder-single").select2
-								allowClear: true
-								placeholder: "Select gender"
-								minimumResultsForSearch: -1
-			return if $('.motions.new').length > 0
-				$(".js-example-placeholder-single").select2
-								allowClear: true
-								placeholder: "Select actor"
-			return if $('.startup.searchDB').length > 0
-				$(".js-example-placeholder-single").select2
-								allowClear: true
-								placeholder: "Select actor"
-			
+	$(".js-example-placeholder-single.actor").select2
+		allowClear: true
+		placeholder: "Select actor"
+	$(".js-example-placeholder-single.gender").select2
+		allowClear: true
+		placeholder: "Select gender"
+		minimumResultsForSearch: Infinity
+	$(".js-example-placeholder-single.role").select2
+		allowClear: true
+		placeholder: "Select role"
+		minimumResultsForSearch: Infinity
+	$(".js-example-placeholder-single.mood").select2
+		allowClear: true
+		placeholder: "Select mood"
+		minimumResultsForSearch: Infinity
+	$(".js-example-placeholder-single.description").select2
+		allowClear: true
+		placeholder: "Select descriptions"
+		minimumResultsForSearch: Infinity

@@ -44,7 +44,7 @@
 
 
 								<div>
-										<%= f.select(:gender, [ "female", "male" ], { :include_blank => true}, class: 'js-example-placeholder-single' + (@actor.errors.include?(:gender) ? ' dropdown-wrong' : '') ) %>
+										<%= f.select(:gender, [ "female", "male" ], { :include_blank => true}, class: 'js-example-placeholder-single gender' + (@actor.errors.include?(:gender) ? ' dropdown-wrong' : '') ) %>
 								</div>
 
 
