@@ -14,6 +14,7 @@ class MotionsController < ApplicationController
 	def show
 	end
 
+
 	# GET /motions/new
 	def new
 		@motion = Motion.new

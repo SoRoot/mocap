@@ -36,6 +36,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Gemfile for Rails 3+, Sinatra, and Merb
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate_mongoid'
+
+# To make Wizards restful
+gem 'wicked'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -60,4 +67,3 @@ group :development do
 	gem 'font-awesome-sass'
 	gem 'jquery-easing-rails'
 end
-

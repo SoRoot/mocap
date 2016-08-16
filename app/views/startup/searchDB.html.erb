@@ -1,110 +1,87 @@
 <!-- Search Section -->
 <section id="searchbar" class="content-section">
 	<div class="container">
-		<div class="search-section text-center" id="search-section">
-			<form class="form-inline" action="/searchDB#show" method="GET">
-				<div class="form-group">
-					<input class="from-control mocap-textbox" list="actors" type="text" id="actor">
-						<datalist id="actors">
-							<select class="form-control mocap-textbox">				
-								<option value="" disabled selected>Choose Actor</option>
-									<% @actors.each do |actor| %>
-										<option><%= actor.name %></option>
-			 						<% end %>
-							</select>
-						</datalist>
-					<input class="from-control mocap-textbox" list="genders" type="text" id="gender">
-						<datalist id="genders">
-							<select class="from-control mocap-textbox">
-								<option value="" disabled selected>Gender</option>
-								<option>female</option>
-								<option>male</option>
-							</select>
-						</datalist>
-					<input class="from-control mocap-textbox" list="roles" type="text" id="role">
-						<datalist id="roles">
-							<select class="from-control mocap-textbox">
-								<option value="" disabled selected>Role</option>
-								<% @roles.each do |r| %>
-									<option><%= r %></option>
-		 						<% end %>
-							</select>
-						</datalist>
-					<input class="from-control mocap-textbox" list="moods" type="text" id="mood">
-						<datalist id="moods">
-							<select class="from-control mocap-textbox">
-								<option value="" disabled selected>Mood</option>
-								<% @moods.each do |m| %>
-									<option><%= m %></option>
-		 						<% end %>
-							</select>
-						</datalist>
-					<input class="from-control mocap-textbox" list="params" type="text" id="param">
-						<datalist id="params">
-							<select class="from-control mocap-textbox">
-								<option value="" disabled selected>Desctiption</option>
-								<% @params.each do |p| %>
-									<option><%= p %></option>
-		 						<% end %>
-							</select>
-						</datalist>
+		<div class="search-section text-center" id="search-section">		
+			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
+				<div>
+					<%= select_tag "actor", options_from_collection_for_select(Actor.all, :_id, :name), include_blank: true, class: 'js-example-placeholder-single actor' %>
 				</div>
-				<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-			</form>
-			<h3><small> found motions: xxx</small></h3>
+				<div>
+					<%= select_tag "gender", options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :_id, :gender), include_blank: true, class: 'js-example-placeholder-single gender' %>
+				</div>
+				<p>
+			    	<%= text_field_tag :search_actor, params[:search_actor], placeholder: 'actor', class: 'mocap-textbox' %>
+				    <%= text_field_tag :search_gender, params[:search_gender], placeholder: 'gender', class: 'mocap-textbox' %>
+				   	<%= text_field_tag :search_role, params[:search_role], placeholder: 'role', class: 'mocap-textbox' %>
+				   	<%= text_field_tag :search_mood, params[:search_mood], placeholder: 'mood', class: 'mocap-textbox' %>
+				   	<%= text_field_tag :search_description, params[:search_description], placeholder: 'description', class: 'mocap-textbox' %>
+			    	<%= submit_tag "Search", :name => nil %>
+				</p>
+			<% end %>
 		</div>
+
+		<h3><small> found motions: xxx</small></h3>
+	
 	</div>
-	<div class="container-fluid">
-		<!-- Page Header -->
-		<div class="row">
-			<div class="container">
-				<h1>most popular </h1>
-				<hr>
-			</div>
-		</div>
-		<!-- /.row -->
-		<div class="content-box">
-			<div class="col-sm-7 gif-container">
-				<% 12.times do  %>
-				<div class="col-sm-3 gif-box">
-					<img class="gif" src="/TODO" alt="#">
-					<div class="gif-content">
-						<a href="#"><h3>Motion</h3></a>
-						<p>Attributes</p>
-							leider nein, leider gar nicht.
+	<div class="col-sm-12 content-box">
+		<div class="col-sm-7 motions-container">
+			<% if @found.blank? %>
+				<h4>There are no motions found fitting your search.</h4>
+			<% end %>
+
+			<!-- content search result -->
+			<% @found.each do |f|  %>
+				<div class="col-sm-3 motion-box" >
+					<div class="motion-content" id="preview">						
+						<div class="motion-font">role: <%= f.role %><br/>
+						mood: <%= f.mood %><br/>
+						description:
+						<% f.param.each do |a| %>
+							<%= a %>
+						<% end %></div>
+
+						<%
+						   a = @actors.where(:name => f.actor).first
+						 %>
 						<div>
-							<button class="btn btn-default btn-sm">BVH</button>
-							<button class="btn btn-default btn-sm">C3D</button>
-							<button class="btn btn-default btn-sm">FBX</button>
+							<button onclick="showMotion('<%= f.role %>',
+														'<%= f.mood %>',
+														'<%= f.param %>',
+														'<%= a.name %>',
+														'<%= a.weight %>',
+														'<%= a.gender %>',
+														'<%= a.body_height %>',
+														'<%= a.shoulder_width %>',
+														'<%= a.shoulder_height %>',
+														'<%= a.inner_leg_length %>',
+														'<%= a.tibia_length %>',
+														'<%= a.body_depth %>',
+														'<%= a.hip_width %>',
+														'<%= a.seat_height %>',
+														'<%= a.shoulder_elbow_length %>',
+														'<%= a.elbow_wrist_length %>',
+														'<%= a.chest_girth %>',
+														'<%= a.waist_girth %>',
+														'<%= a.thigh_girth %>'
+							)" class="btn btn-default btn-sm">show Motion</button>
 						</div>
 					</div>
 				</div>
-				<% end %>
-				
-				<!-- Pagination -->
-				<div class="row text-center">
-					<div class="col-md-12">
-						<ul class="pagination">
-							<li>
-								<a href="#">&laquo;</a>
-							</li>
-							<% 5.times do |n| %>
-							<li >
-								<a href="#"><%= n+1 %></a>
-							</li>
-							<%end %>
-							<li>
-								<a href="#">&raquo;</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-5 player-box" id="player">
-			</div>					
+			<% end %>
+			<%= will_paginate @found %>
 		</div>
+		<div class="col-sm-5 view-container">
+			<div class="player-box" id="player">
+			</div>
+			<div class="motion-description" id="details">			
+			</div>
+		</div>					
 	</div>
 </section>
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'motionView', 'data-turbolinks-track' => true %>
+
+	<%= javascript_include_tag 'three', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'three.min', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'BVHLoader.js', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>

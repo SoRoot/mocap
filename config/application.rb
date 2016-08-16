@@ -11,13 +11,11 @@ require "action_view/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
-
-
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+	COLOR01="#AAAAAA"
 module Mocap
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
