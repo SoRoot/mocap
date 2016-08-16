@@ -1,93 +1,39 @@
-// set size to the size of the containing box
 var box = document.getElementById('player');
 if(box){
 	var boxSize = box.clientWidth;
 }
-
-var a = 0.05;
-// set some camera attributes
-var VIEW_ANGLE = 45,
-    ASPECT = 1,
-    NEAR = 0.1,
-    FAR = 10000;
-
-var camera, scene, renderer;
-
 var $player;
 
-var char, materialChar ;
+var clock = new THREE.Clock();
 
-
+var camera, scene, renderer;
+var mixer, skeletonHelper;
 
 init();
 animate();
+loadBVH();
 
 function init() {
-	renderer = new THREE.WebGLRenderer();
-	camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 10000 );
-	camera.position.y = 10;
-	camera.position.z = 20;
+	
+	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
+	camera.position.set( 0, 100, 400 );
+
+	controls = new THREE.OrbitControls( camera );
+	controls.minDistance = 300;
+	controls.maxDistance = 700;
+
 	scene = new THREE.Scene();
 
+	scene.add( new THREE.GridHelper( 200, 10 ) );
+	// renderer
+	renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer.setClearColor( 0xeeeeee );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( boxSize, boxSize );
 
-	// get the DOM element to attach to
-	// - assume we've got jQuery to hand
 	$player = $('#player');
-	// attach the render-supplied DOM element
 	$player.append(renderer.domElement);
 
-	// create the character
-	initChar();
-	//loadBVH();
-	// create a point light
-	
-    addLight();
-	
-
-
-	scene.add(camera);
-
-	// draw!
-	renderer.setSize(boxSize, boxSize);
-	renderer.render(scene, camera);
-	renderer.shadowMap.enabled = true;
-
-	document.getElementById("player").addEventListener("click", zoom);
-}
-
-function addLight(){
-	var dirLight = new THREE.DirectionalLight(0xffffff, 1);
-    dirLight.position.set(100, 100, 50);
-    scene.add(dirLight);
-
-    var ambLight = new THREE.AmbientLight(0x404040);
-	scene.add(ambLight);
-
-	var bluePoint = new THREE.PointLight(0x0033ff, 3, 150);
-	bluePoint.position.set( 70, 5, 70 );
-	scene.add(bluePoint);
-	scene.add(new THREE.PointLightHelper(bluePoint, 3));
-	  
-	var greenPoint = new THREE.PointLight(0x33ff00, 1, 150);
-	greenPoint.position.set( -70, 5, 70 );
-	scene.add(greenPoint);
-	scene.add(new THREE.PointLightHelper(greenPoint, 3));
-}
-
-function initChar(){
-	var textureLoader = new THREE.TextureLoader();
-	var texture = textureLoader.load('<%= asset_path 'grey.jpg' %>');
-
-	materialChar = new THREE.MeshBasicMaterial({
-	    map: texture
-    });
-
-    var loader = new THREE.JSONLoader();
-    loader.load('<%= asset_path 'standard-male-figure2.json' %>', function(geometry){
-    	char = new THREE.Mesh( geometry, materialChar );
-
-        scene.add(char);
-    });
 }
 
 function loadBVH () {
@@ -111,18 +57,15 @@ function loadBVH () {
 }
 
 function animate(){
+	
 	requestAnimationFrame( animate );
-	render();
-}
 
-function render(){
-    //char.rotation.y += 0.05;
+	var delta = clock.getDelta();
+
+	if ( mixer ) mixer.update( delta );
+	if ( skeletonHelper ) skeletonHelper.update();
 
 	renderer.render( scene, camera );
-}
-
-function zoom(){
-	camera.position.z = camera.position.z - 10;
 }
 
 

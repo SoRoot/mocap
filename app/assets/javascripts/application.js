@@ -15,4 +15,6 @@
 //= require selectWrong
 //= require input
 //= require motionView.js
-//= require BVHLoader.js
+//= require BVHLoader
+//= require OrbitControls
+
