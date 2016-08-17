@@ -64,22 +64,18 @@
 			<%= will_paginate @found %>
 		</div>
 		<div class="col-sm-5 view-container">
-			<div class="player-box" id="player">
-				<style>
-					body { margin: 0; }
-					canvas { width: 100%; height: 100% }
-				</style>
+			<div class="player-box" id ="player">
+				
 			</div>
-			<div class="motion-description" id="details">			
-			</div>
-		</div>					
-	</div>
+			<div class="motion-description" id="details">	
+					
+			</div>				
+		</div>
+		</div>
 </section>
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
 
-	<%= javascript_include_tag 'three', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'three.min', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'OrbitControls', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'BVHLoader.js', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>
