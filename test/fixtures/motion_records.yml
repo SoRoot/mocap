@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  actor: 1
+  c3d_path: MyString
+  bvh_path: MyString
+  uploader_id: 1
+
+two:
+  actor: 1
+  c3d_path: MyString
+  bvh_path: MyString
+  uploader_id: 1

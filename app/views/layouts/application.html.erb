@@ -43,7 +43,7 @@
 					<% if logged_in? %>
 
 
-					<li class="<%= 'active' if params[:controller] == 'motions' %>"> <a href="/motions">motions</a> </li>
+					<li class="<%= 'active' if (params[:controller] == 'motions' or params[:controller] == 'motion_records' ) %>"> <a href="/motions">motions</a> </li>
 					<li class="<%= 'active' if params[:controller] == 'actors' %>"> <a href="/actors">Actors</a> </li>
 					<li class="<%= 'active' if params[:controller] == 'users' %>"> <a href="/signup">signup</a> </li>
 

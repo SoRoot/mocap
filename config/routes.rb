@@ -10,13 +10,17 @@ Rails.application.routes.draw do
 	post 'login' => 'sessions#create'
 	delete 'logout' => 'sessions#destroy'
 	post'/search', to: 'startup#search'
-	get 'motions' => 'motions#new'
+	get 'motions' => 'motion_records#new'
 	get 'actors' => 'actors#new'
+	#get 'motions/upload' => 'motions#new_file'
+	#post 'motions/upload' => 'motions#upload'
+	#get 'motions/:fileid' => 'motions#new'
 
 
 	resources :users
 	resources :actors
 	resources :motions
+  resources :motion_records
 
 
 	# The priority is based upon order of creation: first created -> highest priority.

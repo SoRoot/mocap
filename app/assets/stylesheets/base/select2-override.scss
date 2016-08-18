@@ -17,7 +17,7 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
-	background: rgba($color01, 0.8);
+	background: darken($color01, 20%);
 	color: $color02;
 }
 

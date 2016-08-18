@@ -1,0 +1,2 @@
+module MotionRecordsHelper
+end
