@@ -17,20 +17,9 @@ class MotionsController < ApplicationController
 	def show
 	end
 
-	#def upload
-	#uploaded_io = params[:c3d_file]
-
-	#File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-	#file.write(uploaded_io.read)
-	#end
-	#end
-
 	# GET /motions/new
 	def new
-		puts params
-				puts '----------------------------------------------------------'
 		@motion = Motion.new
-		
 	end
 
 	# GET /motions/1/edit
@@ -40,8 +29,6 @@ class MotionsController < ApplicationController
 	# POST /motions
 	# POST /motions.json
 	def create
-
-
 		params[:motion][:motion_record] = params[:motion_record]
 		@motion = Motion.new(motion_params)
 
@@ -60,6 +47,7 @@ class MotionsController < ApplicationController
 			end
 		end
 	end
+
 	# PATCH/PUT /motions/1
 	# PATCH/PUT /motions/1.json
 	#def update
@@ -92,9 +80,6 @@ class MotionsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def motion_params
-		puts params
-		puts 'zzzzzzzzzzzzzzzzzz'
-		puts params.require(:motion).permit(:actor, :motion_record, :role, :mood, :attribute_1, :attribute_2, :attribute_3, :attribute_4, :attribute_5)
-		params.require(:motion).permit(:actor, :motion_record, :role, :mood, :attribute_1, :attribute_2, :attribute_3, :attribute_4, :attribute_5)
+		params.require(:motion).permit(:motion_record, :role, :mood, :attribute_1, :attribute_2, :attribute_3, :attribute_4, :attribute_5)
 	end
 end
