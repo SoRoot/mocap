@@ -3,7 +3,6 @@ if(box){
 	var boxSize = box.clientWidth;
 }
 var $player;
-
 var clock = new THREE.Clock();
 
 var camera, scene, renderer;
@@ -11,7 +10,7 @@ var mixer, skeletonHelper;
 
 init();
 animate();
-loadBVH();
+loadBVH('<%= asset_path 'forehand.bvh' %>');
 
 function init() {
 	
@@ -36,9 +35,9 @@ function init() {
 
 }
 
-function loadBVH () {
+function loadBVH (pathBVH) {
 	var loader = new THREE.BVHLoader();
-	loader.load('<%= asset_path 'forehand.bvh' %>', function( result ) {
+	loader.load(pathBVH, function( result ) {
 
 		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
 		skeletonHelper.skeleton = result.skeleton;
@@ -71,8 +70,12 @@ function animate(){
 
 function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
 	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
-	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth){
-  var fieldNameElement = document.getElementById("details");
+	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, pathBVH){
+  	var p = '<%= asset_path 'forehand.bvh' %>';
+	p = p.substring(1, p.length);
+	alert('<%= asset_path '@path' %>');
+	
+  	var fieldNameElement = document.getElementById("details");
 	fieldNameElement.innerHTML =
 		'<h4 class="motion-font">' + 'Motion: '
 		+ '</h4>'
@@ -100,5 +103,11 @@ function showMotion(role, mood, param, name, weight, gender, body_height, should
 		+ 'chest girth: ' +  chest_girth + '<br/>'
 		+ 'waist girth: ' +  waist_girth + '<br/>'
 		+ 'thigh girth: ' + thigh_girth  + '<br/>'
-		+ '</div>'		
+		+ pathBVH
+		+ '</div>';
+
+	scene.remove( skeletonHelper );
+	clock = new THREE.Clock();
+	loadBVH('<%= asset_path @path %>');
+
 }

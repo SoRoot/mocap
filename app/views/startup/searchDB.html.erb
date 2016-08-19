@@ -37,6 +37,10 @@
 						   a = @actors.where(:name => f.actor).first
 						 %>
 						<div>
+						<script type="text/javascript">
+							var testPath = '<%= asset_path 'f.bvh_file' %>';
+							alert
+						</script>
 							<button onclick="showMotion('<%= f.role %>',
 														'<%= f.mood %>',
 														'<%= f.param %>',
@@ -55,7 +59,8 @@
 														'<%= a.elbow_wrist_length %>',
 														'<%= a.chest_girth %>',
 														'<%= a.waist_girth %>',
-														'<%= a.thigh_girth %>'
+														'<%= a.thigh_girth %>',
+														testPath
 							)" class="btn btn-default btn-sm">show Motion</button>
 						</div>
 					</div>
