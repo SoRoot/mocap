@@ -1,16 +1,18 @@
 class Motion
   include Mongoid::Document
+	validates :motion_record, presence: true
+
   field :_id
   field :actor
-  field :c3d_file
-  field :bvh_file
-  field :fbx_file
+	field :motion_record
   field :role
   field :mood
   field :param, :type => Array
   field :downloaded
   field :start
   field :end
+	field :status
+
 
   def self.search(actors, search_actor, search_gender, search_role, search_mood, search_description)
     found = Motion.all

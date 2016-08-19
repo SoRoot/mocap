@@ -14,7 +14,11 @@
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 </head>
 
-<body class="<%= controller_name %> <%= action_name %>" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<% if logged_in? %>
+	<body class= "<%= controller_name %> <%= action_name %> back-col" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<% else %>
+	<body class= "<%= controller_name %> <%= action_name %>" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<% end %>
 
 
 	<!-- Navigation -->
@@ -25,7 +29,7 @@
 					<i class="fa fa-bars"></i>
 				</button>
 				<a class="navbar-brand page-scroll" href="#page-top">
-					<i class="fa fa-play-circle"></i>  <span class="light">Mocap</span> database
+					<i class="fa fa-play-circle"></i>  <span class="light">Mocap</span> 
 				</a>
 			</div>
 
@@ -39,7 +43,7 @@
 					<% if logged_in? %>
 
 
-					<li class="<%= 'active' if params[:controller] == 'motions' %>"> <a href="/motions">motions</a> </li>
+					<li class="<%= 'active' if (params[:controller] == 'motions' or params[:controller] == 'motion_records' ) %>"> <a href="/motions">motions</a> </li>
 					<li class="<%= 'active' if params[:controller] == 'actors' %>"> <a href="/actors">Actors</a> </li>
 					<li class="<%= 'active' if params[:controller] == 'users' %>"> <a href="/signup">signup</a> </li>
 

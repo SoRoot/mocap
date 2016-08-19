@@ -45,7 +45,7 @@ a {
 	&:hover,
 	&:focus {
 		text-decoration: none;
-		color: darken($color01, 20%);
+		color: ($color01);
 	}
 }
 
@@ -194,7 +194,7 @@ a {
 	&:hover,
 	&:focus {
 		outline: none;
-		color: white;
+		color: black;
 		background: rgba(white, 0.1);
 	}
 
