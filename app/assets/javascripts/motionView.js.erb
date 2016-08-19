@@ -37,7 +37,7 @@ function init() {
 
 function loadBVH (pathBVH) {
 	var loader = new THREE.BVHLoader();
-	loader.load(pathBVH, function( result ) {
+	loader.load('<%= asset_path 'forehand.bvh' %>', function( result ) {
 
 		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
 		skeletonHelper.skeleton = result.skeleton;
@@ -70,10 +70,9 @@ function animate(){
 
 function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
 	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
-	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, pathBVH){
+	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth){
   	var p = '<%= asset_path 'forehand.bvh' %>';
 	p = p.substring(1, p.length);
-	alert('<%= asset_path '@path' %>');
 	
   	var fieldNameElement = document.getElementById("details");
 	fieldNameElement.innerHTML =

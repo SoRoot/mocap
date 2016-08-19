@@ -8,7 +8,7 @@ var clock = new THREE.Clock();
 
 var cameraTrim, sceneTrim, rendererTrim;
 var mixer, skeletonHelper;
-var bvhPath = '<%= asset_path 'forehand.bvh' %>';
+var bvhPath = 1;
 var animationID;
 var anim;
 var rangeSlider = $( "#slider-range" );
@@ -16,7 +16,7 @@ var range = $( "#range" );
 
 
 initTrim();
-loadBVHTrim(bvhPath);
+loadBVHTrim('<%= asset_path 'forehand.bvh' %>');
 animateTrim();
 
 /**
