@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require bootstrap/dropdown
 //= require bootstrap-sprockets
@@ -14,7 +15,9 @@
 //= require dropdown
 //= require selectWrong
 //= require input
-//= require motionView.js
-//= require BVHLoader
 //= require OrbitControls
+//= require BVHLoader
+//= require nouislider
+//= require motionView.js
+//= require motionTrim.js
 

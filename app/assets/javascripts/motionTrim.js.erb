@@ -1,0 +1,229 @@
+var boxTrim = document.getElementById('webGLContent');
+if(boxTrim){
+	var boxTrimSize = boxTrim.clientWidth;
+}
+var $webGLContent;
+
+var clock = new THREE.Clock();
+
+var cameraTrim, sceneTrim, rendererTrim;
+var mixer, skeletonHelper;
+var bvhPath = 1;
+var animationID;
+var anim;
+var rangeSlider = $( "#slider-range" );
+var range = $( "#range" );
+
+
+initTrim();
+loadBVHTrim('<%= asset_path 'forehand.bvh' %>');
+animateTrim();
+
+/**
+ * Erstellt eine THREE.Scene mit Kamera, dem Grid auf dem Boden, dem Renderer
+ * und den Controls (welche nur im renderer.domElement agieren) und hängt die
+ * Scene an das DOM-Element #webGLContainer
+ */
+function initTrim() {
+
+	cameraTrim = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
+	cameraTrim.position.set( 0, 100, 400 );
+
+	sceneTrim = new THREE.Scene();
+
+	sceneTrim.add( new THREE.GridHelper( 200, 20 ) );
+
+	// renderer
+	rendererTrim = new THREE.WebGLRenderer( { antialias: true } );
+	rendererTrim.setClearColor( 0xeeeeee );
+	rendererTrim.setPixelRatio( window.devicePixelRatio );
+	rendererTrim.setSize( boxTrimSize, boxTrimSize );
+
+	controls = new THREE.OrbitControls( cameraTrim, rendererTrim.domElement );
+	controls.minDistance = 300;
+	controls.maxDistance = 700;
+
+	$webGLContent = $('#webGLContent');
+	$webGLContent.append(rendererTrim.domElement);
+
+	window.addEventListener( 'resize', onWindowResize, false );
+
+}
+
+/**
+ * Initalisiert den Slider auf die Werte zwischen min und max.
+ * Feinere Schritte mit "step" möglich.
+ * @param min
+ * @param max
+ */
+function initSlider(min, max) {
+	rangeSlider.slider({
+		range: true,
+		min: min,
+		max: max,
+		step: 0.01,
+		values: [ min, max ],
+		slide: function( event, ui ) {
+			range.val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+		},
+		change: function ( event, ui ) {
+			cancelAnimationFrame(animationID);
+			loadBVHAndTrim(bvhPath, ui.values[0], ui.values[1]);
+			animateTrim();
+		}
+	});
+	range.val(rangeSlider.slider( "values", 0 ) +
+		" - " + rangeSlider.slider( "values", 1 ) );
+}
+
+/**
+ * Läd eine bvh-Datei über den Pfad neu und trimt sie auf den Zeitraum
+ * zwischen start und end und spielt sie ab.
+ * Soll beim change-Event des Sliders aufgerufen werden.
+ * @param path
+ * @param start
+ * @param end
+ */
+function loadBVHAndTrim (path, start, end) {
+	sceneTrim.remove( skeletonHelper);
+	var loader = new THREE.BVHLoader();
+	loader.load(path , function( result ) {
+
+		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+		skeletonHelper.skeleton = result.skeleton;
+
+		var boneContainer = new THREE.Group();
+		boneContainer.add( result.skeleton.bones[ 0 ] );
+
+		anim = trimAnimationClip(result.clip, start, end);
+		//anim = result.clip;
+
+		sceneTrim.add( skeletonHelper );
+		sceneTrim.add( boneContainer );
+
+		mixer = new THREE.AnimationMixer( skeletonHelper );
+
+		mixer.clipAction( anim ).setEffectiveWeight( 1.0 ).play();
+		//initSlider (start, end);
+
+		//loadCharacter(characterPath, anim, skeletonHelper);
+
+	});
+}
+/**
+ * Methode beim erstmaligen laden einer BVH-Datei. Läd die bvh-Datei und
+ * stellt sie als Skelet dar und spielt sie ab.
+ * Initalisiert außerdem den Slider: angepasst an die komplette Länge des Clips
+ * @param path
+ */
+function loadBVHTrim (path) {
+	var loader = new THREE.BVHLoader();
+	loader.load(path , function( result ) {
+
+		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+		skeletonHelper.skeleton = result.skeleton;
+
+		var boneContainer = new THREE.Group();
+		boneContainer.add( result.skeleton.bones[ 0 ] );
+
+		//anim = trimAnimationClip(result.clip, 3, 7);
+		anim = result.clip;
+
+		sceneTrim.add( skeletonHelper );
+		sceneTrim.add( boneContainer );
+
+		mixer = new THREE.AnimationMixer( skeletonHelper );
+
+		mixer.clipAction( anim ).setEffectiveWeight( 1.0 ).play();
+
+		initSlider(0, anim.duration);
+
+		//loadCharacter(characterPath, anim, skeletonHelper);
+
+	});
+}
+
+/**
+ * Trimt einen THREE.AnimationClip auf den Zeitraum zwischen start und end.
+ * returns: THREE.AnimationClip
+ * @param clip
+ * @param start
+ * @param end
+ * @returns {THREE.AnimationClip}
+ */
+function trimAnimationClip(clip, start, end){
+
+	var duration = clip.duration;
+	var tracks = [];
+
+	if (end > clip.duration)
+		end = clip.duration;
+
+	var newDuration = end - start;
+
+	for (var i = 0; i < clip.tracks.length; i++){
+		clip.tracks[i].trim(start, end);
+
+		for (var j = 0; j < clip.tracks[i].times.length; j++){
+			clip.tracks[i].times[j] = clip.tracks[i].times[j] - start;
+		}
+
+		tracks[i] = clip.tracks[i];
+	}
+	var out = new THREE.AnimationClip(clip.name, newDuration, tracks)
+	return out;
+}
+
+/**
+ * requestAnimationFrame ruft jeden Frame erneut die "animate" Methode auf
+ */
+function animateTrim() {
+
+	animationID = requestAnimationFrame( animateTrim );
+
+	var delta = clock.getDelta();
+
+	if ( mixer ) mixer.update( delta );
+	if ( skeletonHelper ) skeletonHelper.update();
+
+	rendererTrim.render( sceneTrim, cameraTrim );
+
+}
+
+/**
+ * zuständig für die Anpassung des Canvas beim Resize
+ */
+function onWindowResize() {
+
+	cameraTrim.aspect = window.innerWidth / window.innerHeight;
+	cameraTrim.updateProjectionMatrix();
+
+	rendererTrim.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+/**
+ * TODO wenn Character vorliegt
+ * @param path
+ * @param anim
+ * @param skeleton
+ */
+function loadCharacter (path, anim, skeleton) {
+	var loader = new THREE.ObjectLoader();
+	var animation;
+
+	loader.load( path, function( object ){
+		console.log("test");
+		object.scale.set(10,10,10);
+		object.animations.push(anim);
+		object.bones=skeleton.bones;
+		//object.animations[1].play(0);
+
+		//animate(object);
+		mixer = new THREE.AnimationMixer (object);
+		mixer.clipAction(anim).play();
+
+		sceneTrim.add(object);
+		//animation.play();
+	});
+}
