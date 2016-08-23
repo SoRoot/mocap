@@ -18,3 +18,36 @@ $(document).on 'page:change', =>
 		allowClear: true
 		placeholder: "Select descriptions"
 		minimumResultsForSearch: Infinity
+	$('#mood').select2
+		placeholder: "Add a mood"
+		multiple: true
+		maximumSelectionSize: 1
+		data: window.motions
+		createSearchChoice: (term, data) ->
+			if $(data).filter(->
+				@text.localeCompare(term) is 0
+			).length is 0
+				id: "<<<" + term + ">>>"
+				text: term
+	$('#role').select2
+		placeholder: "Add a role"
+		multiple: true
+		maximumSelectionSize: 1
+		data: window.motions
+		createSearchChoice: (term, data) ->
+			if $(data).filter(->
+				@text.localeCompare(term) is 0
+			).length is 0
+				id: "<<<" + term + ">>>"
+				text: term
+	$('#attributes').select2
+		placeholder: "Add up to 5 Attributes"
+		multiple: true
+		maximumSelectionSize: 5
+		data: window.motions
+		createSearchChoice: (term, data) ->
+			if $(data).filter(->
+				@text.localeCompare(term) is 0
+			).length is 0
+				id: "<<<" + term + ">>>"
+				text: term

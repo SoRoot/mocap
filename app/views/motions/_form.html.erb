@@ -11,9 +11,21 @@
 				<div>
 					<%= hidden_field_tag 'motion_record', params[:motion_record] %>
 				</div>
+				<div>
+					<%= f.text_field :mood, class: 'mocap-textbox', id: 'mood' %>
+				</div>
+				<div>
+					<%= f.text_field :role, class: 'mocap-textbox', id: 'role' %>
+				</div>
+				<div>
+					<%= f.text_field :attributes, class: 'mocap-textbox', id: 'attributes' %>
+				</div>
 			</div>
 
 			<div class="col-md-6">
+				<div>
+					<%= f.text_field :mood, class: 'mocap-textbox', id: 'mood' %>
+				</div>
 			</div>
 		</div>
 	</div>
