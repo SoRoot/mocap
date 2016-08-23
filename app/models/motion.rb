@@ -30,19 +30,29 @@ class Motion
     end
 
     unless search_description.blank?
-      found = found.where(:description.include(search_description))
+      search_description.each do |desc|
+        unless desc.blank?
+          found = found.where(:param => desc)
+        end
+      end
     end
 
     unless search_gender.blank?
-      found.each do |x|
-        n = x.actor
-        a = actors.where(:name => n).first
-        unless a.blank?
-          if a.gender != search_gender
-            found = found.not_in(:name => n)
+      unless found.blank?
+        found.each do |x|
+          n = x.actor
+          a = actors.where(:name => n).first
+          unless a.blank?
+            if a.gender != search_gender
+              found = found.not_in(:name => n)
+            end
           end
         end
       end
+    end
+
+    unless !found.blank?
+      found = Motion.all
     end
 
     return found
