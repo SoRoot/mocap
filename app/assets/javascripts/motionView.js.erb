@@ -72,7 +72,7 @@ function animate(){
 
 function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
 	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
-	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_file){
+	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_path){
   	
   	var fieldNameElement = document.getElementById("details");
 	fieldNameElement.innerHTML =
@@ -106,6 +106,6 @@ function showMotion(role, mood, param, name, weight, gender, body_height, should
 
 	scene.remove( skeletonHelper );
 	clock = new THREE.Clock();
-	loadBVH('<%= asset_path 'anpirschen.bvh' %>');
+	loadBVH('uploads/'+bvh_path);
 
 }
