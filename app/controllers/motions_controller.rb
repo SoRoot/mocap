@@ -30,6 +30,7 @@ class MotionsController < ApplicationController
 	# POST /motions.json
 	def create
 		params[:motion][:motion_record] = params[:motion_record]
+		params[:motion][:param] = params[:param]
 		@motion = Motion.new(motion_params)
 
 		puts params[:more]
@@ -80,6 +81,6 @@ class MotionsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def motion_params
-		params.require(:motion).permit(:motion_record, :role, :mood, :attribute_1, :attribute_2, :attribute_3, :attribute_4, :attribute_5)
+		params.require(:motion).permit(:motion_record, :role, :mood, :param, :start, :end)
 	end
 end
