@@ -41,9 +41,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate_mongoid'
 
-# To make Wizards restful
-gem 'wicked'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
