@@ -8,21 +8,21 @@
 					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender' %>
 					<%= select_tag :search_role, options_from_collection_for_select(Motion.all.uniq{ |x| x.role }, :role, :role, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role' %>
 					<%= select_tag :search_mood, options_from_collection_for_select(Motion.all.uniq{ |x| x.mood }, :mood, :mood, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood' %>
-					<%= select_tag :search_desctiption, options_for_select(@ary), multiple: true, include_blank: true, class: 'js-example-placeholder-single description' %>
+					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description' %>
 					
 			    	<%= submit_tag "Search", :name => nil %>
 			<% end %>
 		</div>
-
-		<h3><small> found motions: xxx</small></h3>
+		<% if @found.size == 0 %>
+			<h3><small>There are no motions found fitting your search!</small></h3>
+		<% end %>
+		<% if @found.size != Motion.all.size && @found.size != 0%>
+			<h3><small> found motions: <%= @found.size %></small></h3>
+		<% end %>
 	
 	</div>
 	<div class="col-sm-12 content-box">
 		<div class="col-sm-7 motions-container">
-			<% if @found.blank? %>
-				<h4>There are no motions found fitting your search.</h4>
-			<% end %>
-
 			<!-- content search result -->
 			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
@@ -30,12 +30,17 @@
 						<div class="motion-font">
 							role: <%= f.role %><br/>
 							mood: <%= f.mood %><br/>
-							description:
-							
+							description:<br/>
 
 							<%
-							   a = @actors.where(:name => f.actor).first
+
+								rec = @mr.where(:_id => f.motion_record.to_s).first
+								a = @actors.where(:_id => rec.actor.to_s).first
 							 %>
+							 <%= f.motion_record.to_s %><br/>
+							 <%= rec._id %>
+
+
 							<div>
 								<button onclick="showMotion('<%= f.role %>',
 															'<%= f.mood %>',
@@ -55,8 +60,7 @@
 															'<%= a.elbow_wrist_length %>',
 															'<%= a.chest_girth %>',
 															'<%= a.waist_girth %>',
-															'<%= a.thigh_girth %>'
-															
+															'<%= a.thigh_girth %>'						
 								)" class="btn btn-default btn-sm">show Motion</button>
 							</div>
 						</div>
