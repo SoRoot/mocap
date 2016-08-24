@@ -6,14 +6,22 @@
 		<div class="row backend-row">
 			<div class="col-md-6">
 				<div>
-					<%= f.collection_select :mood, Actor.all.uniq{ |x| x.name }, :_id, :name, { :include_blank => true}, class: 'js-example-placeholder-single mood' %>
+					<%= hidden_field_tag 'motion_record', params[:motion_record] %>
 				</div>
 				<div>
-					<%= hidden_field_tag 'motion_record', params[:motion_record] %>
+					<%= f.text_field :mood, :placeholder => "Mood", class: 'mocap-textbox'%>
+				</div>
+				<div>
+					<%= f.text_field :role, :placeholder => "Role", class: 'mocap-textbox'%>
+				</div>
+				<div>
+					<%= f.text_field :param, :placeholder => "Attributes", class: 'mocap-textbox' %>
 				</div>
 			</div>
 
 			<div class="col-md-6">
+				<div>
+				</div>
 			</div>
 		</div>
 	</div>

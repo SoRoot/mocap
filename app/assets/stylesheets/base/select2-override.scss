@@ -1,4 +1,5 @@
 /*********************************
+
 Ajusted for Mocap.web
 Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overide.css
 *********************************/
@@ -103,7 +104,7 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 }
 
 .select2-search {
-	margin-top: 3px;
+	margin-top: 0px;
 }
 
 .select2-search input {
@@ -197,11 +198,24 @@ input {
 	background: $color01;
 }
 
+.select2-container--default .select2-selection--multiple {
+	background: $color02;
+	border: 1px solid $color01;
+	border-radius: 0px;
+	height: 42px;
+}
+
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove .select2-:hover {
-	color: #16a085;
+	color: $color01;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
+	color: $color03;
+	line-height: 42px;
+	padding-left: 10px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
 	color: $color03;
 	line-height: 42px;
 	padding-left: 10px;

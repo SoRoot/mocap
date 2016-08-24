@@ -6,7 +6,7 @@
 //= require bootstrap-sprockets
 //= require jquery.easing
 //= require grayscale
-//= require select2
+//= require select2-full
 //= require three
 //= require three.min
 //= require init
