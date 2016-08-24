@@ -10,7 +10,7 @@ var mixer, skeletonHelper;
 
 init();
 animate();
-loadBVH('<%= asset_path 'forehand.bvh' %>');
+loadBVH("uploads/anpirschen.bvh");
 
 function init() {
 	
@@ -72,7 +72,7 @@ function animate(){
 
 function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
 	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
-	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth){
+	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_file){
   	
   	var fieldNameElement = document.getElementById("details");
 	fieldNameElement.innerHTML =

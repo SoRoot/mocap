@@ -31,10 +31,12 @@
 							role: <%= f.role %><br/>
 							mood: <%= f.mood %><br/>
 							description:
-							
+							<%= f.motion_record.object_id %>
 
 							<%
-							   a = @actors.where(:name => f.actor).first
+
+								rec = @mr.where(:_id => f.motion_record.to_s).first
+								a = @actors.where(:_id => rec.actor.to_s).first
 							 %>
 							<div>
 								<button onclick="showMotion('<%= f.role %>',
@@ -55,8 +57,7 @@
 															'<%= a.elbow_wrist_length %>',
 															'<%= a.chest_girth %>',
 															'<%= a.waist_girth %>',
-															'<%= a.thigh_girth %>'
-															
+															'<%= a.thigh_girth %>'						
 								)" class="btn btn-default btn-sm">show Motion</button>
 							</div>
 						</div>
