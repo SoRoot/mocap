@@ -30,5 +30,12 @@ $(document).on 'page:change', =>
 		multiple: true
 		tokenSeparators: [',', ' ']
 		maximumSelectionLength: 5
+	$(".btn-user").css
+			'background-color': '#333333'
+	$(document).ready =>
+  		$(".btn-user").mouseover ->
+    		$(this).css("background-color": "#45B69A")
+    	$(".btn-user").mouseout -> 
+    		$(this).css("background-color": "#333333")
 
 	
