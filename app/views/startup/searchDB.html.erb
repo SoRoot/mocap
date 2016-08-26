@@ -16,7 +16,7 @@
 		<% if @found.size == 0 %>
 			<h3><small>There are no motions found fitting your search!</small></h3>
 		<% end %>
-		<% if @found.size != Motion.all.size && @found.size != 0%>
+		<% if @found.size != 0%>
 			<h3><small> found motions: <%= @found.size %></small></h3>
 		<% end %>
 	
@@ -61,7 +61,9 @@
 															'<%= a.chest_girth %>',
 															'<%= a.waist_girth %>',
 															'<%= a.thigh_girth %>',
-															'<%= rec.bvh_path %>'						
+															'<%= rec.bvh_path %>',
+															'<%= f.start %>',
+															'<%= f.end %>'						
 								)" class="btn btn-default btn-sm">show Motion</button>
 							</div>
 						</div>

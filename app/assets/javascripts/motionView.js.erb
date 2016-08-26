@@ -8,9 +8,11 @@ var clock = new THREE.Clock();
 var camera, scene, renderer;
 var mixer, skeletonHelper;
 
+var animView;
+
 init();
 animate();
-loadBVH("uploads/anpirschen.bvh");
+loadBVH("uploads/anpirschen.bvh", 0, 0);
 
 function init() {
 	
@@ -37,7 +39,9 @@ function init() {
 
 }
 
-function loadBVH (pathBVH) {
+function loadBVH (pathBVH, start, end) {
+
+	//sceneTrim.remove( skeletonHelperTrim );
 	var loader = new THREE.BVHLoader();
 	loader.load(pathBVH, function( result ) {
 
@@ -52,9 +56,49 @@ function loadBVH (pathBVH) {
 
 
 		mixer = new THREE.AnimationMixer( skeletonHelper );
-		mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+
+
+		if (end != 0) {
+			animView = trimAnimationClip(result.clip, 1, 2);
+		
+			mixer.clipAction( animView ).setEffectiveWeight( 1.0 ).play();
+		}
+		else{
+			mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+		}
+
 
 	});
+}
+/**
+ * Trimt einen THREE.AnimationClip auf den Zeitraum zwischen start und end.
+ * returns: THREE.AnimationClip
+ * @param clip
+ * @param start
+ * @param end
+ * @returns {THREE.AnimationClip}
+ */
+function trimAnimationClip(clip, start, end){
+
+	var duration = clip.duration;
+	var tracks = [];
+
+	if (end > clip.duration)
+		end = clip.duration;
+
+	var newDuration = end - start;
+
+	for (var i = 0; i < clip.tracks.length; i++){
+		clip.tracks[i].trim(start, end);
+
+		for (var j = 0; j < clip.tracks[i].times.length; j++){
+			clip.tracks[i].times[j] = clip.tracks[i].times[j] - start;
+		}
+
+		tracks[i] = clip.tracks[i];
+	}
+	var out = new THREE.AnimationClip(clip.name, newDuration, tracks)
+	return out;
 }
 
 function animate(){
@@ -72,7 +116,7 @@ function animate(){
 
 function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
 	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
-	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_path){
+	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_path, c_start, c_end){
   	
   	var fieldNameElement = document.getElementById("details");
 	fieldNameElement.innerHTML =
@@ -106,6 +150,6 @@ function showMotion(role, mood, param, name, weight, gender, body_height, should
 
 	scene.remove( skeletonHelper );
 	clock = new THREE.Clock();
-	loadBVH('uploads/'+bvh_path);
+	loadBVH('uploads/'+bvh_path, c_start, c_end);
 
 }

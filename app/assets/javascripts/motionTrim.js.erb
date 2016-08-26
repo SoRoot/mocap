@@ -7,7 +7,7 @@ var $webGLContent;
 var clock = new THREE.Clock();
 
 var cameraTrim, sceneTrim, rendererTrim;
-var mixer, skeletonHelper;
+var mixer, skeletonHelperTrim;
 var bvhPath = 1;
 var animationID;
 var anim;
@@ -85,28 +85,28 @@ function initSlider(min, max) {
  * @param end
  */
 function loadBVHAndTrim (path, start, end) {
-	sceneTrim.remove( skeletonHelper);
+	sceneTrim.remove( skeletonHelperTrim);
 	var loader = new THREE.BVHLoader();
 	loader.load(path , function( result ) {
 
-		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
-		skeletonHelper.skeleton = result.skeleton;
+		skeletonHelperTrim = new THREE.SkeletonHelperTrim( result.skeleton.bones[ 0 ] );
+		skeletonHelperTrim.skeleton = result.skeleton;
 
-		var boneContainer = new THREE.Group();
-		boneContainer.add( result.skeleton.bones[ 0 ] );
+		var boneContainerTrim = new THREE.Group();
+		boneContainerTrim.add( result.skeleton.bones[ 0 ] );
 
 		anim = trimAnimationClip(result.clip, start, end);
 		//anim = result.clip;
 
-		sceneTrim.add( skeletonHelper );
-		sceneTrim.add( boneContainer );
+		sceneTrim.add( skeletonHelperTrim );
+		sceneTrim.add( boneContainerTrim );
 
-		mixer = new THREE.AnimationMixer( skeletonHelper );
+		mixer = new THREE.AnimationMixer( skeletonHelperTrim );
 
 		mixer.clipAction( anim ).setEffectiveWeight( 1.0 ).play();
 		//initSlider (start, end);
 
-		//loadCharacter(characterPath, anim, skeletonHelper);
+		//loadCharacter(characterPath, anim, skeletonHelperTrim);
 
 	});
 }
@@ -120,25 +120,25 @@ function loadBVHTrim (path) {
 	var loader = new THREE.BVHLoader();
 	loader.load(path , function( result ) {
 
-		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
-		skeletonHelper.skeleton = result.skeleton;
+		skeletonHelperTrim = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+		skeletonHelperTrim.skeleton = result.skeleton;
 
-		var boneContainer = new THREE.Group();
-		boneContainer.add( result.skeleton.bones[ 0 ] );
+		var boneContainerTrim = new THREE.Group();
+		boneContainerTrim.add( result.skeleton.bones[ 0 ] );
 
 		//anim = trimAnimationClip(result.clip, 3, 7);
 		anim = result.clip;
 
-		sceneTrim.add( skeletonHelper );
-		sceneTrim.add( boneContainer );
+		sceneTrim.add( skeletonHelperTrim );
+		sceneTrim.add( boneContainerTrim );
 
-		mixer = new THREE.AnimationMixer( skeletonHelper );
+		mixer = new THREE.AnimationMixer( skeletonHelperTrim );
 
 		mixer.clipAction( anim ).setEffectiveWeight( 1.0 ).play();
 
 		initSlider(0, anim.duration);
 
-		//loadCharacter(characterPath, anim, skeletonHelper);
+		//loadCharacter(characterPath, anim, skeletonHelperTrim);
 
 	});
 }
