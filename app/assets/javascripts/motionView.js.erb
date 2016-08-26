@@ -1,155 +1,156 @@
-var box = document.getElementById('player');
-if(box){
-	var boxSize = box.clientWidth;
-}
-var $player;
-var clock = new THREE.Clock();
-
-var camera, scene, renderer;
-var mixer, skeletonHelper;
-
-var animView;
-
-init();
-animate();
-loadBVH("uploads/anpirschen.bvh", 0, 0);
-
-function init() {
-	
-	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.set( 0, 100, 400 );
-
-	scene = new THREE.Scene();
-
-	scene.add( new THREE.GridHelper( 200, 10 ) );
-	// renderer
-	renderer = new THREE.WebGLRenderer( { antialias: true } );
-	renderer.setClearColor( 0xeeeeee );
-	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( boxSize, boxSize );
-
-	controls = new THREE.OrbitControls( camera, renderer.domElement );
-	controls.minDistance = 300;
-	controls.maxDistance = 700;
-
-	
-
-	$player = $('#player');
-	$player.append(renderer.domElement);
-
-}
-
-function loadBVH (pathBVH, start, end) {
-
-	//sceneTrim.remove( skeletonHelperTrim );
-	var loader = new THREE.BVHLoader();
-	loader.load(pathBVH, function( result ) {
-
-		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
-		skeletonHelper.skeleton = result.skeleton;
-
-		var boneContainer = new THREE.Group();
-		boneContainer.add( result.skeleton.bones[ 0 ] );
-
-		scene.add( skeletonHelper );
-		scene.add( boneContainer );
-
-
-		mixer = new THREE.AnimationMixer( skeletonHelper );
-
-
-		if (end != 0) {
-			animView = trimAnimationClip(result.clip, 1, 2);
-		
-			mixer.clipAction( animView ).setEffectiveWeight( 1.0 ).play();
-		}
-		else{
-			mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
-		}
-
-
-	});
-}
-/**
- * Trimt einen THREE.AnimationClip auf den Zeitraum zwischen start und end.
- * returns: THREE.AnimationClip
- * @param clip
- * @param start
- * @param end
- * @returns {THREE.AnimationClip}
- */
-function trimAnimationClip(clip, start, end){
-
-	var duration = clip.duration;
-	var tracks = [];
-
-	if (end > clip.duration)
-		end = clip.duration;
-
-	var newDuration = end - start;
-
-	for (var i = 0; i < clip.tracks.length; i++){
-		clip.tracks[i].trim(start, end);
-
-		for (var j = 0; j < clip.tracks[i].times.length; j++){
-			clip.tracks[i].times[j] = clip.tracks[i].times[j] - start;
-		}
-
-		tracks[i] = clip.tracks[i];
+function startView(){
+	var box = document.getElementById('player');
+	if(box){
+		var boxSize = box.clientWidth;
 	}
-	var out = new THREE.AnimationClip(clip.name, newDuration, tracks)
-	return out;
-}
+	var $player;
+	var clock = new THREE.Clock();
 
-function animate(){
-	
-	requestAnimationFrame( animate );
+	var camera, scene, renderer;
+	var mixer, skeletonHelper;
 
-	var delta = clock.getDelta();
+	var animView;
 
-	if ( mixer ) mixer.update( delta );
-	if ( skeletonHelper ) skeletonHelper.update();
+	init();
+	animate();
+	loadBVH("uploads/anpirschen.bvh", 0, 0);
 
-	renderer.render( scene, camera );
-}
+	function init() {
+		
+		camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
+		camera.position.set( 0, 100, 400 );
+
+		scene = new THREE.Scene();
+
+		scene.add( new THREE.GridHelper( 200, 10 ) );
+		// renderer
+		renderer = new THREE.WebGLRenderer( { antialias: true } );
+		renderer.setClearColor( 0xeeeeee );
+		renderer.setPixelRatio( window.devicePixelRatio );
+		renderer.setSize( boxSize, boxSize );
+
+		controls = new THREE.OrbitControls( camera, renderer.domElement );
+		controls.minDistance = 300;
+		controls.maxDistance = 700;
+
+		
+
+		$player = $('#player');
+		$player.append(renderer.domElement);
+
+	}
+
+	function loadBVH (pathBVH, start, end) {
+
+		var loader = new THREE.BVHLoader();
+		loader.load(pathBVH, function( result ) {
+
+			skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
+			skeletonHelper.skeleton = result.skeleton;
+
+			var boneContainer = new THREE.Group();
+			boneContainer.add( result.skeleton.bones[ 0 ] );
+
+			scene.add( skeletonHelper );
+			scene.add( boneContainer );
 
 
-function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
-	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
-	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_path, c_start, c_end){
-  	
-  	var fieldNameElement = document.getElementById("details");
-	fieldNameElement.innerHTML =
-		'<h4 class="motion-font">' + 'Motion: '
-		+ '</h4>'
-		+ '<div class="motion-font">'
-		+ 'Role: ' + role + '<br/>'
-		+ 'Mood: ' +  mood + '<br/>'
-		+ 'Description: ' + param + '<br/>'
-		+ '</div>'
-		+ '<h4 class="motion-font">' + 'Actor: '
-		+ '</h4>'
-		+ '<div class="motion-font">'
-		+ 'name: ' +  name + '<br/>'
-		+ 'weight: ' +  weight + '<br/>'
-		+ 'gender: ' +  gender + '<br/>'
-		+ 'body height: ' +  body_height + '<br/>'
-		+ 'shoulder width: ' +  shoulder_width + '<br/>'
-		+ 'shoulder height: ' +  shoulder_height + '<br/>'
-		+ 'inner leg length: ' +  inner_leg_length + '<br/>'
-		+ 'tibia length: ' + tibia_length  + '<br/>'
-		+ 'body depth: ' + body_depth  + '<br/>'
-		+ 'hip width: ' +  hip_width + '<br/>'
-		+ 'seat height: ' + seat_height  + '<br/>'
-		+ 'shoulder elbow length: ' +  shoulder_elbow_length + '<br/>'
-		+ 'elbow wrist length: ' +  elbow_wrist_length + '<br/>'
-		+ 'chest girth: ' +  chest_girth + '<br/>'
-		+ 'waist girth: ' +  waist_girth + '<br/>'
-		+ 'thigh girth: ' + thigh_girth  + '<br/>'
-		+ '</div>';
+			mixer = new THREE.AnimationMixer( skeletonHelper );
 
-	scene.remove( skeletonHelper );
-	clock = new THREE.Clock();
-	loadBVH('uploads/'+bvh_path, c_start, c_end);
 
+			if (end != 0) {
+				animView = trimAnimationClip(result.clip, 1, 2);
+			
+				mixer.clipAction( animView ).setEffectiveWeight( 1.0 ).play();
+			}
+			else{
+				mixer.clipAction( result.clip ).setEffectiveWeight( 1.0 ).play();
+			}
+
+
+		});
+	}
+	/**
+	 * Trimt einen THREE.AnimationClip auf den Zeitraum zwischen start und end.
+	 * returns: THREE.AnimationClip
+	 * @param clip
+	 * @param start
+	 * @param end
+	 * @returns {THREE.AnimationClip}
+	 */
+	function trimAnimationClip(clip, start, end){
+
+		var duration = clip.duration;
+		var tracks = [];
+
+		if (end > clip.duration)
+			end = clip.duration;
+
+		var newDuration = end - start;
+
+		for (var i = 0; i < clip.tracks.length; i++){
+			clip.tracks[i].trim(start, end);
+
+			for (var j = 0; j < clip.tracks[i].times.length; j++){
+				clip.tracks[i].times[j] = clip.tracks[i].times[j] - start;
+			}
+
+			tracks[i] = clip.tracks[i];
+		}
+		var out = new THREE.AnimationClip(clip.name, newDuration, tracks)
+		return out;
+	}
+
+	function animate(){
+		
+		requestAnimationFrame( animate );
+
+		var delta = clock.getDelta();
+
+		if ( mixer ) mixer.update( delta );
+		if ( skeletonHelper ) skeletonHelper.update();
+
+		renderer.render( scene, camera );
+	}
+
+
+	function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
+		shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
+		shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_path, c_start, c_end){
+	  	
+	  	var fieldNameElement = document.getElementById("details");
+		fieldNameElement.innerHTML =
+			'<h4 class="motion-font">' + 'Motion: '
+			+ '</h4>'
+			+ '<div class="motion-font">'
+			+ 'Role: ' + role + '<br/>'
+			+ 'Mood: ' +  mood + '<br/>'
+			+ 'Description: ' + param + '<br/>'
+			+ '</div>'
+			+ '<h4 class="motion-font">' + 'Actor: '
+			+ '</h4>'
+			+ '<div class="motion-font">'
+			+ 'name: ' +  name + '<br/>'
+			+ 'weight: ' +  weight + '<br/>'
+			+ 'gender: ' +  gender + '<br/>'
+			+ 'body height: ' +  body_height + '<br/>'
+			+ 'shoulder width: ' +  shoulder_width + '<br/>'
+			+ 'shoulder height: ' +  shoulder_height + '<br/>'
+			+ 'inner leg length: ' +  inner_leg_length + '<br/>'
+			+ 'tibia length: ' + tibia_length  + '<br/>'
+			+ 'body depth: ' + body_depth  + '<br/>'
+			+ 'hip width: ' +  hip_width + '<br/>'
+			+ 'seat height: ' + seat_height  + '<br/>'
+			+ 'shoulder elbow length: ' +  shoulder_elbow_length + '<br/>'
+			+ 'elbow wrist length: ' +  elbow_wrist_length + '<br/>'
+			+ 'chest girth: ' +  chest_girth + '<br/>'
+			+ 'waist girth: ' +  waist_girth + '<br/>'
+			+ 'thigh girth: ' + thigh_girth  + '<br/>'
+			+ '</div>';
+
+		scene.remove( skeletonHelper );
+		clock = new THREE.Clock();
+		loadBVH('uploads/'+bvh_path, c_start, c_end);
+
+	}
 }

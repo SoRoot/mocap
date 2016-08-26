@@ -1,6 +1,11 @@
 <!-- Search Section -->
 <section id="searchbar" class="content-section">
 	<div class="container">
+	<script type="text/javascript">
+		window.onload = function () { 
+			startView( '../uploads/forehand.bvh' );
+    	}
+	</script>
 		<div class="search-section text-center" id="search-section">		
 			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
 
