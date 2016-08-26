@@ -4,11 +4,11 @@
 		<div class="search-section text-center" id="search-section">		
 			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
 
-					<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor' %>
-					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender' %>
-					<%= select_tag :search_role, options_from_collection_for_select(Motion.all.uniq{ |x| x.role }, :role, :role, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role' %>
-					<%= select_tag :search_mood, options_from_collection_for_select(Motion.all.uniq{ |x| x.mood }, :mood, :mood, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood' %>
-					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description' %>
+					<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor search-id' %>
+					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender search-id' %>
+					<%= select_tag :search_role, options_from_collection_for_select(Motion.all.uniq{ |x| x.role }, :role, :role, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role search-id' %>
+					<%= select_tag :search_mood, options_from_collection_for_select(Motion.all.uniq{ |x| x.mood }, :mood, :mood, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
+					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id' %>
 					
 			    	<%= submit_tag "Search", :name => nil %>
 			<% end %>
@@ -66,6 +66,11 @@
 															'<%= f.end %>'						
 								)" class="btn btn-default btn-sm">show Motion</button>
 							</div>
+							<% if logged_in? %>
+								<div class="user-section"><%= link_to 'Edit', edit_motion_path(f), class: "btn-default btn btn-sm btn-user"%>
+								<%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default btn-user"%>
+								</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -77,7 +82,7 @@
 				
 			</div>
 			<div class="motion-description" id="details">	
-					
+
 			</div>				
 		</div>
 		</div>

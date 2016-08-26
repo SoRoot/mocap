@@ -18,37 +18,24 @@ $(document).on 'page:change', =>
 		allowClear: true
 		placeholder: "Select descriptions"
 		minimumResultsForSearch: Infinity
-	$('#mood').select2
-		multiple: true
-		maximumSelectionSize: 5
-		tokenSeparators: [",", " "]
-		data: <%= Motion.all.uniq{ |x| x.mood }.map{ |x| x.mood }.to_json %>
-		createSearchChoice: (term, data) ->
-			alert 'data'
-			if $(data).filter(->
-				@text.localeCompare(term) is 0
-			).length is 0
-				id: term
-				text: term
-	$('#role').select2
+	$('.js-example-tags#mood').select2
+		tags: true
+		placeholder: "Add a mood"
+	$('.js-example-tags#role').select2
+		tags: true
 		placeholder: "Add a role"
-		multiple: true
-		maximumSelectionSize: 1
-		data: window.Motions
-		createSearchChoice: (term, data) ->
-			if $(data).filter(->
-				@text.localeCompare(term) is 0
-			).length is 0
-				id: term
-				text: term
-	$('#attributes').select2
+	$('.js-example-tags#attributes').select2
+		tags: true
 		placeholder: "Add up to 5 Attributes"
 		multiple: true
-		maximumSelectionSize: 5
-		data: window.Motions
-		createSearchChoice: (term, data) ->
-			if $(data).filter(->
-				@text.localeCompare(term) is 0
-			).length is 0
-				id: term
-				text: term
+		tokenSeparators: [',', ' ']
+		maximumSelectionLength: 5
+	$(".btn-user").css
+			'background-color': '#333333'
+	$(document).ready =>
+  		$(".btn-user").mouseover ->
+    		$(this).css("background-color": "#45B69A")
+    	$(".btn-user").mouseout -> 
+    		$(this).css("background-color": "#333333")
+
+	

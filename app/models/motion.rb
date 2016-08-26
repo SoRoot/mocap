@@ -7,7 +7,7 @@ class Motion
 	field :motion_record
   field :role
   field :mood
-  field :param, :type => Array
+	field :param
   field :downloaded
   field :start
   field :end

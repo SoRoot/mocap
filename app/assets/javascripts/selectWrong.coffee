@@ -22,3 +22,14 @@ changeColor = ->
 					$('.select2-container--default .select2-selection--single').hover \
 						(-> $(this).css 'background', '#42DCA3'), \
 						(-> $(this).css 'background', '#333333')
+				if $('select').hasClass('search-id')
+					$('.select2-container--default .select2-selection--single').css
+						'background': '#F2F2F2'
+						'border-color': '#42DCA3'
+					$('.select2-container--default .select2-selection--single').hover \
+						(-> $(this).css 'background', '#42DCA3'), \
+						(-> $(this).css 'background', '#F2F2F2')
+				$(document).ready =>
+					$('.select2-container--default .select2-results').css('color', '#3A3433');
+					$('.select2-container--default .select2-selection--multiple').css\
+						(-> $(this).css 'background', '#F2F2F2')
