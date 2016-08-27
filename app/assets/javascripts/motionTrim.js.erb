@@ -1,26 +1,61 @@
-function startTrim (path_trimbvh){
 var boxTrim = document.getElementById('webGLContent');
 	if(boxTrim){
 		var boxTrimSize = boxTrim.clientWidth;
 	}
 	var $webGLContent;
 
-var clock = new THREE.Clock();
+var clock;
 
 var camera, scene, renderer;
 var mixer, skeletonHelper;
-var bvhPath = path_trimbvh;
+var bvhPath;
 var animationID;
-var characterPath = "characters/model.json";
 var anim;
 var rangeSlider = $( "#slider-range" );
 var range = $( "#range" );
 
 
-init();
-loadBVH(bvhPath);
-animate();
+function startTrim (path_trimbvh){
+	clock = new THREE.Clock();
+	bvhPath = path_trimbvh
 
+	init();
+	loadBVH(bvhPath);
+	animate();
+}
+
+
+/**
+ * Erstellt eine THREE.Scene mit Kamera, dem Grid auf dem Boden, dem Renderer
+ * und den Controls (welche nur im renderer.domElement agieren) und hängt die
+ * Scene an das DOM-Element #webGLContainer
+ */
+function init() {
+
+	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
+	camera.position.set( 0, 200, 400 );
+
+	scene = new THREE.Scene();
+
+	scene.add( new THREE.GridHelper( 200, 10 ) );
+
+	// renderer
+	renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer.setClearColor( 0xeeeeee );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( boxTrimSize, boxTrimSize );
+
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	controls.minDistance = 300;
+	controls.maxDistance = 700;
+
+	
+		$webGLContent = $('#webGLContent');
+		$webGLContent.append(renderer.domElement);
+
+	window.addEventListener( 'resize', onWindowResize, false );
+
+}
 /**
  * Initalisiert den Slider auf die Werte zwischen min und max.
  * Feinere Schritte mit "step" möglich.
@@ -146,38 +181,6 @@ function trimAnimationClip(clip, start, end){
 }
 
 /**
- * Erstellt eine THREE.Scene mit Kamera, dem Grid auf dem Boden, dem Renderer
- * und den Controls (welche nur im renderer.domElement agieren) und hängt die
- * Scene an das DOM-Element #webGLContainer
- */
-function init() {
-
-	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.set( 0, 100, 400 );
-
-	scene = new THREE.Scene();
-
-	scene.add( new THREE.GridHelper( 200, 20 ) );
-
-	// renderer
-	renderer = new THREE.WebGLRenderer( { antialias: true } );
-	renderer.setClearColor( 0xeeeeee );
-	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( boxTrimSize, boxTrimSize );
-
-	controls = new THREE.OrbitControls( camera, renderer.domElement );
-	controls.minDistance = 300;
-	controls.maxDistance = 700;
-
-	
-		$webGLContent = $('#webGLContent');
-		$webGLContent.append(renderer.domElement);
-
-	window.addEventListener( 'resize', onWindowResize, false );
-
-}
-
-/**
  * requestAnimationFrame ruft jeden Frame erneut die "animate" Methode auf
  */
 function animate() {
@@ -203,41 +206,4 @@ function onWindowResize() {
 
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
-}
-
-/**
- * TODO wenn Character vorliegt
- * @param path
- * @param anim
- * @param skeleton
- */
-function loadCharacter (path, anim, skeleton) {
-	var loader = new THREE.ObjectLoader();
-	var animation;
-
-	loader.load( path, function( object ){
-		console.log("test");
-		object.scale.set(10,10,10);
-		object.animations.push(anim);
-		object.bones=skeleton.bones;
-		//object.animations[1].play(0);
-
-		//animate(object);
-		mixer = new THREE.AnimationMixer (object);
-		mixer.clipAction(anim).play();
-
-		scene.add(object);
-		//animation.play();
-	});
-}
-
-// function loadCharacter (path) {
-// 	var loader = new THREE.ObjectLoader();
-// 	var animation;
-//
-// 	loader.load( path, function( geometry, materials ){
-// 		var skinnedMesh = new THREE.SkinnedMesh (geometry, new THREE.MeshFaceMaterial( materials ));
-// 		scene.add(skinnedMesh)
-// 	})
-// }
 }

@@ -31,52 +31,50 @@
 			<!-- content search result -->
 			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
-					<div class="motion-content" id="preview">						
-						<div class="motion-font">
-							role: <%= f.role %><br/>
-							mood: <%= f.mood %><br/>
-							description:<br/>
+					<div class="motion-content motion-font" id="preview">	
+						role: <%= f.role %><br/>
+						mood: <%= f.mood %><br/>
+						description:<br/>
 
-							<%
+						<%
 
-								rec = @mr.where(:_id => f.motion_record.to_s).first
-								a = @actors.where(:_id => rec.actor.to_s).first
-							 %>
-							 <%= f.motion_record.to_s %><br/>
-							 <%= rec._id %>
+							rec = @mr.where(:_id => f.motion_record.to_s).first
+							a = @actors.where(:_id => rec.actor.to_s).first
+						 %>
+						 <%= f.motion_record.to_s %><br/>
+						 <%= rec._id %>
 
 
-							<div>
-								<button onclick="showMotion('<%= f.role %>',
-															'<%= f.mood %>',
-															'<%= f.param %>',
-															'<%= a.name %>',
-															'<%= a.weight %>',
-															'<%= a.gender %>',
-															'<%= a.body_height %>',
-															'<%= a.shoulder_width %>',
-															'<%= a.shoulder_height %>',
-															'<%= a.inner_leg_length %>',
-															'<%= a.tibia_length %>',
-															'<%= a.body_depth %>',
-															'<%= a.hip_width %>',
-															'<%= a.seat_height %>',
-															'<%= a.shoulder_elbow_length %>',
-															'<%= a.elbow_wrist_length %>',
-															'<%= a.chest_girth %>',
-															'<%= a.waist_girth %>',
-															'<%= a.thigh_girth %>',
-															'<%= rec.bvh_path %>',
-															'<%= f.start %>',
-															'<%= f.end %>'						
-								)" class="btn btn-default btn-sm">show Motion</button>
-							</div>
-							<% if logged_in? %>
-								<div class="user-section"><%= link_to 'Edit', edit_motion_path(f), class: "btn-default btn btn-sm btn-user"%>
-								<%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default btn-user"%>
-								</div>
-							<% end %>
+						<div>
+							<button onclick="showMotion('<%= f.role %>',
+														'<%= f.mood %>',
+														'<%= f.param %>',
+														'<%= a.name %>',
+														'<%= a.weight %>',
+														'<%= a.gender %>',
+														'<%= a.body_height %>',
+														'<%= a.shoulder_width %>',
+														'<%= a.shoulder_height %>',
+														'<%= a.inner_leg_length %>',
+														'<%= a.tibia_length %>',
+														'<%= a.body_depth %>',
+														'<%= a.hip_width %>',
+														'<%= a.seat_height %>',
+														'<%= a.shoulder_elbow_length %>',
+														'<%= a.elbow_wrist_length %>',
+														'<%= a.chest_girth %>',
+														'<%= a.waist_girth %>',
+														'<%= a.thigh_girth %>',
+														'<%= rec.bvh_path %>',
+														'<%= f.start %>',
+														'<%= f.end %>'						
+							)" class="btn btn-default btn-sm">show Motion</button>
 						</div>
+						<% if logged_in? %>
+							<div class="user-section"><%= link_to 'Edit', edit_motion_path(f), class: "btn-default btn btn-sm btn-user"%>
+							<%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default btn-user"%>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			<% end %>
