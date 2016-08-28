@@ -12,7 +12,7 @@ class StartupController < ApplicationController
   	@actors = Actor.all
   	@mr = MotionRecord.all
 
- 	@found = Motion.search(@actors, params[:search_actor], params[:search_gender], params[:search_role], params[:search_mood], params[:search_description]).paginate(:page => params[:page], :per_page => 12)
+ 	@found = Motion.search(params[:search_actor], params[:search_gender], params[:search_role], params[:search_mood], params[:search_description]).paginate(:page => params[:page], :per_page => 12)
 
   end
 end

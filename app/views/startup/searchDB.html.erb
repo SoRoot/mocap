@@ -1,14 +1,19 @@
 <!-- Search Section -->
 <section id="searchbar" class="content-section">
 	<div class="container">
+	<script type="text/javascript">
+		window.onload = function () { 
+			startView( '../uploads/forehand.bvh' );
+    	}
+	</script>
 		<div class="search-section text-center" id="search-section">		
 			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
 
-					<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor' %>
-					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender' %>
-					<%= select_tag :search_role, options_from_collection_for_select(Motion.all.uniq{ |x| x.role }, :role, :role, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role' %>
-					<%= select_tag :search_mood, options_from_collection_for_select(Motion.all.uniq{ |x| x.mood }, :mood, :mood, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood' %>
-					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description' %>
+					<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor search-id' %>
+					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender search-id' %>
+					<%= select_tag :search_role, options_from_collection_for_select(Motion.all.uniq{ |x| x.role }, :role, :role, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role search-id' %>
+					<%= select_tag :search_mood, options_from_collection_for_select(Motion.all.uniq{ |x| x.mood }, :mood, :mood, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
+					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id' %>
 					
 			    	<%= submit_tag "Search", :name => nil %>
 			<% end %>
@@ -16,7 +21,7 @@
 		<% if @found.size == 0 %>
 			<h3><small>There are no motions found fitting your search!</small></h3>
 		<% end %>
-		<% if @found.size != Motion.all.size && @found.size != 0%>
+		<% if @found.size != 0%>
 			<h3><small> found motions: <%= @found.size %></small></h3>
 		<% end %>
 	
@@ -26,44 +31,50 @@
 			<!-- content search result -->
 			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
-					<div class="motion-content" id="preview">						
-						<div class="motion-font">
-							role: <%= f.role %><br/>
-							mood: <%= f.mood %><br/>
-							description:<br/>
+					<div class="motion-content motion-font" id="preview">	
+						role: <%= f.role %><br/>
+						mood: <%= f.mood %><br/>
+						description:<br/>
 
-							<%
+						<%
 
-								rec = @mr.where(:_id => f.motion_record.to_s).first
-								a = @actors.where(:_id => rec.actor.to_s).first
-							 %>
-							 <%= f.motion_record.to_s %><br/>
-							 <%= rec._id %>
+							rec = @mr.where(:_id => f.motion_record.to_s).first
+							a = @actors.where(:_id => rec.actor.to_s).first
+						 %>
+						 <%= f.motion_record.to_s %><br/>
+						 <%= rec._id %>
 
 
-							<div>
-								<button onclick="showMotion('<%= f.role %>',
-															'<%= f.mood %>',
-															'<%= f.param %>',
-															'<%= a.name %>',
-															'<%= a.weight %>',
-															'<%= a.gender %>',
-															'<%= a.body_height %>',
-															'<%= a.shoulder_width %>',
-															'<%= a.shoulder_height %>',
-															'<%= a.inner_leg_length %>',
-															'<%= a.tibia_length %>',
-															'<%= a.body_depth %>',
-															'<%= a.hip_width %>',
-															'<%= a.seat_height %>',
-															'<%= a.shoulder_elbow_length %>',
-															'<%= a.elbow_wrist_length %>',
-															'<%= a.chest_girth %>',
-															'<%= a.waist_girth %>',
-															'<%= a.thigh_girth %>'						
-								)" class="btn btn-default btn-sm">show Motion</button>
-							</div>
+						<div>
+							<button onclick="showMotion('<%= f.role %>',
+														'<%= f.mood %>',
+														'<%= f.param %>',
+														'<%= a.name %>',
+														'<%= a.weight %>',
+														'<%= a.gender %>',
+														'<%= a.body_height %>',
+														'<%= a.shoulder_width %>',
+														'<%= a.shoulder_height %>',
+														'<%= a.inner_leg_length %>',
+														'<%= a.tibia_length %>',
+														'<%= a.body_depth %>',
+														'<%= a.hip_width %>',
+														'<%= a.seat_height %>',
+														'<%= a.shoulder_elbow_length %>',
+														'<%= a.elbow_wrist_length %>',
+														'<%= a.chest_girth %>',
+														'<%= a.waist_girth %>',
+														'<%= a.thigh_girth %>',
+														'<%= rec.bvh_path %>',
+														'<%= f.start %>',
+														'<%= f.end %>'						
+							)" class="btn btn-default btn-sm">show Motion</button>
 						</div>
+						<% if logged_in? %>
+							<div class="user-section"><%= link_to 'Edit', edit_motion_path(f), class: "btn-default btn btn-sm btn-user"%>
+							<%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default btn-user"%>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			<% end %>
@@ -74,7 +85,7 @@
 				
 			</div>
 			<div class="motion-description" id="details">	
-					
+
 			</div>				
 		</div>
 		</div>

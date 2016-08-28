@@ -73,7 +73,7 @@ select option{
 }
 .motion-content{
 	overflow: hidden;
-	position: absolute;
+	position: relative;
 	text-align: center;
 	background-color: lightgray;
 	background-image: '/assets/bild.jpg';
