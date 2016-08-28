@@ -9,13 +9,13 @@
 					<%= hidden_field_tag 'motion_record', params[:motion_record] %>
 				</div>
 				<div>
-					<%= f.collection_select :mood, Motion.all.uniq{ |x| x.mood}, :_id, :mood, { :include_blank => true}, class: 'js-example-tags', id: 'mood' %>
+					<%= collection_select :motion, :mood, Mood.all, :name, :name, { :include_blank => true}, class: 'js-example-tags', id: 'mood' %>
 				</div>
 				<div>
-					<%= f.collection_select :role, Motion.all.uniq{ |x| x.role}, :_id, :role, { :include_blank => true}, class: 'js-example-tags', id: 'role' %>
+					<%= collection_select :motion, :role, Role.all, :name, :name, { :include_blank => true}, class: 'js-example-tags', id: 'role' %>
 				</div>
 				<div>
-					<%= f.collection_select :param, Motion.all.uniq{ |x| x.param}, :_id, :param, { :include_blank => true}, class: 'js-example-tags', id: 'attributes' %>
+					<%= collection_select :motion, :tags, Tag.all, :name, :name, { :prompt => true }, { :multiple => true, class: 'js-example-tags', id: 'attributes' } %>
 				</div>
 				<p>
 				<label for="time">Selected time:</label>

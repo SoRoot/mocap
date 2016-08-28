@@ -2,17 +2,15 @@ class Motion
   include Mongoid::Document
 	validates :motion_record, presence: true
 
-  field :_id
   field :actor
 	field :motion_record
   field :role
   field :mood
-	field :param
+	field :tags
   field :downloaded
   field :start
   field :end
 	field :status
-
 
   def self.search(actors, search_actor, search_gender, search_role, search_mood, search_description)    #search the database for the corresponding motions
     found = Motion.all
