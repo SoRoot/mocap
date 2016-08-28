@@ -10,7 +10,7 @@ var mixer, skeletonHelper;
 
 init();
 animate();
-loadBVH("uploads/anpirschen.bvh");
+loadBVH(loadedMotion);
 
 function init() {
 	
@@ -39,7 +39,7 @@ function init() {
 
 function loadBVH (pathBVH) {
 	var loader = new THREE.BVHLoader();
-	loader.load(pathBVH, function( result ) {
+	loader.load("/uploads/"+pathBVH, function( result ) {
 
 		skeletonHelper = new THREE.SkeletonHelper( result.skeleton.bones[ 0 ] );
 		skeletonHelper.skeleton = result.skeleton;
@@ -106,6 +106,6 @@ function showMotion(role, mood, param, name, weight, gender, body_height, should
 
 	scene.remove( skeletonHelper );
 	clock = new THREE.Clock();
-	loadBVH('<%= asset_path 'anpirschen.bvh' %>');
+	loadBVH(loadedMotion);
 
 }

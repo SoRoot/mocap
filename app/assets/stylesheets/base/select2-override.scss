@@ -14,12 +14,12 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 /*Theme Color override*/
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
 	background: $color01 !important;
-	color: $color02;
+	color: $color05;
 }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
 	background: darken($color01, 20%);
-	color: $color02;
+	color: $color03;
 }
 
 .select2-container--default .select2-results {
@@ -206,7 +206,7 @@ input {
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove .select2-:hover {
-	color: $color01;
+	color: $color05;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -222,7 +222,7 @@ input {
 }
 
 .select2-container--default .select2-selection--single:hover .select2-selection__rendered {
-	color: $color02;
+	color: $color05;
 }
 
 .select2-container .select2-selection--single {
@@ -253,26 +253,25 @@ input {
 
 /*Tags Style*/
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-	background-color: #48c9b0;
-	color: #fff;
-	border: 1px solid #48c9b0;
+	background-color: $color01;
+	color: $color05;
+	border: 1px solid $color01;
 	border-radius: 0px;
 	padding: 3px 5px;
+	height: 30px;
+	line-height: 22px;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-	color: #16a085;
+	color:  lighten($color05, 40%);
 	margin-right: 6px;
-}
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
 	margin-left: 6px;
 	float: right;
 }
 
 /*tags Outer border*/
 .select2-container--default .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--multiple {
-	border: 1px solid #16a085;
+	border: 1px solid $color01;
 }
 
 /*Placeholder Text Color */
@@ -281,5 +280,5 @@ input {
 }
 
 .select2-container--default .select2-selection--single:hover .select2-selection__placeholder {
-	color: $color02;
+	color: $color05;
 }

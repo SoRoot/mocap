@@ -39,7 +39,6 @@ class MotionRecordsController < ApplicationController
 		params.require(:motion_record).permit(:actor, :c3d_path, :bvh_path, :uploader_id)
 	end
 
-	private
 	def upload
 		returnpaths = {}
 		if params[:motion_record][:c3d_path]

@@ -32,7 +32,6 @@ class MotionsController < ApplicationController
 		tags = []
 		params[:motion][:tags].each { |x| tags << Tag.find_or_create_by(name: x)._id.to_s unless x.blank? }
 		params[:motion][:tags] = tags
-		puts(tags)
 		@motion = Motion.new(motion_params)
 
 		if params[:more] == 'true'

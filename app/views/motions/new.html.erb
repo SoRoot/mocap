@@ -18,5 +18,9 @@
 <%= javascript_include_tag 'motionTrim.js', 'data-turbolinks-track' => true %>
 
 <script type="text/javascript" charset="utf-8">
-	var loadedMotion = '<%= params[:motion_record] %>';
+	var loadedMotion = '<%= id_to_path(params[:motion_record]) %>';
+	console.log(loadedMotion);
 </script>
+
+<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>
+
