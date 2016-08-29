@@ -17,19 +17,18 @@ color:$color01;
 		text-decoration: none;
 		color: $color01;
 		}
-	}	
-	
+	}		
 
 	.mocap-textbox{
-		color: $color02; //lightgrey
-		background-color: 29503D; //darkgrey
+		color: $color01; 
+		background-color: 29503D; 
 	}
 	.mocap-textbox-hov:hover {
-		color: $color02;
+		color: $color05;
 		background-color: $color01;
 	}
 	.mocap-textbox:focus {
-		color: $color02;
+		color: $color05;
 		background-color: $color02;
 	}
 
