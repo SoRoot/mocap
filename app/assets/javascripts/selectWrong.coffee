@@ -9,9 +9,9 @@ $(document).on 'page:change', =>
 
 changeColor = ->
 				if $('select').hasClass('dropdown-wrong')
-					$('.select2-container--default .select2-selection--single').css
-						'background': '#350e04'
-						'border-color': '#c90c11'
+					$('.select2-container--default .select2-selection--single').toggleClass('select2-error')
+						#'background': '#350e04'
+						#'border-color': '#c90c11'
 					$('.select2-container--default .select2-selection--single').hover \
 						(-> $(this).css 'background', '#c90c11'), \
 						(-> $(this).css 'background', '#350e04')

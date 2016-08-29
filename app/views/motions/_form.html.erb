@@ -9,13 +9,13 @@
 					<%= hidden_field_tag 'motion_record', params[:motion_record] %>
 				</div>
 				<div>
-					<%= collection_select :motion, :mood, Mood.all, :name, :name, { :include_blank => true}, class: 'js-example-tags', id: 'mood' %>
+					<%= collection_select :motion, :mood, Mood.all, :name, :name, { :include_blank => true}, class: 'js-example-tags' + (@motion.errors.include?(:mood) ? ' dropdown-wrong' : '' ), id: 'mood' %>
 				</div>
 				<div>
-					<%= collection_select :motion, :role, Role.all, :name, :name, { :include_blank => true}, class: 'js-example-tags', id: 'role' %>
+					<%= collection_select :motion, :role, Role.all, :name, :name, { :include_blank => true}, class: 'js-example-tags' + (@motion.errors.include?(:mood) ? ' dropdown-wrong' : '' ), id: 'role' %>
 				</div>
 				<div>
-					<%= collection_select :motion, :tags, Tag.all, :name, :name, { :prompt => true }, { :multiple => true, class: 'js-example-tags', id: 'attributes' } %>
+					<%= collection_select :motion, :tags, Tag.all, :name, :name, { :prompt => true }, { :multiple => true, class: 'js-example-tags' + (@motion.errors.include?(:mood) ? ' dropdown-wrong' : '' ), id: 'attributes' } %>
 				</div>
 				<p>
 				<label for="time">Selected time:</label>

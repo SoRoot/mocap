@@ -11,6 +11,17 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 	text-align: left;
 }
 
+/*with Error: hover and after focus */
+.select-container--default .select-selection--single .select2-error {
+	background: $color07;
+	border-color: $color06;
+}
+
+.select2-error-after-click {
+	background: transparent;
+	border-color: $color01;
+}
+
 /*Theme Color override*/
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
 	background: $color01 !important;
