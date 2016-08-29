@@ -19,7 +19,6 @@ function collapseNavbar() {
         $(".navbar-text-col-dark").removeClass("scrolled-font-col-logged-out");
     }
 }
-        /* $(".mein-test-link").removeClass("mein-css");*/
 
 $(window).scroll(collapseNavbar);
 $(document).ready(collapseNavbar);

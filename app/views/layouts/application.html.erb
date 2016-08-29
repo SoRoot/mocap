@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+
+<% def darken_font_color?
+
+if logged_in?
+	return true if params[:action] == 'index'
+	return false	
+else
+	return false if params[:controller] == 'sessions' and params[:aciton] == 'new'
+	return true
+end
+end
+%>
+
 <html>
 
 <head>
@@ -33,17 +46,6 @@
 				</a>
 			</div>
 
-<% def darken_font_color?
-
-if logged_in?
-	return true if params[:action] == 'index'
-	return false	
-else
-	return false if params[:controller] == 'sessions' and params[:aciton] == 'new'
-	return true
-end
-end
-%>
 
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
