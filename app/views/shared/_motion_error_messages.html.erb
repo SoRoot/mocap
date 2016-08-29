@@ -3,8 +3,6 @@
 		The form contains <%= pluralize(@motion.errors.count, "error") %>
 		<ul>
 			<% @motion.errors.full_messages.each do |msg| %>
-				<% p @motion.errors %>
-				<% puts('______________________________________') %>
 				<li><%= msg %></li>
 			<% end %>
 		</ul>
