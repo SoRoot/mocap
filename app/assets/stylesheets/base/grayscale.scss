@@ -1,3 +1,11 @@
+/* 
+ MOCAP.WEB - Werbprojekt und Interaktive Systeme
+ Supervisors: Prof. Gruenvogel, Lo Iacono
+ TH Koeln SS 2016
+ Author: Anja Bergmann
+
+
+*/
 body {
 	width: 100%;
 	height: 100%;
@@ -47,7 +55,27 @@ a {
 		text-decoration: none;
 		color: ($color01);
 	}
+
+
 }
+ 		
+		.scrolled-font-col-logged-in{
+			color: ($color03) !important;
+			&:hover {
+						color: $color01;
+						
+					}
+			
+		}
+
+			.scrolled-font-col-logged-out{
+			color: $color04 !important;
+			&:hover {
+						color: $color01;
+						
+					}
+			
+		}
 
 .light {
 	font-weight: 400;
@@ -63,7 +91,7 @@ a {
 	.navbar-toggle {
 		padding: 4px 6px;
 		font-size: 16px;
-		color: white;
+		color: ($color02);
 
 		&:focus,
 		&:active {
@@ -80,7 +108,7 @@ a {
 	}
 
 	a {
-		color: white;
+		color: ($color02);
 	}
 
 	.nav {
@@ -91,7 +119,7 @@ a {
 				transition: background .3s ease-in-out;
 
 				&:hover {
-					color: rgba(white, 0.8);
+					color: $color01 !important;
 					outline: none;
 					background-color: transparent;
 				}
@@ -110,7 +138,8 @@ a {
 					background-color: $color01;
 
 					&:hover {
-						color: white;
+						color: white !important;
+						
 					}
 				}
 			}
@@ -130,9 +159,62 @@ a {
 			padding: 0;
 			background: $color02;
 			border-bottom: 1px solid rgba(white, 0.3);
+
 		}
+
 	}
 }
+.navbar-custom-dark{
+}
+
+.navbar-custom-light{
+	a {
+		color: ($color04) !important;
+	}
+	.nav {
+		li {
+			a {
+				&:hover {
+					color: $color01 !important;
+				}
+
+				&:focus,
+				&:active {
+					background-color: $color01 !important;
+				}
+			}
+
+			&.active {
+				outline: $color04 !important;
+				a {
+					background-color: $color01;
+					&:hover {
+						color: white !important;
+						
+					}
+				}
+			}
+		}
+	}
+		
+	@media (min-width: 768px) {
+		padding: 20px 0;
+		border-bottom: none;
+		letter-spacing: 1px;
+		background: transparent;
+		-webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+		-moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+		transition: background .5s ease-in-out,padding .5s ease-in-out;
+
+			&.top-nav-collapse {
+			padding: 0;
+			background: $color02;
+			border-bottom: 1px solid rgba(white, 0.3);
+
+			}
+		}
+	}
+	
 
 .intro {
 	display: table;
@@ -302,7 +384,7 @@ a {
 
 .btn-default {
 	border: 1px solid $color01;
-	color: $color01;
+	color: $color04;
 	background-color: transparent;
 
 	&:hover,

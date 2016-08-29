@@ -8,10 +8,18 @@
 function collapseNavbar() {
     if ($(".navbar").offset().top > 50) {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
+        $(".navbar-text-col-light").addClass("scrolled-font-col-logged-in");
+        $(".navbar-text-col-dark").addClass("scrolled-font-col-logged-out");
+
+
+        
     } else {
         $(".navbar-fixed-top").removeClass("top-nav-collapse");
+        $(".navbar-text-col-light").removeClass("scrolled-font-col-logged-in");
+        $(".navbar-text-col-dark").removeClass("scrolled-font-col-logged-out");
     }
 }
+        /* $(".mein-test-link").removeClass("mein-css");*/
 
 $(window).scroll(collapseNavbar);
 $(document).ready(collapseNavbar);

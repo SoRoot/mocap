@@ -6,11 +6,36 @@ text-transform: uppercase;
 text-transform: capitalize;
 }
 
-.startup .back-col{
+.body-color-dark {
+
+	color: $color04;
+background-color: $color02 !important;
+a {
+color:$color01;
+	&:hover
+	&:focus {
+		text-decoration: none;
+		color: $color01;
+		}
+	}	
 	
+
+	.mocap-textbox{
+		color: $color02; //lightgrey
+		background-color: 29503D; //darkgrey
+	}
+	.mocap-textbox-hov:hover {
+		color: $color02;
+		background-color: $color01;
+	}
+	.mocap-textbox:focus {
+		color: $color02;
+		background-color: $color02;
+	}
+
 }
 
-.startup  {
+.body-color-light{
 color: $color02;
 background-color: $color03 !important;
 a {
@@ -21,9 +46,8 @@ color:$color01;
 		color: $color01;
 		}
 	}	
-}
+	
 
-.searchDB{
 	.mocap-textbox{
 		color: $color02; //lightgrey
 		background-color: 29503D; //darkgrey
@@ -37,9 +61,10 @@ color:$color01;
 		background-color: $color02;
 	}
 	
-
-	
 }
+
+
+
 .mocap-textbox {
 	color: $color03;
 	background-color: transparent;
