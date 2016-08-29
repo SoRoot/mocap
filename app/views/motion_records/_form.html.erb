@@ -3,7 +3,7 @@
 	<%= render 'shared/motion_record_error_messages' %>
 
 			<div>
-					<%= f.collection_select :actor, Actor.all.uniq{ |x| x.name }, :_id, :name, { :include_blank => true}, class: 'js-example-placeholder-single actor' %>
+					<%= f.collection_select :actor, Actor.all.uniq{ |x| x.name }, :name, :name, { :include_blank => true}, class: 'js-example-placeholder-single actor' %>
 			</div>
 
 			<div>

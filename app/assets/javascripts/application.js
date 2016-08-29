@@ -14,10 +14,11 @@
 //= require textboxAfter 
 //= require dropdown
 //= require selectWrong
+//= require slider
 //= require input
 //= require OrbitControls
 //= require BVHLoader
 //= require nouislider
-//= require motionView.js
 //= require motionTrim.js
+//= require motionView.js
 

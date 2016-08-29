@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+
+  resources :moods
+  resources :tags
+  resources :roles
 	root 'startup#index'
 
 	get 'searchDB' => "startup#searchDB" 
@@ -12,9 +16,6 @@ Rails.application.routes.draw do
 	post'/search', to: 'startup#search'
 	get 'motions' => 'motion_records#new'
 	get 'actors' => 'actors#new'
-	#get 'motions/upload' => 'motions#new_file'
-	#post 'motions/upload' => 'motions#upload'
-	#get 'motions/:fileid' => 'motions#new'
 
 
 	resources :users

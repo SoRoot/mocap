@@ -2,6 +2,8 @@
 
 	<%= render 'shared/motion_error_messages' %>
 
+	<% rec = MotionRecord.all.where(:_id => @motion.motion_record.to_s).first %>
+
 	<div class="backend-field">
 		<div class="row backend-row">
 			<div class="col-md-6">
@@ -9,18 +11,33 @@
 					<%= hidden_field_tag 'motion_record', params[:motion_record] %>
 				</div>
 				<div>
-					<%= f.text_field :mood, :placeholder => "Mood", class: 'mocap-textbox'%>
+					<%= collection_select :motion, :mood, Mood.all, :name, :name, { :include_blank => true}, class: 'js-example-tags', id: 'mood' %>
 				</div>
 				<div>
-					<%= f.text_field :role, :placeholder => "Role", class: 'mocap-textbox'%>
+					<%= collection_select :motion, :role, Role.all, :name, :name, { :include_blank => true}, class: 'js-example-tags', id: 'role' %>
 				</div>
 				<div>
-					<%= f.text_field :param, :placeholder => "Attributes", class: 'mocap-textbox' %>
+					<%= collection_select :motion, :tags, Tag.all, :name, :name, { :prompt => true }, { :multiple => true, class: 'js-example-tags', id: 'attributes' } %>
+				</div>
+				<p>
+				<label for="time">Selected time:</label>
+				<%= f.text_field :start, id: "start" %>
+				<%= f.text_field :end, id: "end" %>
+				</p>
+				<div id="slider">
 				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div>
+					<button onclick="cancelAnimationFrame(animationID)">cancelAnimationFrame</button>
+					<div id="slider-range"></div>
+					<p>
+					<label for="range">Range:</label>
+					<input type="text" id="range" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					</p>
+					<div id="webGLContent">
+					</div>
 				</div>
 			</div>
 		</div>
