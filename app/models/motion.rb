@@ -2,7 +2,6 @@ class Motion
   include Mongoid::Document
 	validates :motion_record, presence: true
 
-  field :_id
 	field :motion_record
   field :role
   field :mood
