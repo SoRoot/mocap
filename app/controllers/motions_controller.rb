@@ -3,9 +3,6 @@ class MotionsController < ApplicationController
 	before_action :require_user
 	before_action :set_motion, only: [:show, :edit, :update, :destroy]
 
-	attr_accessor :test
-	attr_reader :test
-
 	# GET /motions
 	# GET /motions.json
 	def index
@@ -30,10 +27,13 @@ class MotionsController < ApplicationController
 	# POST /motions.json
 	def create
 		params[:motion][:motion_record] = params[:motion_record]
-		params[:motion][:param] = params[:param]
+		params[:motion][:role] = Role.find_or_create_by(name: params[:motion][:role])._id.to_s
+		params[:motion][:mood] = Mood.find_or_create_by(name: params[:motion][:mood])._id.to_s
+		tags = []
+		params[:motion][:tags].each { |x| tags << Tag.find_or_create_by(name: x)._id.to_s unless x.blank? }
+		params[:motion][:tags] = tags
 		@motion = Motion.new(motion_params)
 
-		puts params[:more]
 		if params[:more] == 'true'
 			if @motion.save
 				redirect_to controller: 'motions', action: 'new', motion_record: params[:motion_record]
@@ -81,6 +81,8 @@ class MotionsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def motion_params
-		params.require(:motion).permit(:motion_record, :role, :mood, :param, :start, :end)
+		
+		p params
+		params.require(:motion).permit(:motion_record, :mood, :role, :start, :end, :tags => [])
 	end
 end

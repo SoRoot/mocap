@@ -6,11 +6,9 @@ class Motion
 	field :motion_record
   field :role
   field :mood
-	field :param
-  field :downloaded
+	field :tags
   field :start
   field :end
-	field :status
 
 
   def self.search(search_actor, search_gender, search_role, search_mood, search_description)    #search the database for the corresponding motions

@@ -42,12 +42,12 @@
 						<b>Role:</b> <%= f.role %><br/>
 						<b>Mood:</b> <%= f.mood %><br/>
 						<b>Description:</b><br/>
-						<%= f.param.join(', ') %><br/><br/>
+						<%= f.tags.join(', ') %><br/><br/>
 
 						<div>
 							<button onclick="showMotion('<%= f.role %>',
 														'<%= f.mood %>',
-														'<%= f.param.join(', ') %>',
+														'<%= f.tags.join(', ') %>',
 														'<%= a.name %>',
 														'<%= a.weight %>',
 														'<%= a.gender %>',

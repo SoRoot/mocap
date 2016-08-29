@@ -4,7 +4,6 @@ class StartupController < ApplicationController
 
   def searchDB
   	@params =  Motion.distinct(:param)
-    @role = Motion.distinct(:role)
   	@ary = Array.new(0)
   	@params.each do |x|
   	    @ary.push(x)

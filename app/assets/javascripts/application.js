@@ -19,6 +19,5 @@
 //= require OrbitControls
 //= require BVHLoader
 //= require nouislider
-//= require motionView.js
 //= require motionTrim.js
 
