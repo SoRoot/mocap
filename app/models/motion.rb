@@ -3,7 +3,6 @@ class Motion
 	validates :motion_record, presence: true
 
   field :_id
-  field :actor
 	field :motion_record
   field :role
   field :mood
@@ -34,7 +33,7 @@ class Motion
         found.each do |x|
             rec = MotionRecord.all.where(:_id => x.motion_record.to_s).first     #get the MotionRecord
             a = Actor.all.where(:_id => rec.actor.to_s).first                    #from the MotionRecord you are able to get the actor
-            unless a.blank?                                         # -> for some reason here it returns null, so it can't search the actors name.
+            unless a.blank?                                                   # -> for some reason here it returns null, so it can't search the actors name.
               unless (a.name == search_actor)                                 #if the name of the actor is not the gender searched for
                 found = found.not_in(:motion_record.to_s => rec._id)          #take out all motions that belong to that MotionRecord
               end

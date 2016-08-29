@@ -3,7 +3,7 @@
 	<div class="container">
 	<script type="text/javascript">
 		window.onload = function () { 
-			startView( '../uploads/forehand.bvh' );
+			startView();
     	}
 	</script>
 		<div class="search-section text-center" id="search-section">		
@@ -13,9 +13,9 @@
 					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender search-id' %>
 					<%= select_tag :search_role, options_from_collection_for_select(Motion.all.uniq{ |x| x.role }, :role, :role, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role search-id' %>
 					<%= select_tag :search_mood, options_from_collection_for_select(Motion.all.uniq{ |x| x.mood }, :mood, :mood, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
-					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id' %>
+					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id ' %>
 					
-			    	<%= submit_tag "Search", :name => nil %>
+			    	<%= submit_tag "Search", :name => nil, class: "btn btn-sm btn-default" %>
 			<% end %>
 		</div>
 		<% if @found.size == 0 %>
@@ -32,23 +32,22 @@
 			<% @found.each do |f|  %>
 				<div class="col-sm-3 motion-box" >
 					<div class="motion-content motion-font" id="preview">	
-						role: <%= f.role %><br/>
-						mood: <%= f.mood %><br/>
-						description:<br/>
-
 						<%
 
 							rec = @mr.where(:_id => f.motion_record.to_s).first
 							a = @actors.where(:_id => rec.actor.to_s).first
 						 %>
-						 <%= f.motion_record.to_s %><br/>
-						 <%= rec._id %>
 
+						<b>Actor:</b> <%= a.name %><br/>
+						<b>Role:</b> <%= f.role %><br/>
+						<b>Mood:</b> <%= f.mood %><br/>
+						<b>Description:</b><br/>
+						<%= f.param.join(', ') %><br/><br/>
 
 						<div>
 							<button onclick="showMotion('<%= f.role %>',
 														'<%= f.mood %>',
-														'<%= f.param %>',
+														'<%= f.param.join(', ') %>',
 														'<%= a.name %>',
 														'<%= a.weight %>',
 														'<%= a.gender %>',
