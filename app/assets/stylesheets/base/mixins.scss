@@ -1,68 +1,76 @@
 //  Mixins
 .gross {
-text-transform: uppercase;
+	text-transform: uppercase;
 }
+
 .capital {
-text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 .body-color-dark {
-
 	color: $color04;
-background-color: $color02 !important;
-a {
-color:$color01;
-	&:hover
-	&:focus {
-		text-decoration: none;
-		color: $color01;
-		}
-	}		
+	background-color: $color02 !important;
 
-	.mocap-textbox{
-		color: $color01; 
-		background-color: 29503D; 
+	a {
+		color: $color01;
+
+		&:hover
+		&:focus {
+			text-decoration: none;
+			color: $color01;
+		}
 	}
+
+	.mocap-textbox {
+		color: $color01;
+		background-color: 29503D;
+	}
+
 	.mocap-textbox-hov:hover {
 		color: $color05;
 		background-color: $color01;
 	}
+
 	.mocap-textbox:focus {
 		color: $color05;
 		background-color: $color02;
 	}
-
 }
 
-.body-color-light{
-color: $color02;
-background-color: $color03 !important;
-a {
-color:$color01;
-	&:hover
-	&:focus {
-		text-decoration: none;
-		color: $color01;
-		}
-	}	
-	
+.body-color-light {
+	color: $color02;
+	background-color: $color03 !important;
 
-	.mocap-textbox{
-		color: $color02; //lightgrey
-		background-color: 29503D; //darkgrey
+	a {
+		color: $color01;
+
+		&:hover
+		&:focus {
+			text-decoration: none;
+			color: $color01;
+		}
 	}
+
+	.mocap-textbox {
+		color: $color02;
+
+		//lightgrey
+		background-color: 29503D;
+
+		//darkgrey
+
+	}
+
 	.mocap-textbox-hov:hover {
 		color: $color02;
 		background-color: $color01;
 	}
+
 	.mocap-textbox:focus {
 		color: $color02;
 		background-color: $color02;
 	}
-	
 }
-
-
 
 .mocap-textbox {
 	color: $color03;
@@ -119,4 +127,3 @@ color:$color01;
 	color: transparent;
 	background-color: $color01;
 }
-
