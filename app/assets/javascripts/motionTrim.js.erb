@@ -53,7 +53,9 @@ function init() {
 		$webGLContent = $('#webGLContent');
 		$webGLContent.append(renderer.domElement);
 
-	window.addEventListener( 'resize', onWindowResize, false );
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
 
 }
 /**
@@ -193,17 +195,5 @@ function animate() {
 	if ( skeletonHelper ) skeletonHelper.update();
 
 	renderer.render( scene, camera );
-
-}
-
-/**
- * zuständig für die Anpassung des Canvas beim Resize
- */
-function onWindowResize() {
-
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix();
-
-	renderer.setSize( window.innerWidth, window.innerHeight );
 
 }

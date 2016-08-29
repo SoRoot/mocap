@@ -11,8 +11,8 @@
 
 					<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor search-id' %>
 					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender search-id' %>
-					<%= select_tag :search_role, options_from_collection_for_select(Motion.all.uniq{ |x| x.role }, :role, :role, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role search-id' %>
-					<%= select_tag :search_mood, options_from_collection_for_select(Motion.all.uniq{ |x| x.mood }, :mood, :mood, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
+					<%= select_tag :search_role, options_from_collection_for_select(Role.all, :_id, :name, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role search-id' %>
+					<%= select_tag :search_mood, options_from_collection_for_select(Mood.all, :_id, :name, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
 					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id ' %>
 					
 			    	<%= submit_tag "Search", :name => nil, class: "btn btn-sm btn-default" %>
@@ -33,21 +33,29 @@
 				<div class="col-sm-3 motion-box" >
 					<div class="motion-content motion-font" id="preview">	
 						<%
-
-							rec = @mr.where(:_id => f.motion_record.to_s).first
-							a = @actors.where(:name => rec.actor.to_s).first
+							rec = MotionRecord.all.where(:_id => f.motion_record.to_s).first
+							a = Actor.all.where(:name => rec.actor.to_s).first
 						 %>
 
 						<b>Actor:</b> <%= a.name %><br/>
-						<b>Role:</b> <%= f.role %><br/>
-						<b>Mood:</b> <%= f.mood %><br/>
+						<b>Role:</b> <%= Role.all.where(:_id => f.role).first.name %><br/>
+						<b>Mood:</b> <%= Mood.all.where(:_id => f.mood).first.name %><br/>
 						<b>Description:</b><br/>
-						<%= f.tags.join(', ') %><br/><br/>
+						<% 
+							descriptions = ''
+							f.tags.each do |t|
+								unless t.blank?
+									descriptions += Tag.all.where(:_id => t).first.name + ", "
+								end
+							end
+						%>
+						<%= descriptions %>
+						<br/><br/>
 
 						<div>
-							<button onclick="showMotion('<%= f.role %>',
-														'<%= f.mood %>',
-														'<%= f.tags.join(', ') %>',
+							<button onclick="showMotion('<%= Role.all.where(:_id => f.role).first.name %>',
+														'<%= Mood.all.where(:_id => f.mood).first.name %>',
+														'<%= descriptions %>',
 														'<%= a.name %>',
 														'<%= a.weight %>',
 														'<%= a.gender %>',
