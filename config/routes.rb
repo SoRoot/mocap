@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	post'/search', to: 'startup#search'
 	get 'motions' => 'motion_records#new'
 	get 'actors' => 'actors#new'
+	get 'motion_recrods' => 'motion_recrods#new'
 
 
 	resources :users
