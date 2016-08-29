@@ -35,14 +35,14 @@
 						<%
 
 							rec = @mr.where(:_id => f.motion_record.to_s).first
-							a = @actors.where(:_id => rec.actor.to_s).first
+							a = @actors.where(:name => rec.actor.to_s).first
 						 %>
 
 						<b>Actor:</b> <%= a.name %><br/>
 						<b>Role:</b> <%= f.role %><br/>
 						<b>Mood:</b> <%= f.mood %><br/>
 						<b>Description:</b><br/>
-						<%= f.tags.join(', ') %><br/><br/>
+						 <% f.tags.join(', ') %>u<br/><br/>
 
 						<div>
 							<button onclick="showMotion('<%= f.role %>',
