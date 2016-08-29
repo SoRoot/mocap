@@ -1,7 +1,7 @@
 
 var box = document.getElementById('player');
 if(box){
-	var boxSize = box.clientWidth-4;
+	var boxSize = box.clientWidth-8;
 }
 var $player;
 var clock;
@@ -120,7 +120,7 @@ function animate(){
 window.onresize = function(event) {
 	box = document.getElementById('player');
 	if(box){
-		var boxSize = box.clientWidth-4;
+		var boxSize = box.clientWidth-8;
 	}
 	renderer.setSize( boxSize, boxSize );
 	
@@ -142,22 +142,22 @@ function showMotion(role, mood, param, name, weight, gender, body_height, should
 		+ '<h4 class="motion-font">' + 'Actor: '
 		+ '</h4>'
 		+ '<div class="motion-font">'
-		+ 'name: ' +  name + '<br/>'
-		+ 'weight: ' +  weight + '<br/>'
-		+ 'gender: ' +  gender + '<br/>'
-		+ 'body height: ' +  body_height + '<br/>'
-		+ 'shoulder width: ' +  shoulder_width + '<br/>'
-		+ 'shoulder height: ' +  shoulder_height + '<br/>'
-		+ 'inner leg length: ' +  inner_leg_length + '<br/>'
-		+ 'tibia length: ' + tibia_length  + '<br/>'
-		+ 'body depth: ' + body_depth  + '<br/>'
-		+ 'hip width: ' +  hip_width + '<br/>'
-		+ 'seat height: ' + seat_height  + '<br/>'
-		+ 'shoulder elbow length: ' +  shoulder_elbow_length + '<br/>'
-		+ 'elbow wrist length: ' +  elbow_wrist_length + '<br/>'
-		+ 'chest girth: ' +  chest_girth + '<br/>'
-		+ 'waist girth: ' +  waist_girth + '<br/>'
-		+ 'thigh girth: ' + thigh_girth  + '<br/>'
+		+ 'Name: ' +  name + '<br/>'
+		+ 'Weight: ' +  weight + '<br/>'
+		+ 'Gender: ' +  gender + '<br/>'
+		+ 'Body height: ' +  body_height + '<br/>'
+		+ 'Shoulder width: ' +  shoulder_width + '<br/>'
+		+ 'Shoulder height: ' +  shoulder_height + '<br/>'
+		+ 'Inner leg length: ' +  inner_leg_length + '<br/>'
+		+ 'Tibia length: ' + tibia_length  + '<br/>'
+		+ 'Body depth: ' + body_depth  + '<br/>'
+		+ 'Hip width: ' +  hip_width + '<br/>'
+		+ 'Seat height: ' + seat_height  + '<br/>'
+		+ 'Shoulder elbow length: ' +  shoulder_elbow_length + '<br/>'
+		+ 'Elbow wrist length: ' +  elbow_wrist_length + '<br/>'
+		+ 'Chest girth: ' +  chest_girth + '<br/>'
+		+ 'Waist girth: ' +  waist_girth + '<br/>'
+		+ 'Thigh girth: ' + thigh_girth  + '<br/>'
 		+ '</div>';
 
 	scene.remove( skeletonHelper );
