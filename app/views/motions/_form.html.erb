@@ -3,12 +3,6 @@
 	<%= render 'shared/motion_error_messages' %>
 
 	<% rec = MotionRecord.all.where(:_id => @motion.motion_record.to_s).first %>
-	
-	<script type="text/javascript">
-		window.onload = function () { 
-			startTrim( '<%= asset_path 'forehand.bvh' %>');
-    	}
-	</script>
 
 	<div class="backend-field">
 		<div class="row backend-row">

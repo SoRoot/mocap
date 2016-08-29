@@ -1,7 +1,7 @@
 
 var box = document.getElementById('player');
 if(box){
-	var boxSize = box.clientWidth;
+	var boxSize = box.clientWidth-4;
 }
 var $player;
 var clock;
@@ -117,6 +117,14 @@ function animate(){
 	renderer.render( scene, camera );
 }
 
+window.onresize = function(event) {
+	box = document.getElementById('player');
+	if(box){
+		var boxSize = box.clientWidth-4;
+	}
+	renderer.setSize( boxSize, boxSize );
+	
+};
 
 function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
 	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
