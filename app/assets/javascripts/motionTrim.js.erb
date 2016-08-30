@@ -12,7 +12,8 @@ var bvhPath;
 var animationID;
 var anim;
 var rangeSlider = $( "#slider-range" );
-var range = $( "#range" );
+var start = $( "#start" );
+var end = $( "#end" );
 
 
 function startTrim (path_trimbvh){
@@ -72,7 +73,8 @@ function initSlider(min, max) {
 		step: 0.01,
 		values: [ min, max ],
 		slide: function( event, ui ) {
-			range.val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+			start.val( ui.values[ 0 ] + "s"),
+			end.val( ui.values[ 1 ] + "s");
 		},
 		change: function ( event, ui ) {
 			cancelAnimationFrame(animationID);
@@ -80,8 +82,8 @@ function initSlider(min, max) {
 			animate();
 		}
 	});
-	range.val(rangeSlider.slider( "values", 0 ) +
-		" - " + rangeSlider.slider( "values", 1 ) );
+	start.val(rangeSlider.slider( "values", 0 ));
+	end.val(rangeSlider.slider( "values", 1 ));
 }
 
 /**

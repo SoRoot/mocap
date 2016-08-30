@@ -36,6 +36,10 @@
 		text-align: left;
 }
 
+.hidden-field {
+	margin-top: 20px;
+}
+
 input::-webkit-input-placeholder {
 color: $color01 !important;
 }
@@ -51,3 +55,42 @@ color: $color01 !important;
 input:-ms-input-placeholder {  
 color: $color01 !important;  
 }
+
+.back-slider {
+	width: 300px;
+	padding: 10px;
+	margin: 10px;
+	margin-bottom: 20px;
+	display: inline-block;
+	border: 1px solid $color01;
+}
+
+.time-label {
+	font-weight: normal;
+	font-size: 14px;
+	display: inline;
+	width: auto;
+	height: auto;
+	color: $color01;
+	padding-bottom: 10px;
+}
+
+#start, #end {
+	border: 0;
+	width: 65px;
+	height: auto;
+	outline: none;
+	background-color: transparent;
+	color: $color03;
+	font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+}
+
+#start {
+	text-align: right;
+}
+
+#end {
+	text-align: left;
+}
+
