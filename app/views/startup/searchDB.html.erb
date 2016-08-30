@@ -48,8 +48,16 @@
 									descriptions += Tag.all.where(:_id => t).first.name + ", "
 								end
 							end
+
+
 							pathBVH = "/uploads/" + rec.bvh_path
-							pathC3D = "/uploads/" + rec.c3d_path
+							
+							unless rec.c3d_path.blank?
+								pathC3D = "/uploads/" + rec.c3d_path
+							end
+							unless rec.fbx_path.blank?
+								pathFBX = "/uploads/" + rec.fbx_path
+							end
 						%>
 						<%= descriptions %>
 						<br/><br/>
@@ -80,10 +88,24 @@
 							)" class="btn btn-default btn-sm">show Motion</button>
 						</div>
 						<% if logged_in? %>
-							<div class="user-section"><%= link_to 'Edit', edit_motion_path(f), class: "btn-default btn btn-sm btn-user"%>
-							<%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default btn-user"%>
-							<%= link_to "C3D File", pathBVH, :download => rec.bvh_path %>
+							<div class="user-section">
+							<%= link_to 'Edit', edit_motion_path(f), class: "btn-default btn btn-sm btn-user"%>
+							<%= link_to 'Delete', f, method: "delete", data: { confirm: 'Are you sure you want to delete this record?' }, class: "btn btn-sm btn-default btn-user"%>
 							</div>
+						<% end %><br/>
+
+						<button class="btn btn-default btn-sm">
+							<%= link_to "BVH", pathBVH, :download => rec.bvh_path %>
+						</button>
+						<% unless rec.c3d_path.blank? %>
+							<button class="btn btn-default btn-sm">
+								<%= link_to "C3D", pathBVH, :download => rec.c3d_path %>
+							</button>
+						<% end %>
+						<% unless rec.fbx_path.blank? %>
+							<button class="btn btn-default btn-sm">
+								<%= link_to "FBX", pathBVH, :download => rec.fbx_path %>
+							</button>
 						<% end %>
 					</div>
 				</div>

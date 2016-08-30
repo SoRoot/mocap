@@ -33,7 +33,7 @@ function startTrim (path_trimbvh){
 function init() {
 
 	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.set( 0, 200, 400 );
+	camera.position.set( 0, 200, 500 );
 
 	scene = new THREE.Scene();
 
@@ -185,7 +185,6 @@ function trimAnimationClip(clip, start, end){
 }
 
 function insertSliderValues(start, end){
-	alert(start);
 	var startElement = document.getElementById("start");
 	startElement.innerHTML = start;
 

@@ -84,11 +84,8 @@ select option{
 	height: 100%;
 	top: 0;
 	left: 0;
-	opacity: 0;
 }
-.motion-box:hover .motion-content{
-	opacity:0.9;
-}
+
 .motion{
 	width: 160px;
 	height: 210px;
