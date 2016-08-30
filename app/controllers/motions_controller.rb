@@ -69,7 +69,7 @@ class MotionsController < ApplicationController
 		@motion = Motion.find params[:id]
 		@motion.destroy
 		respond_to do |format|
-			format.html { redirect_to motions_url, notice: 'Motion was successfully destroyed.' }
+			format.html { redirect_to searchDB_path, notice: 'Motion was successfully destroyed.' }
 			format.json { head :no_content }
 		end
 	end
