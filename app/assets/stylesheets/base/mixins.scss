@@ -12,27 +12,31 @@
 	background-color: $color02 !important;
 
 	a {
-		color: $color01;
+		color: $color04;
 
 		&:hover
 		&:focus {
 			text-decoration: none;
-			color: $color01;
+			color: $color04;
 		}
 	}
 
 	.mocap-textbox {
-		color: $color01;
-		background-color: 29503D;
+		color: $color04;
+		background-color: transparent;
 	}
 
 	.mocap-textbox-hov:hover {
-		color: $color05;
+		color: $color04;
 		background-color: $color01;
 	}
 
 	.mocap-textbox:focus {
-		color: $color05;
+		border: 1px solid $color01;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color04;
+		-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color04;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color04;
+		color: $color04;
 		background-color: $color02;
 	}
 }
@@ -52,28 +56,31 @@
 	}
 
 	.mocap-textbox {
-		color: $color02;
+		color: $color05;
 
 		//lightgrey
-		background-color: 29503D;
+		background-color: transparent;
 
 		//darkgrey
 
 	}
 
 	.mocap-textbox-hov:hover {
-		color: $color02;
+		color: $color05;
 		background-color: $color01;
 	}
 
 	.mocap-textbox:focus {
-		color: $color02;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color05;
+		-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color05;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color05;
+		color: $color05;
 		background-color: $color02;
 	}
 }
 
 .mocap-textbox {
-	color: $color03;
+	color: $color04;
 	background-color: transparent;
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
@@ -98,12 +105,17 @@
 
 .mocap-textbox:focus {
 	border: 1px solid $color01;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
-	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 	outline: 0;
 	color: $color03;
 	background-color: transparent;
+}
+
+#mocap-btn {
+	color: $color01;
+}
+
+#mocap-btn:hover {
+	color: $color05;
 }
 
 #mocap-btn:focus {
@@ -111,6 +123,7 @@
 	-moz-box-shadow: none;
 	box-shadow: none;
 	background-color: $color01 !important;
+	color: $color05;
 }
 
 .mocap-textbox-click {
