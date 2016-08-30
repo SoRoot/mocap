@@ -29,6 +29,8 @@ en:
         #password_confirmation: 'Hallo'
         #password_digest: 'Password'
         #password: 'Password confirmation'
+      motion:
+        tags: 'Attributes'
   #errors:
     #messages:
       #blank: ""

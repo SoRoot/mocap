@@ -48,10 +48,7 @@ label {
 .inputfile:focus + label,
 .inputfile.has-focus + label,
 .inputfile + label:hover {
-	outline: none;
-	//-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
-	//-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
-	//box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
+	outline: none !important;
 	background-color: $color01;
 	color: $color02;
 }
@@ -61,3 +58,28 @@ label {
 	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color03;
 }
+
+.inputfile-wrong {
+	background-color: $color07 !important;
+	border: 1px solid $color06 !important;
+}
+
+.inputfile-wrong:hover, .inputfile-wrong:focus {
+	background-color: $color06 !important;
+	color: $color05 !important;
+	outline: none;
+}
+
+.inputfile-click {
+	background-color: transparent !important;
+	border: 1px solid $color01 !important;
+	color: $color01 !important
+}
+
+.inputfile-click:hover, .inputfile-click:focus {
+	background-color: $color01 !important;
+	color: $color05 !important;
+}
+
+
+

@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+
+<% def darken_font_color?
+
+if logged_in?
+	return true if params[:action] == 'index'
+	return false	
+else
+	return false if params[:controller] == 'sessions' and params[:aciton] == 'new'
+	return true
+end
+end
+%>
+
 <html>
 
 <head>
@@ -14,56 +27,60 @@
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 </head>
 
-<% if logged_in? %>
-	<body class= "<%= controller_name %> <%= action_name %> back-col" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<% if darken_font_color? %>
+	<body class= "body-color-light" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <% else %>
-	<body class= "<%= controller_name %> <%= action_name %>" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<body class= "body-color-dark" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <% end %>
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	<nav class="navbar navbar-custom navbar-fixed-top navbar-custom <%=darken_font_color? ? "navbar-custom-dark" : "navbar-custom-light" %>" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
 					<i class="fa fa-bars"></i>
 				</button>
 				<a class="navbar-brand page-scroll" href="#page-top">
-					<i class="fa fa-play-circle"></i>  <span class="light">Mocap</span> 
+					<i class="fa fa-play-circle navbar-text-col-dark"></i>  <span class="light navbar-text-col-dark">Mocap</span> 
 				</a>
 			</div>
+
+
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 				<ul class="nav navbar-nav">
 					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 
-					<li class="<%= 'active' if params[:action] == 'searchDB' %>"> <a href="/searchDB">searchDB</a> </li>
+					<li class="<%= 'active' if params[:action] == 'searchDB' %>"> <a class="<%= darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light"%>" href="/searchDB">searchDB</a> </li>
 
 					<% if logged_in? %>
 
 
-					<li class="<%= 'active' if (params[:controller] == 'motions' or params[:controller] == 'motion_records' ) %>"> <a href="/motions">motions</a> </li>
-					<li class="<%= 'active' if params[:controller] == 'actors' %>"> <a href="/actors">Actors</a> </li>
-					<li class="<%= 'active' if params[:controller] == 'users' %>"> <a href="/signup">signup</a> </li>
+
+					<li class="<%= 'active' if (params[:controller] == 'motions' or params[:controller] == 'motion_records' ) %>"> <a class="<%= darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light"%>" href="/motions">motions</a> </li>
+
+					<li class="<%= 'active' if params[:controller] == 'actors' %>"> <a class="<%= darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light"%>" href="/actors">Actors</a> </li>
+					<li class="<%= 'active' if params[:controller] == 'users' %>"> <a class="<%= darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light"%>" href="/signup">signup</a> </li>
 
 
 					<li>
-						<%= link_to "log out", logout_path, method: "delete" %>
+						<%= link_to "log out", logout_path, method: "delete", class: (darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light")%>
 					</li>
 
 					<% else %>
 
 
 					<li>
-						<a class="page-scroll" href="#about">about</a>
+						<a class="page-scroll <%= darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light"%>" href="#about">about</a>
 					</li>
 					<li>
-						<a class="page-scroll" href="#contact">contact</a>
+						<a class="page-scroll <%= darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light"%>" href="#contact">contact</a>
 					</li>
 
 
-					<li class="<%= 'active' if (params[:controller] == 'sessions'and params[:action] == 'new') %>"> <a href="/login">login</a> </li>
+					<li class="<%= 'active' if (params[:controller] == 'sessions'and params[:action] == 'new') %>"> <a class="<%= darken_font_color? ? "navbar-text-col-dark" : "navbar-text-col-light"%>" href="/login">login</a> </li>
 
 					<% end %>
 				</ul>

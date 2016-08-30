@@ -15,7 +15,7 @@
 					<%= select_tag :search_mood, options_from_collection_for_select(Mood.all, :_id, :name, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
 					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id ' %>
 					
-			    	<%= submit_tag "Search", :name => nil, class: "btn btn-sm btn-default" %>
+			    	<%= submit_tag "Search", :name => nil, class: " btn btn-sm btn-default" %>
 			<% end %>
 		</div>
 		<% if @found.size == 0 %>
@@ -102,7 +102,6 @@
 </section>
 
 	<%= javascript_include_tag 'page-scroll-annimation', 'data-turbolinks-track' => true %>
-
 	<%= javascript_include_tag 'OrbitControls', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'BVHLoader.js', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'motionView.js', 'data-turbolinks-track' => true %>

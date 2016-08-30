@@ -24,7 +24,7 @@ class MotionRecordsController < ApplicationController
 		if @motion_record.save
 			redirect_to controller: 'motions', action: 'new', motion_record: @motion_record
 		else
-			render :new
+			render "/motion_records/new"
 		end
 	end
 

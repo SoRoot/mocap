@@ -27,8 +27,8 @@ class MotionsController < ApplicationController
 	# POST /motions.json
 	def create
 		params[:motion][:motion_record] = params[:motion_record]
-		params[:motion][:role] = Role.find_or_create_by(name: params[:motion][:role])._id.to_s
-		params[:motion][:mood] = Mood.find_or_create_by(name: params[:motion][:mood])._id.to_s
+		params[:motion][:role] = Role.find_or_create_by(name: params[:motion][:role])._id.to_s unless params[:motion][:role].blank?
+		params[:motion][:mood] = Mood.find_or_create_by(name: params[:motion][:mood])._id.to_s unless params[:motion][:mood].blank?
 		tags = []
 		params[:motion][:tags].each { |x| tags << Tag.find_or_create_by(name: x)._id.to_s unless x.blank? }
 		params[:motion][:tags] = tags
