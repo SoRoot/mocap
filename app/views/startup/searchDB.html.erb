@@ -48,6 +48,8 @@
 									descriptions += Tag.all.where(:_id => t).first.name + ", "
 								end
 							end
+							pathBVH = "/uploads/" + rec.bvh_path
+							pathC3D = "/uploads/" + rec.c3d_path
 						%>
 						<%= descriptions %>
 						<br/><br/>
@@ -80,6 +82,7 @@
 						<% if logged_in? %>
 							<div class="user-section"><%= link_to 'Edit', edit_motion_path(f), class: "btn-default btn btn-sm btn-user"%>
 							<%= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default btn-user"%>
+							<%= link_to "C3D File", pathBVH, :download => rec.bvh_path %>
 							</div>
 						<% end %>
 					</div>
