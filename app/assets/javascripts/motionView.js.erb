@@ -11,6 +11,13 @@ var mixer, skeletonHelper;
 
 var animView;
 
+/**
+ * Is called to start the process
+ * calls init to initialise everything
+ * calls animate
+ * calls loadBVH a preset motion
+ */
+
 function startView(){
 	clock = new THREE.Clock();
 
@@ -44,6 +51,14 @@ function init() {
 
 }
 
+/**
+ * Methode beim erstmaligen laden einer BVH-Datei. Läd die bvh-Datei und
+ * stellt sie als Skelet dar und spielt sie von "Anfang" bis "Ende" ab.
+ * Initalisiert außerdem den Slider: angepasst an die komplette Länge des Clips
+ * @param pathBVH
+ * @param start
+ * @param end
+ */
 function loadBVH (pathBVH, start, end) {
 
 	var loader = new THREE.BVHLoader();
@@ -117,6 +132,10 @@ function animate(){
 	renderer.render( scene, camera );
 }
 
+
+/**
+ * changes size of the animation display on resize.
+ */
 window.onresize = function(event) {
 	box = document.getElementById('player');
 	if(box){
@@ -126,6 +145,11 @@ window.onresize = function(event) {
 	
 };
 
+/**
+ * gets all the detail Information of the Motion to be shown and inputs a text
+ * in the div with the id "details".
+ * calls the methode loadBVH on a new motion and deletes the old skeletton.
+ */
 function showMotion(role, mood, param, name, weight, gender, body_height, shoulder_width,
 	shoulder_height, inner_leg_length, tibia_length, body_depth, hip_width, seat_height,
 	shoulder_elbow_length, elbow_wrist_length, chest_girth, waist_girth, thigh_girth, bvh_path, c_start, c_end){
