@@ -13,7 +13,7 @@ class Motion
   def self.search(search_actor, search_gender, search_role, search_mood, search_description)    #search the database for the corresponding motions
     found = Motion.all
     unless search_gender.blank?
-      #found = found.where(:motion_record => MotionRecord.all.where(:actor => Actor.all.where(:gender => search_gender).first.name).first._id.to_s)
+      found = found.where(:motion_record => MotionRecord.all.where(:actor => Actor.all.where(:gender => search_gender).first.name).first._id.to_s)
 
 
       unless found.blank?
