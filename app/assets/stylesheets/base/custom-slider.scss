@@ -1,0 +1,65 @@
+/* jQuery UI Slider 1.8.21 */
+
+.slider-range.ui-corner-all,
+.slider-range .ui-corner-all {
+  border-radius: 0;
+}
+
+.slider-range.ui-slider {
+  border: 0;
+  background: darken($color01, 20%);
+  border-radius: 0px;
+	margin: 10px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.slider-range.ui-slider-horizontal {
+  height: 5px;
+}
+
+.slider-range.ui-slider-vertical {
+  height: 15em;
+  width: 5px;
+}
+
+.slider-range .ui-slider-handle {
+  width: 10px !important;
+  height: 25px !important;
+  background: $color01 !important;
+  border-radius: 0px !important;
+  border: none !important;
+  cursor: pointer;
+	outline: none !important
+}
+
+.slider-range.ui-slider-horizontal .ui-slider-handle {
+  top: 50%;
+  margin-top: -12.5px;
+}
+
+.slider-range.ui-slider-vertical .ui-slider-handle {
+  left: 50%;
+  margin-left: -5px;
+}
+
+.slider-range .ui-slider-handle:hover {
+  opacity: .8;
+}
+
+.slider-range .ui-slider-range {
+  border: 0;
+  border-radius: 0;
+  background: $color04;
+}
+
+.slider-range.ui-slider-horizontal .ui-slider-range {
+  top: 0;
+  height: 5px;
+}
+
+.slider-range.ui-slider-vertical .ui-slider-range {
+  left: 0;
+  width: 5px;
+}
+

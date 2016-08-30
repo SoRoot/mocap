@@ -5,7 +5,7 @@
 	<div class="backend-field">
 		<div class="row backend-row">
 			<div class="col-md-6">
-				<div>
+				<div class="hidden-field">
 					<%= hidden_field_tag 'motion_record', params[:motion_record] %>
 				</div>
 				<div>
@@ -17,26 +17,17 @@
 				<div>
 					<%= collection_select :motion, :tags, Tag.all, :name, :name, { :prompt => true }, { :multiple => true, class: 'js-example-tags' + (@motion.errors.include?(:mood) ? ' dropdown-wrong' : '' ), id: 'attributes' } %>
 				</div>
-				<p>
-				<label for="time">Selected time:</label>
-				<%= f.text_field :start, id: "start" %>
-				<%= f.text_field :end, id: "end" %>
-				</p>
-				<div id="slider">
+				<div class="back-slider">
+					<label for="motion" class="time-label">Selected time:</label>
+					<%= f.text_field :start, :readonly => true, id: "start" %>
+					<i> - </i>
+					<%= f.text_field :end, :readonly => true, id: "end" %>
+					<div class="slider-range" id="slider-range"></div>
 				</div>
 			</div>
 
 			<div class="col-md-6">
-				<div>
-					<button onclick="cancelAnimationFrame(animationID)">cancelAnimationFrame</button>
-					<div id="slider-range"></div>
-					<p>
-					<label for="range">Range:</label>
-					<input type="text" id="range" readonly style="border:0; color:#f6931f; font-weight:bold;">
-					</p>
-					<div id="webGLContent">
-					</div>
-				</div>
+				<div id="webGLContent"></div>
 			</div>
 		</div>
 	</div>
