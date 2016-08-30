@@ -17,7 +17,7 @@
 
 .body-color-dark {
 	color: $color04;
-	background-color: $color02 !important;
+	background-color: $color02;
 
 	a {
 		color: $color04;
@@ -39,6 +39,11 @@
 		background-color: $color01;
 	}
 
+	.textbox-wrong {
+		border: 1px solid $color06;
+		background-color: $color07;
+	}
+
 	.mocap-textbox:focus {
 		border: 1px solid $color01;
 		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $color04;
@@ -51,7 +56,7 @@
 
 .body-color-light {
 	color: $color02;
-	background-color: $color03 !important;
+	background-color: $color03;
 
 	a {
 		color: $color01;
@@ -71,6 +76,11 @@
 
 		//darkgrey
 
+	}
+
+	.textbox-wrong {
+		border: 1px solid $color06;
+		background-color: $color07;
 	}
 
 	.mocap-textbox-hov:hover {
@@ -137,11 +147,6 @@
 .mocap-textbox-click {
 	border: 1px solid $color01 !important;
 	background-color: transparent !important;
-}
-
-.textbox-wrong {
-	border: 1px solid $color06;
-	background-color: $color07;
 }
 
 .mocap-navbar-hov:hover {

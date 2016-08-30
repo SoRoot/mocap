@@ -6,10 +6,6 @@ $(document).on 'page:change', =>
 								$('#mood').parent().find('.select2-container--default .select2-selection--single').one 'focus', ->
 													$('#mood').removeClass 'dropdown-wrong'
 													changeColor('#mood')
-				if $('#attributes').hasClass('dropdown-wrong')
-							 $('#attributes').parent().find('.select2-container--default .select2-selection--multiple').one 'focus', ->
-													$('#attributes').removeClass 'dropdown-wrong'
-													changeColor('#attributes')
 				if $('#role').hasClass('dropdown-wrong')
 								$('#role').parent().find('.select2-container--default .select2-selection--single').one 'focus', ->
 													$('#role').removeClass 'dropdown-wrong'
@@ -22,10 +18,8 @@ $(document).on 'page:change', =>
 
 changeColor = (id) ->
 				if $(id).hasClass('dropdown-wrong')
-					$(id).parent().find('.select2-container--default .select2-selection--multiple').toggleClass('select2-error')
 					$(id).parent().find('.select2-container--default .select2-selection--single').toggleClass('select2-error')
 				else
-						$(id).parent().find('.select2-container--default .select2-selection--multiple').toggleClass('select2-error', false)
 						$(id).parent().find('.select2-container--default .select2-selection--single').toggleClass('select2-error', false)
 				#if $('select').hasClass('search-id')
 					#$('.select2-container--default .select2-selection--single').css

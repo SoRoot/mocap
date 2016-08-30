@@ -14,6 +14,7 @@
 //= require textboxAfter 
 //= require dropdown
 //= require selectWrong
+//= require selectWrongMultiple
 //= require input
 //= require OrbitControls
 //= require BVHLoader

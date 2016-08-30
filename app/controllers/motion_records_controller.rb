@@ -1,5 +1,6 @@
 class MotionRecordsController < ApplicationController
 	include SessionsHelper
+	before_action :require_user
 	before_action :set_motion_record, only: [:show, :edit, :update, :destroy]
 
 	def index

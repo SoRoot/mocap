@@ -42,7 +42,7 @@ class MotionsController < ApplicationController
 			end
 		else
 			if @motion.save
-				redirect_to '/', notice: 'Motion was successfully created.' 
+				redirect_to '/' 
 			else
 				render :new 
 			end
@@ -51,17 +51,17 @@ class MotionsController < ApplicationController
 
 	# PATCH/PUT /motions/1
 	# PATCH/PUT /motions/1.json
-	#def update
-		#respond_to do |format|
-			#if @motion.update(motion_params)
-				#format.html { redirect_to => '/motion', notice: 'Motion was successfully updated.' }
-				#format.json { render :show, status: :ok, location: @motion }
-			#else
-				#format.html { render :edit }
-				#format.json { render json: @motion.errors, status: :unprocessable_entity }
-			#end
-		#end
-	#end
+	def update
+		respond_to do |format|
+			if @motion.update(motion_params)
+				format.html { redirect_to :motion, notice: 'Motion was successfully updated.' }
+				format.json { render :show, status: :ok, location: @motion }
+			else
+				format.html { render :edit }
+				format.json { render json: @motion.errors, status: :unprocessable_entity }
+			end
+		end
+	end
 
 	# DELETE /motions/1
 	# DELETE /motions/1.json
