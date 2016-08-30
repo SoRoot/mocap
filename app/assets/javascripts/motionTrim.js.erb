@@ -15,7 +15,12 @@ var rangeSlider = $( "#slider-range" );
 var start = $( "#start" );
 var end = $( "#end" );
 
-
+/**
+ * Is called to start the process
+ * calls init to initialise everything
+ * calls animate
+ * calls loadBVH a preset motion
+ */
 function startTrim (path_trimbvh){
 	clock = new THREE.Clock();
 	bvhPath = "/uploads/"+path_trimbvh;
@@ -95,7 +100,6 @@ function initSlider(min, max) {
  * @param end
  */
 function loadBVHAndTrim (path, start, end) {
-	insertSliderValues(start, end)
 
 	scene.remove( skeletonHelper);
 	var loader = new THREE.BVHLoader();
@@ -184,15 +188,6 @@ function trimAnimationClip(clip, start, end){
 	}
 	var out = new THREE.AnimationClip(clip.name, newDuration, tracks)
 	return out;
-}
-
-function insertSliderValues(start, end){
-	var startElement = document.getElementById("start");
-	startElement.innerHTML = start;
-
-	var endElement = document.getElementById("end");
-	endElement.innerHTML = end;
-	
 }
 
 /**
