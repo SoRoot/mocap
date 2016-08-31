@@ -1,3 +1,10 @@
+#
+# MOCAP.WEB - Werbprojekt und Interaktive Systeme
+# Supervisors: Prof. Gruenvogel, Lo Iacono
+# TH Koeln SS 2016
+# Author: Lukas Ungerland, Marie-Luise Lux
+#
+
 class Motion
   include Mongoid::Document
 	validates :motion_record, :role, :mood, :tags, :start, :end, presence: true

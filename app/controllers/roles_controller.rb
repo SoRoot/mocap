@@ -1,3 +1,10 @@
+#
+# MOCAP.WEB - Werbprojekt und Interaktive Systeme
+# Supervisors: Prof. Gruenvogel, Lo Iacono
+# TH Koeln SS 2016
+# Author: Lukas Ungerland
+#
+
 class RolesController < ApplicationController
 	before_action :require_user
   before_action :set_role, only: [:show, :edit, :update, :destroy]
