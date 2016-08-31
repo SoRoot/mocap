@@ -16,16 +16,27 @@
 	</script>
 		<div class="search-section text-center" id="search-section">		
 			<!-- Search Form for the DB search -->
+		<% if logged_in? %>
 			<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
-
-					<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor search-id' %>
-					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender search-id' %>
-					<%= select_tag :search_role, options_from_collection_for_select(Role.all, :_id, :name, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role search-id' %>
-					<%= select_tag :search_mood, options_from_collection_for_select(Mood.all, :_id, :name, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
-					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id ' %>
+					<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor' %>
+					<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender' %>
+					<%= select_tag :search_role, options_from_collection_for_select(Role.all, :_id, :name, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role' %>
+					<%= select_tag :search_mood, options_from_collection_for_select(Mood.all, :_id, :name, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood' %>
+					<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description' %>
 					
 			    	<%= submit_tag "Search", :name => nil, class: " btn btn-sm btn-default" %>
 			<% end %>
+			<% else %>
+				<%= form_tag(searchDB_path, :method => "get", id: "search-form") do %>
+						<%= select_tag :search_actor, options_from_collection_for_select(Actor.all, :name, :name, params[:search_actor]), include_blank: true, class: 'js-example-placeholder-single actor search-id' %>
+						<%= select_tag :search_gender, options_from_collection_for_select(Actor.all.uniq{ |x| x.gender }, :gender, :gender, params[:search_gender]), include_blank: true, class: 'js-example-placeholder-single gender search-id' %>
+						<%= select_tag :search_role, options_from_collection_for_select(Role.all, :_id, :name, params[:search_role]), include_blank: true, class: 'js-example-placeholder-single role search-id' %>
+						<%= select_tag :search_mood, options_from_collection_for_select(Mood.all, :_id, :name, params[:search_mood]), include_blank: 	true, class: 'js-example-placeholder-single mood search-id' %>
+						<%= select_tag :search_description, options_for_select(@ary, params[:search_description]),  multiple: true, include_blank: true, class: 'js-example-placeholder-single description search-id' %>
+						
+				    	<%= submit_tag "Search", :name => nil, class: " btn btn-sm btn-default" %>
+				<% end %>
+		<% end %>
 		</div>
 		<% if @found.size == 0 %>	<!-- if no motions are found -->
 			<h3><small>There are no motions found fitting your search!</small></h3>
@@ -134,8 +145,9 @@
 		</div>
 		<div class="col-sm-5 view-container">
 			<div class="player-box" id ="player">
-				<!-- Motion preview is to be dispayed here -->
+				
 			</div>
+			If the player is not displayed please load the page again.
 			<div class="motion-description" id="details">	
 				<!-- Motion details to be displayed here -->
 			</div>				

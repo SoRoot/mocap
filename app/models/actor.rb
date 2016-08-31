@@ -1,8 +1,8 @@
 #
 # MOCAP.WEB - Werbprojekt und Interaktive Systeme
-# Supervisors: Prof. Gruenvogel, Lo Iacono
+# Supervisors: Prof. Dr. Gruenvogel, Prof. Dr. Lo Iacono
 # TH Koeln SS 2016
-# Author: Lukas Ungerland
+# Author: Lukas Ungerland, Marie-Luise Lux
 #
 
 class Actor

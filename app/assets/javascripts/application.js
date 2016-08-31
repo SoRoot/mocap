@@ -21,4 +21,5 @@
 //= require nouislider
 //= require motionTrim.js
 //= require motionView.js
+//= require searchBar
 

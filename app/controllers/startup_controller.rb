@@ -1,4 +1,11 @@
+#
+# MOCAP.WEB - Werbprojekt und Interaktive Systeme
+# Supervisors: Prof. Dr. Gruenvogel, Prof. Dr. Lo Iacono
+# TH Koeln SS 2016
+# Author: Marie-Luise Lux
+#
 class StartupController < ApplicationController
+
   def index
   end
 
