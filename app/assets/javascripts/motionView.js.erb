@@ -23,7 +23,7 @@ function startView(){
 
 	init();
 	animate();
-	loadBVH("/uploads/"+loadedMotion, 0, 0);
+	loadBVH('<%= asset_path('forehand.bvh') %>', 0, 0);
 }
 
 function init() {
