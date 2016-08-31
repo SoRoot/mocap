@@ -26,6 +26,7 @@ class MotionRecordsController < ApplicationController
 		filenames = upload
 		params[:motion_record][:c3d_path] = filenames[:c3d]
 		params[:motion_record][:bvh_path] = filenames[:bvh]
+		params[:motion_record][:fbx_path] = filenames[:fbx]
 		params[:motion_record][:uploader_id] = current_user._id.to_s
 		@motion_record = MotionRecord.new(motion_record_params)
 
@@ -67,6 +68,16 @@ class MotionRecordsController < ApplicationController
 			end
 			returnpaths[:bvh] = bvhfile
 		end
+		if params[:motion_record][:fbx_path]
+			bvhfile = SecureRandom.uuid + '.fbx'
+			uploaded_io = params[:motion_record][:fbx_path]
+
+			File.open(Rails.root.join('public', 'uploads', bvhfile), 'wb') do |file|
+				file.write(uploaded_io.read)
+			end
+			returnpaths[:fbx] = bvhfile
+		end
+		
 		return returnpaths
 	end
 end
