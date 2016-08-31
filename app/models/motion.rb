@@ -35,13 +35,15 @@ class Motion
       end
     end
 
+		tmp = []
     unless search_actor.blank?
-      unless MotionRecord.all.where(:actor => search_actor).blank?
-        found = found.where( motion_record: MotionRecord.all.where(:actor => search_actor).first._id.to_s )
-        #found = found.where( motion_record: MotionRecord.all.where(:actor => search_actor).first._id.to_s )
-      else
-        found = found.where(:_id => "")                                       #if actor doesn't have a motion return null
-      end
+			found.each do |x|
+				rec = MotionRecord.all.where(:_id => x.motion_record).first
+				if (rec.actor == search_actor)
+					tmp << x
+				end
+			end
+			found = tmp
     end
 
     unless search_role.blank?
