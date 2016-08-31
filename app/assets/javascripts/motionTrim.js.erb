@@ -1,4 +1,4 @@
-var boxTrim = document.getElementById('webGLContent');
+	var boxTrim = document.getElementById('webGLContent');
 	if(boxTrim){
 		var boxTrimSize = boxTrim.clientWidth;
 	}
@@ -23,7 +23,7 @@ var end = $( "#end" );
  */
 function startTrim (path_trimbvh){
 	clock = new THREE.Clock();
-	bvhPath = "/uploads/"+path_trimbvh;
+	bvhPath = "/uploads/"+ path_trimbvh;
 
 	init();
 	loadBVH(bvhPath);
