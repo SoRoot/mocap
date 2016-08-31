@@ -1,6 +1,6 @@
 #
 # MOCAP.WEB - Werbprojekt und Interaktive Systeme
-# Supervisors: Prof. Gruenvogel, Lo Iacono
+# Supervisors: Prof. Dr. Gruenvogel, Prof. Dr. Lo Iacono
 # TH Koeln SS 2016
 # Author: Lukas Ungerland, Marie-Luise Lux
 #
@@ -24,23 +24,25 @@ class Motion
 
 
       unless found.blank?
-        found.each do |x|
+        Motion.all.each do |x|
             rec = MotionRecord.all.where(:_id.to_s => x.motion_record).first     #get the MotionRecord
             a = Actor.all.where(:name => rec.actor).first                    #from the MotionRecord you are able to get the actor
             
             unless (a.gender == search_gender)                                  #if the gender of the actor is not the gender searched for
-              found = found.not_in(:motion_record => rec._id.to_s)              #take out all motions that belong to that MotionRecord
+              found = found.not_in(:motion_record => rec._id)              #take out all motions that belong to that MotionRecord
             end
         end
       end
     end
 
     unless search_actor.blank?
-      unless MotionRecord.all.where(:actor => search_actor).blank?
-        found = found.where( motion_record: MotionRecord.all.where(:actor => search_actor).first._id.to_s )
-        #found = found.where( motion_record: MotionRecord.all.where(:actor => search_actor).first._id.to_s )
-      else
-        found = found.where(:_id => "")                                       #if actor doesn't have a motion return null
+
+      Motion.all.each do |x|
+        rec = MotionRecord.all.where(:_id => x.motion_record).first     #get the MotionRecord
+
+        unless (rec.actor == search_actor)                               #if the gender of the actor is not the gender searched for
+          found = found.not_in(:motion_record => rec._id.to_s)              #take out all motions that belong to that MotionRecord
+        end
       end
     end
 
