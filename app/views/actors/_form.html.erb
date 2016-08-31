@@ -1,3 +1,10 @@
+<!--
+ MOCAP.WEB - Werbprojekt und Interaktive Systeme
+ Supervisors: Prof. Gruenvogel, Lo Iacono
+ TH Koeln SS 2016
+ Author: Lukas Ungerland
+-->
+
 <%= form_for(@actor) do |f| %>
 
 		<%= render 'shared/actor_error_messages' %>
@@ -10,9 +17,9 @@
 
 						<div class="col-md-6">
 
-								<p class="signup-man">Name, body height, gender and weight are mandatory</p>
+								<p class="signup-man">* are required fields</p>
 
-								<%= f.text_field :name, :placeholder => "Actor name", class: 'mocap-textbox' + (@actor.errors.include?(:name) ? ' textbox-wrong' : '') %>
+								<%= f.text_field :name, :placeholder => "Actor name *", class: 'mocap-textbox' + (@actor.errors.include?(:name) ? ' textbox-wrong' : '') %>
 						</div>
 				</div>
 
@@ -22,8 +29,8 @@
 
 
 								<% field_list = [
-										{ field: :body_height, placeholder:  "Body height [cm]"},
-										{ field: :weight, placeholder: "Weight [kg]"},
+										{ field: :body_height, placeholder:  "Body height * [cm]"},
+										{ field: :weight, placeholder: "Weight * [kg]"},
 										{ field: :shoulder_height, placeholder:  "Shoulder height [cm]"},
 										{ field: :tibia_length, placeholder:  "Tibia length [cm]"},
 										{ field: :hip_width, placeholder:  "Hip width [cm]"},

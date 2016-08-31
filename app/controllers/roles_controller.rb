@@ -1,4 +1,12 @@
+#
+# MOCAP.WEB - Werbprojekt und Interaktive Systeme
+# Supervisors: Prof. Gruenvogel, Lo Iacono
+# TH Koeln SS 2016
+# Author: Lukas Ungerland
+#
+
 class RolesController < ApplicationController
+	before_action :require_user
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   # GET /roles
@@ -28,7 +36,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
+        format.html { redirect_to @role }
         format.json { render :show, status: :created, location: @role }
       else
         format.html { render :new }
@@ -42,7 +50,7 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
+        format.html { redirect_to @role }
         format.json { render :show, status: :ok, location: @role }
       else
         format.html { render :edit }
@@ -56,7 +64,7 @@ class RolesController < ApplicationController
   def destroy
     @role.destroy
     respond_to do |format|
-      format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
+      format.html { redirect_to roles_url }
       format.json { head :no_content }
     end
   end

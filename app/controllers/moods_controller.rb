@@ -1,4 +1,12 @@
+#
+# MOCAP.WEB - Werbprojekt und Interaktive Systeme
+# Supervisors: Prof. Gruenvogel, Lo Iacono
+# TH Koeln SS 2016
+# Author: Lukas Ungerland
+#
+
 class MoodsController < ApplicationController
+	before_action :require_user
   before_action :set_mood, only: [:show, :edit, :update, :destroy]
 
   # GET /moods
@@ -28,7 +36,7 @@ class MoodsController < ApplicationController
 
     respond_to do |format|
       if @mood.save
-        format.html { redirect_to @mood, notice: 'Mood was successfully created.' }
+        format.html { redirect_to @mood }
         format.json { render :show, status: :created, location: @mood }
       else
         format.html { render :new }
@@ -42,7 +50,7 @@ class MoodsController < ApplicationController
   def update
     respond_to do |format|
       if @mood.update(mood_params)
-        format.html { redirect_to @mood, notice: 'Mood was successfully updated.' }
+        format.html { redirect_to @mood }
         format.json { render :show, status: :ok, location: @mood }
       else
         format.html { render :edit }
@@ -56,7 +64,7 @@ class MoodsController < ApplicationController
   def destroy
     @mood.destroy
     respond_to do |format|
-      format.html { redirect_to moods_url, notice: 'Mood was successfully destroyed.' }
+      format.html { redirect_to moods_url }
       format.json { head :no_content }
     end
   end

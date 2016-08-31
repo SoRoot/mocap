@@ -1,3 +1,10 @@
+<!--
+ MOCAP.WEB - Werbprojekt und Interaktive Systeme
+ Supervisors: Prof. Gruenvogel, Lo Iacono
+ TH Koeln SS 2016
+ Author: Lukas Ungerland
+-->
+
 <%= form_for @motion do |f| %>
 
 	<%= render 'shared/motion_error_messages' %>
@@ -35,7 +42,7 @@
 		<%= f.button "create another motion", name: 'more', value: 'true', class: "btn-default btn mocap-textbox mocap-textbox-hov", id:"mocap-btn" %>
 	</div>
 	<div>
-		<%= f.button "finished with this motion", name: 'more', value: 'false', class: "btn-default btn mocap-textbox mocap-textbox-hov" %>
+		<%= f.button "finished with this motion", name: 'more', value: 'false', class: "btn-default btn mocap-textbox mocap-textbox-hov", id:"mocap-btn" %>
 	</div>
 <% end %>
 

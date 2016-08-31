@@ -1,3 +1,10 @@
+/* 
+ MOCAP.WEB - Werbprojekt und Interaktive Systeme
+ Supervisors: Prof. Dr. Gruenvogel, Prof. Dr. Lo Iacono
+ TH Koeln SS 2016
+ Authors: Lisa-marie Assmann, Marie-Luise Lux
+
+*/
 @import variables;
 
 .results tr[visible='false'],
@@ -84,11 +91,8 @@ select option{
 	height: 100%;
 	top: 0;
 	left: 0;
-	opacity: 0;
 }
-.motion-box:hover .motion-content{
-	opacity:0.9;
-}
+
 .motion{
 	width: 160px;
 	height: 210px;
@@ -118,5 +122,7 @@ h4.motion-font{
 	padding-bottom: 5%;
 	margin: 0px;
 }
-
+.btns{
+	margin: 3px;
+}
 

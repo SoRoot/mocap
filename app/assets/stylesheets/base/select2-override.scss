@@ -4,6 +4,13 @@ Ajusted for Mocap.web
 Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overide.css
 *********************************/
 
+/* 
+ MOCAP.WEB - Werbprojekt und Interaktive Systeme
+ Supervisors: Prof. Gruenvogel, Lo Iacono
+ TH Koeln SS 2016
+ Author: Lukas Ungerland
+*/
+
 /* Assign min-width to container */
 .select2-container {
 	min-width: 300px;
@@ -42,7 +49,7 @@ Original File: https://github.com/techhysahil/Select2-Flat-UI/blob/master/Overid
 
 .select2-container .select2-choice {
 	border: 1px solid $color01;
-	height: 36px;
+	min-height: 36px;
 	border-radius: 0px;
 	font-family: "Lato", sans-serif;
 	font-size: 14px;
@@ -212,7 +219,7 @@ input {
 	background: $color02;
 	border: 1px solid $color01;
 	border-radius: 0px;
-	height: 42px;
+	min-height: 30px;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove .select2-:hover {
@@ -236,7 +243,7 @@ input {
 }
 
 .select2-container .select2-selection--single {
-	height: 42px;
+	min-height: 42px;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
@@ -268,7 +275,7 @@ input {
 	border: 1px solid $color01;
 	border-radius: 0px;
 	padding: 3px 5px;
-	height: 30px;
+	min-height: 30px;
 	line-height: 22px;
 }
 

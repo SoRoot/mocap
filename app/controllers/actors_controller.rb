@@ -1,3 +1,10 @@
+#
+# MOCAP.WEB - Werbprojekt und Interaktive Systeme
+# Supervisors: Prof. Gruenvogel, Lo Iacono
+# TH Koeln SS 2016
+# Author: Lukas Ungerland
+#
+
 class ActorsController < ApplicationController
 	include SessionsHelper
 	before_action :require_user
@@ -41,7 +48,7 @@ class ActorsController < ApplicationController
 	def update
 		respond_to do |format|
 			if @actor.update(actor_params)
-				format.html { redirect_to @actor, notice: 'Actor was successfully updated.' }
+				format.html { redirect_to @actor }
 				format.json { render :show, status: :ok, location: @actor }
 			else
 				format.html { render :edit }
@@ -55,7 +62,7 @@ class ActorsController < ApplicationController
 	def destroy
 		@actor.destroy
 		respond_to do |format|
-			format.html { redirect_to actors_url, notice: 'Actor was successfully destroyed.' }
+			format.html { redirect_to actors_url }
 			format.json { head :no_content }
 		end
 	end

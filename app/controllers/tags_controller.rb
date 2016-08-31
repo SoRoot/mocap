@@ -1,4 +1,12 @@
+#
+# MOCAP.WEB - Werbprojekt und Interaktive Systeme
+# Supervisors: Prof. Gruenvogel, Lo Iacono
+# TH Koeln SS 2016
+# Author: Lukas Ungerland
+#
+
 class TagsController < ApplicationController
+	before_action :require_user
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /tags
@@ -28,7 +36,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+        format.html { redirect_to @tag }
         format.json { render :show, status: :created, location: @tag }
       else
         format.html { render :new }
@@ -42,7 +50,7 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
+        format.html { redirect_to @tag }
         format.json { render :show, status: :ok, location: @tag }
       else
         format.html { render :edit }
@@ -56,7 +64,7 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
     respond_to do |format|
-      format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
+      format.html { redirect_to tags_url }
       format.json { head :no_content }
     end
   end

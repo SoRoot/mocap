@@ -1,10 +1,17 @@
+###
+// MOCAP.WEB - Werbprojekt und Interaktive Systeme
+// Supervisors: Prof. Gruenvogel, Lo Iacono
+// TH Koeln SS 2016
+// Author: Lukas Ungerland, Lisa-Marie Assmann
+###
+
 $(document).on 'page:change', =>
 	$(".js-example-placeholder-single.actor").select2
 		allowClear: true
 		placeholder: "Select actor"
 	$(".js-example-placeholder-single.gender").select2
 		allowClear: true
-		placeholder: "Select gender"
+		placeholder: "Select gender *"
 		minimumResultsForSearch: Infinity
 	$(".js-example-placeholder-single.role").select2
 		allowClear: true
